@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[jimmy_codebook]]></title>
+  <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
+  <link href="https://purple-jimmy.github.io/jimmy_book/"/>
+  <updated>2018-08-25T21:46:15+08:00</updated>
+  <id>https://purple-jimmy.github.io/jimmy_book/</id>
+  <author>
+    <name><![CDATA[]]></name>
+    
+  </author>
+  <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[springcloud]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/slouc.html"/>
+    <updated>2018-08-25T21:50:27+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/slouc.html</id>
+    <content type="html"><![CDATA[
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[springbbot]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/springboot.html"/>
+    <updated>2018-08-25T21:24:04+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/springboot.html</id>
+    <content type="html"><![CDATA[
+
+]]></content>
+  </entry>
+  
+</feed>
