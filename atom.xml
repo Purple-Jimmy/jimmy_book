@@ -4,7 +4,7 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2018-08-25T22:33:46+08:00</updated>
+  <updated>2018-08-25T22:39:39+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -14,9 +14,9 @@
   
   <entry>
     <title type="html"><![CDATA[idea 插件]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/15352079348909.html"/>
+    <link href="https://purple-jimmy.github.io/jimmy_book/idea%E6%8F%92%E4%BB%B6.html"/>
     <updated>2018-08-25T22:38:54+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/15352079348909.html</id>
+    <id>https://purple-jimmy.github.io/jimmy_book/idea%E6%8F%92%E4%BB%B6.html</id>
     <content type="html"><![CDATA[
 <h3 id="toc_0">yml属性自动提示</h3>
 
