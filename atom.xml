@@ -4,7 +4,7 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2018-08-25T21:59:11+08:00</updated>
+  <updated>2018-08-25T22:33:46+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -13,31 +13,18 @@
   <generator uri="http://www.mweb.im/">MWeb</generator>
   
   <entry>
-    <title type="html"><![CDATA[springboot 入门]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/15352075996396.html"/>
-    <updated>2018-08-25T22:33:19+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/15352075996396.html</id>
+    <title type="html"><![CDATA[idea 插件]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/15352079348909.html"/>
+    <updated>2018-08-25T22:38:54+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/15352079348909.html</id>
     <content type="html"><![CDATA[
+<h3 id="toc_0">yml属性自动提示</h3>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[springcloud]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/slouc.html"/>
-    <updated>2018-08-25T21:50:27+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/slouc.html</id>
-    <content type="html"><![CDATA[
+<p>下载插件 spring assistant</p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[spring]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/springboot.html"/>
-    <updated>2018-08-25T21:24:04+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/springboot.html</id>
-    <content type="html"><![CDATA[
+<h3 id="toc_1">ignore插件</h3>
+
+<p>下载 ignore</p>
 
 ]]></content>
   </entry>
