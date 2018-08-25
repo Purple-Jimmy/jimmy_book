@@ -2,7 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>https://purple-jimmy.github.io/jimmy_book/</loc>
-  <lastmod>2018-08-25T22:41:07+08:00</lastmod>
+  <lastmod>2018-08-25T22:54:29+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/consul%E5%AE%89%E8%A3%85.html</loc>
+  <lastmod>2018-08-25T22:43:15+08:00</lastmod>
 </url>
 
 <url>
@@ -11,6 +16,14 @@
 </url>
 
 
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/springcloud.html</loc>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C.html</loc>
+</url>
 
 <url>
   <loc>https://purple-jimmy.github.io/jimmy_book/idea.html</loc>

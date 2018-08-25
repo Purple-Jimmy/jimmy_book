@@ -77,6 +77,8 @@
     <li><label>Categories</label></li>
 
         
+            <li><a href="springcloud.html">springcloud</a></li>
+        
             <li><a href="idea.html">idea配置</a></li>
          
 
@@ -99,6 +101,111 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="consul%E5%AE%89%E8%A3%85.html">
+                
+                  <h1>consul 安装</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ol>
+<li>下载 <a href="https://www.consul.io/">https://www.consul.io/</a></li>
+<li>上传 /usr/local/bin</li>
+<li>解压 <code>unzip consul_1.2.2_linux_amd64.zip</code></li>
+<li>验证:</li>
+</ol>
+
+<pre><code class="language-text">[root@VM-6e650661-ceb0-4308-9737-63dcd1f8a6b6 bin]# consul 
+Usage: consul [--version] [--help] &lt;command&gt; [&lt;args&gt;]
+</code></pre>
+
+<h4 id="toc_0">常用命令</h4>
+
+<ul>
+<li>查看版本 ./consul version</li>
+<li>查看成员 ./consul members -detailed</li>
+</ul>
+
+<pre><code class="language-text">[root@VM-6e650661-ceb0-4308-9737-63dcd1f8a6b6 ~]# consul members
+Node                                     Address         Status  Type    Build  Protocol  DC   Segment
+VM-6e650661-ceb0-4308-9737-63dcd1f8a6b6  127.0.0.1:8301  alive   server  1.2.2  2         dc1  &lt;all&gt;
+</code></pre>
+
+<ul>
+<li>相关信息 ./consul info</li>
+</ul>
+
+<h4 id="toc_1">启动</h4>
+
+<ul>
+<li>开发模式启动 consul agent -dev</li>
+<li>服务模式启动 consul agent -server</li>
+</ul>
+
+<h4 id="toc_2">开放防火墙</h4>
+
+<pre><code class="language-text">firewall-cmd --zone=public --add-port=8500/tcp --permanent
+firewall-cmd --reload
+firewall-cmd --query-port=8500/tcp
+</code></pre>
+
+<h4 id="toc_3">Consul web-ui 8500端口实现公网访问</h4>
+
+<ol>
+<li>linux安装rinetd</li>
+</ol>
+
+<pre><code class="language-text">yum install -y gcc g++ autoconf make telnet 
+wget http://www.boutell.com/rinetd/http/rinetd.tar.gz
+tar -xvf rinetd.tar.gz  
+cd rinetd
+sed -i &#39;s/65536/65535/g&#39; rinetd.c 
+mkdir -pv /usr/man &amp;&amp; make &amp;&amp; make install
+</code></pre>
+
+<ol>
+<li>编辑配置文件,将所有发往本机37170端口的请求转发到127.0.0.1的8500端口</li>
+</ol>
+
+<pre><code class="language-text">vi /etc/rinetd.conf
+
+0.0.0.0 37170 127.0.0.1 8500   
+logfile /var/log/rinetd.log
+
+#格式
+bindaddress   bindport   connectaddress   connectport
+绑定的地址     绑定的端口   连接的地址        连接的端口
+</code></pre>
+
+<ol>
+<li>启动:rinetd</li>
+<li>访问:http:ip:37170/ui</li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/25</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C.html'>服务注册</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="idea%E6%8F%92%E4%BB%B6.html">
                 
@@ -190,6 +297,8 @@
 
       	<p class="cat-list">
         
+            <a href="springcloud.html"><strong>springcloud</strong></a>
+        
             <a href="idea.html"><strong>idea配置</strong></a>
          
         </p>
@@ -205,6 +314,12 @@
                 <div class="side-content">
                 <ul class="posts-list">
 	      
+		      
+			      <li class="post">
+			        <a href="consul%E5%AE%89%E8%A3%85.html">consul 安装</a>
+			      </li>
+		     
+		  
 		      
 			      <li class="post">
 			        <a href="idea%E6%8F%92%E4%BB%B6.html">idea 插件</a>

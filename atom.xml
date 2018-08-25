@@ -4,13 +4,96 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2018-08-25T22:39:39+08:00</updated>
+  <updated>2018-08-25T22:41:07+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[consul 安装]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/consul%E5%AE%89%E8%A3%85.html"/>
+    <updated>2018-08-25T22:43:15+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/consul%E5%AE%89%E8%A3%85.html</id>
+    <content type="html"><![CDATA[
+<ol>
+<li>下载 <a href="https://www.consul.io/">https://www.consul.io/</a></li>
+<li>上传 /usr/local/bin</li>
+<li>解压 <code>unzip consul_1.2.2_linux_amd64.zip</code></li>
+<li>验证:</li>
+</ol>
+
+<pre><code class="language-text">[root@VM-6e650661-ceb0-4308-9737-63dcd1f8a6b6 bin]# consul 
+Usage: consul [--version] [--help] &lt;command&gt; [&lt;args&gt;]
+</code></pre>
+
+<h4 id="toc_0">常用命令</h4>
+
+<ul>
+<li>查看版本 ./consul version</li>
+<li>查看成员 ./consul members -detailed</li>
+</ul>
+
+<pre><code class="language-text">[root@VM-6e650661-ceb0-4308-9737-63dcd1f8a6b6 ~]# consul members
+Node                                     Address         Status  Type    Build  Protocol  DC   Segment
+VM-6e650661-ceb0-4308-9737-63dcd1f8a6b6  127.0.0.1:8301  alive   server  1.2.2  2         dc1  &lt;all&gt;
+</code></pre>
+
+<ul>
+<li>相关信息 ./consul info</li>
+</ul>
+
+<h4 id="toc_1">启动</h4>
+
+<ul>
+<li>开发模式启动 consul agent -dev</li>
+<li>服务模式启动 consul agent -server</li>
+</ul>
+
+<h4 id="toc_2">开放防火墙</h4>
+
+<pre><code class="language-text">firewall-cmd --zone=public --add-port=8500/tcp --permanent
+firewall-cmd --reload
+firewall-cmd --query-port=8500/tcp
+</code></pre>
+
+<h4 id="toc_3">Consul web-ui 8500端口实现公网访问</h4>
+
+<ol>
+<li>linux安装rinetd</li>
+</ol>
+
+<pre><code class="language-text">yum install -y gcc g++ autoconf make telnet 
+wget http://www.boutell.com/rinetd/http/rinetd.tar.gz
+tar -xvf rinetd.tar.gz  
+cd rinetd
+sed -i &#39;s/65536/65535/g&#39; rinetd.c 
+mkdir -pv /usr/man &amp;&amp; make &amp;&amp; make install
+</code></pre>
+
+<ol>
+<li>编辑配置文件,将所有发往本机37170端口的请求转发到127.0.0.1的8500端口</li>
+</ol>
+
+<pre><code class="language-text">vi /etc/rinetd.conf
+
+0.0.0.0 37170 127.0.0.1 8500   
+logfile /var/log/rinetd.log
+
+#格式
+bindaddress   bindport   connectaddress   connectport
+绑定的地址     绑定的端口   连接的地址        连接的端口
+</code></pre>
+
+<ol>
+<li>启动:rinetd</li>
+<li>访问:http:ip:37170/ui</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[idea 插件]]></title>
