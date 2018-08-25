@@ -2,12 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>https://purple-jimmy.github.io/jimmy_book/</loc>
-  <lastmod>2018-08-25T21:50:46+08:00</lastmod>
-</url>
-
-<url>
-  <loc>https://purple-jimmy.github.io/jimmy_book/slouc.html</loc>
-  <lastmod>2018-08-25T21:50:27+08:00</lastmod>
+  <lastmod>2018-08-25T21:57:28+08:00</lastmod>
 </url>
 
 <url>
@@ -15,6 +10,11 @@
   <lastmod>2018-08-25T21:24:04+08:00</lastmod>
 </url>
 
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/slouc.html</loc>
+  <lastmod>2018-08-25T21:50:46+08:00</lastmod>
+</url>
 
 
 
