@@ -4,13 +4,315 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2018-08-25T22:41:07+08:00</updated>
+  <updated>2018-08-25T22:54:29+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[zipkin 链路追踪]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/zipkin%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA.html"/>
+    <updated>2018-08-26T10:46:10+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/zipkin%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA.html</id>
+    <content type="html"><![CDATA[
+<h4 id="toc_0">术语概念</h4>
+
+<p>Span：基本工作单元，例如，在一个新建的span中发送一个RPC等同于发送一个回应请求给RPC，span通过一个64位ID唯一标识，trace以另一个64位ID表示，span还有其他数据信息，比如摘要、时间戳事件、关键值注释(tags)、span的ID、以及进度ID(通常是IP地址) <br/>
+span在不断的启动和停止，同时记录了时间信息，当你创建了一个span，你必须在未来的某个时刻停止它。<br/>
+Trace：一系列spans组成的一个树状结构，例如，如果你正在跑一个分布式大数据工程，你可能需要创建一个trace。<br/>
+Annotation：用来及时记录一个事件的存在，一些核心annotations用来定义一个请求的开始和结束 <br/>
+cs - Client Sent -客户端发起一个请求，这个annotion描述了这个span的开始<br/>
+sr - Server Received -服务端获得请求并准备开始处理它，如果将其sr减去cs时间戳便可得到网络延迟<br/>
+ss - Server Sent -注解表明请求处理的完成(当请求返回客户端)，如果ss减去sr时间戳便可得到服务端需要的处理请求时间<br/>
+cr - Client Received -表明span的结束，客户端成功接收到服务端的回复，如果cr减去cs时间戳便可得到客户端从服务端获取回复的所有所需时间 </p>
+
+<h4 id="toc_1">追踪分类</h4>
+
+<ol>
+<li><p>Http协议,如RestTemplate,Feign,Okhttp3,HttpClient</p></li>
+<li><p>Rpc远程调用,如Motan,Dubbo,GRPC</p></li>
+<li><p>分布式Event,如RabbitMq,Kafka</p></li>
+</ol>
+
+<h3 id="toc_2">安装zipkin</h3>
+
+<pre><code class="language-text">curl -sSL https://zipkin.io/quickstart.sh | bash -s
+java -jar zipkin.jar &amp;
+</code></pre>
+
+<h4 id="toc_3">http链路追踪</h4>
+
+<ul>
+<li><p>引入依赖 </p>
+<pre><code class="language-text">&lt;dependency&gt;
+&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
+&lt;artifactId&gt;spring-cloud-starter-sleuth&lt;/artifactId&gt;<br/>
+&lt;version&gt;${sleuth.version}&lt;/version&gt;<br/>
+&lt;/dependency&gt;<br/>
+&lt;!-- Sends trace data to zipkin over http (defaults to http://localhost:9411/api/v2/spans) --&gt;<br/>
+&lt;dependency&gt;<br/>
+&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
+&lt;artifactId&gt;spring-cloud-sleuth-zipkin&lt;/artifactId&gt;<br/>
+&lt;version&gt;${zipkin.version}&lt;/version&gt;<br/>
+&lt;/dependency&gt;
+</code></pre></li>
+<li><p>book-server和user-server的pom.yml添加配置</p>
+<pre><code class="language-text">spring:
+zipkin:<br/>
+base-url: http://localhost:9411<br/>
+sleuth:<br/>
+enabled: true<br/>
+sampler:<br/>
+  probability: 1 #采样率,值为[0,1]之间的任意实数 1代表100%采集报告
+</code></pre></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[gateway 网关初探]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/gateway%E7%BD%91%E5%85%B3%E5%88%9D%E6%8E%A2.html"/>
+    <updated>2018-08-26T10:44:20+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/gateway%E7%BD%91%E5%85%B3%E5%88%9D%E6%8E%A2.html</id>
+    <content type="html"><![CDATA[
+<blockquote>
+<p>访问网关服务gateway-server 8080 路由到book-server服务</p>
+</blockquote>
+
+<ul>
+<li><p>引入依赖</p>
+<pre><code class="language-text">&lt;dependency&gt;
+&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
+&lt;artifactId&gt;spring-cloud-starter-gateway&lt;/artifactId&gt;<br/>
+&lt;/dependency&gt;
+</code></pre></li>
+<li><p>配置文件 gateway-server </p>
+<pre><code class="language-text">spring:
+cloud:<br/>
+ gateway:<br/>
+   routes:<br/>
+   - id: host_route<br/>
+     uri: http://localhost:1111<br/>
+     predicates:<br/>
+     - Path=/book/**<br/>
+     filters:<br/>
+     - StripPrefix=1<br/>
+   - id: host_route<br/>
+     uri: http://localhost:2222<br/>
+     predicates:<br/>
+     - Path=/user/**<br/>
+     filters:<br/>
+     - StripPrefix=1
+</code></pre></li>
+<li><p>访问 <a href="http://ip:port/book/queryBookA">http://ip:port/book/queryBookA</a></p></li>
+</ul>
+
+<blockquote>
+<p>配置详解</p>
+
+<ul>
+<li>id:固定,不同 id 对应不同的功能</li>
+<li>uri:目标服务地址</li>
+<li>predicates:路由条件</li>
+<li>filters:过滤规则</li>
+</ul>
+</blockquote>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[hystrix 服务降级]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7.html"/>
+    <updated>2018-08-26T10:41:29+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7.html</id>
+    <content type="html"><![CDATA[
+<blockquote>
+<p>user-server 调用 book-server 的queryHystrixBook方法</p>
+</blockquote>
+
+<ul>
+<li><p>引入依赖</p>
+<pre><code class="language-text">&lt;dependency&gt;
+&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
+&lt;artifactId&gt;spring-cloud-starter-hystrix&lt;/artifactId&gt;<br/>
+&lt;/dependency&gt;
+</code></pre></li>
+<li><p>添加注解 user-server启动类添加:@EnableCircuitBreaker或者@EnableHystrix</p></li>
+<li><p>@HystrixCommand 声明user-server调用book-server服务提供的方法queryHystrixBook失败后调用的方法</p></li>
+</ul>
+
+<pre><code class="language-text">@HystrixCommand(fallbackMethod = &quot;fallbackHystrix_a&quot;)
+public String hystrix_a(){
+    return restTemplate.getForObject(&quot;http://localhost:1111/queryHystrixBook&quot;, String.class);
+}
+
+public String fallbackHystrix_a() {
+    return &quot;fallback hystrix a&quot;;
+}
+</code></pre>
+
+<p>访问user-server提供的方法queryHystrixA,会调用book-server的queryHystrixBook方法.<br/><br/>
+queryHystrixBook方法延迟10s返回结果,fallbackHystrix_a就会被触发</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[hystrix]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/hystrix%E4%BB%8B%E7%BB%8D.html"/>
+    <updated>2018-08-26T10:38:42+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/hystrix%E4%BB%8B%E7%BB%8D.html</id>
+    <content type="html"><![CDATA[
+<p>Hystrix具备了服务降级、服务熔断、线程隔离、请求缓存、请求合并以及服务监控等强大功能</p>
+
+<ul>
+<li><p>服务降级</p>
+<pre><code class="language-text">在微服务架构中，我们将系统拆分成了一个个的服务单元，各单元应用间通过服务注册与订阅的方式互相依赖。由于每个单元都在不同的进程中运行，
+依赖通过远程调用的方式执行，这样就有可能因为网络原因或是依赖服务自身问题出现调用故障或延迟，而这些问题会直接导致调用方的对外服务也出现延迟，<br/>
+若此时调用方的请求不断增加，最后就会出现因等待出现故障的依赖方响应而形成任务积压，线程资源无法释放，最终导致自身服务的瘫痪，<br/>
+进一步甚至出现故障的蔓延最终导致整个系统的瘫痪。如果这样的架构存在如此严重的隐患，那么相较传统架构就更加的不稳定。<br/>
+为了解决这样的问题，因此产生了断路器等一系列的服务保护机制
+</code></pre></li>
+<li><p>依赖隔离</p>
+<pre><code class="language-text">“舱壁模式”对于熟悉Docker的读者一定不陌生，Docker通过“舱壁模式”实现进程的隔离，使得容器与容器之间不会互相影响。
+而Hystrix则使用该模式实现线程池的隔离，它会为每一个Hystrix命令创建一个独立的线程池，这样就算某个在Hystrix命令包装下的依赖服务出现延迟过高的情况，<br/>
+也只是对该依赖服务的调用产生影响，而不会拖慢其他的服务。
+</code></pre></li>
+</ul>
+
+<p>使用@HystrixCommand来将某个函数包装成了Hystrix命令,这里除了定义服务降级之外,Hystrix框架就会自动的为这个函数实现调用的隔离.<br/>
+所以,依赖隔离、服务降级在使用时候都是一体化实现的,这样利用Hystrix来实现服务容错保护在编程模型上就非常方便的,并且考虑更为全面.</p>
+
+<ul>
+<li>断路器</li>
+</ul>
+
+<pre><code class="language-text">在分布式架构中，断路器模式的作用也是类似的，当某个服务单元发生故障（类似用电器发生短路）之后，通过断路器的故障监控（类似熔断保险丝），
+直接切断原来的主逻辑调用。但是，在Hystrix中的断路器除了切断主逻辑的功能之外，还有更复杂的逻辑
+</code></pre>
+
+<p>在服务降级例子中,受限于Hystrix超时时间的问题,我们的调用依然很有可能产生堆积.<br/><br/>
+这个时候断路器就会发挥作用,那么断路器是在什么情况下开始起作用呢?这里涉及到断路器的三个重要参数:快照时间窗、请求总数下限、错误百分比下限</p>
+
+<ol>
+<li>快照时间窗:断路器确定是否打开需要统计一些请求和错误数据,而统计的时间范围就是快照时间窗,默认为最近的10秒</li>
+<li>请求总数下限:在快照时间窗内,必须满足请求总数下限才有资格根据熔断.默认为20,意味着在10秒内,如果该hystrix命令的调用此时不足20次,即时所有的请求都超时或其他原因失败,断路器都不会打开</li>
+<li>错误百分比下限:当请求总数在快照时间窗内超过了下限,比如发生了30次调用,如果在这30次调用中,有16次发生了超时异常,也就是超过50%的错误百分比,在默认设定50%下限情况下,这时候就会将断路器打开</li>
+</ol>
+
+<pre><code class="language-text">那么当断路器打开之后会发生什么呢？我们先来说说断路器未打开之前，对于之前那个示例的情况就是每个请求都会在当hystrix超时之后返回fallback，
+每个请求时间延迟就是近似hystrix的超时时间，如果设置为5秒，那么每个请求就都要延迟5秒才会返回。当熔断器在10秒内发现请求总数超过20，
+并且错误百分比超过50%，这个时候熔断器打开。打开之后，再有请求调用的时候，将不会调用主逻辑，而是直接调用降级逻辑，这个时候就不会等待5秒之后才返回fallback。
+通过断路器，实现了自动地发现错误并将降级逻辑切换为主逻辑，减少响应延迟的效果。
+
+在断路器打开之后，处理逻辑并没有结束，我们的降级逻辑已经被成了主逻辑，那么原来的主逻辑要如何恢复呢？
+对于这一问题，hystrix也为我们实现了自动恢复功能。当断路器打开，对主逻辑进行熔断之后，hystrix会启动一个休眠时间窗，在这个时间窗内，
+降级逻辑是临时的成为主逻辑，当休眠时间窗到期，断路器将进入半开状态，释放一次请求到原来的主逻辑上，如果此次请求正常返回，
+那么断路器将继续闭合，主逻辑恢复，如果这次请求依然有问题，断路器继续进入打开状态，休眠时间窗重新计时
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[feign]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/feign%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.html"/>
+    <updated>2018-08-26T10:35:33+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/feign%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.html</id>
+    <content type="html"><![CDATA[
+<blockquote>
+<p>user-server 调用 book-server</p>
+</blockquote>
+
+<ul>
+<li><p>引入依赖</p>
+<pre><code class="language-text">&lt;dependency&gt;
+&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
+&lt;artifactId&gt;spring-cloud-starter-feign&lt;/artifactId&gt;<br/>
+&lt;/dependency&gt;
+</code></pre></li>
+<li><p>添加注解 user-server启动类添加:@EnableFeignClients</p>
+<pre><code class="language-text">@SpringBootApplication
+@EnableDiscoveryClient<br/>
+@RestController<br/>
+@EnableFeignClients<br/>
+public class UserServerStart {<br/>
+public static void main(String[] args) {<br/>
+    SpringApplication.run(UserServerStart.class,args);<br/>
+}<br/>
+}
+</code></pre></li>
+<li><p>配置文件 user-server和book-server分别向注册中心注册</p></li>
+<li><p>user-server声明feign接口 book-server为book服务在注册中心的名字 queryBookFeign为book服务提供的调用方法</p>
+<pre><code class="language-text">@FeignClient(&quot;book-server&quot;)
+@Service<br/>
+public interface BookServerFeign {<br/>
+@GetMapping(&quot;/queryBookFeign&quot;)<br/>
+String queryBookFeign();<br/>
+}
+</code></pre></li>
+<li><p>user-server调用  </p>
+<pre><code class="language-text">@RestController
+public class FeignController {<br/>
+@Autowired<br/>
+BookServerFeign bookServerFeign;<br/>
+@RequestMapping(&quot;/queryBook&quot;)<br/>
+public void queryBook(){<br/>
+    String str = bookServerFeign.queryBookFeign();<br/>
+}<br/>
+}
+</code></pre></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[consul 服务发现]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/consul%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0.html"/>
+    <updated>2018-08-26T10:31:58+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/consul%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0.html</id>
+    <content type="html"><![CDATA[
+<ul>
+<li><p>引入依赖</p>
+<pre><code class="language-text">&lt;dependency&gt;
+&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
+&lt;artifactId&gt;spring-cloud-starter-consul-discovery&lt;/artifactId&gt;<br/>
+&lt;/dependency&gt;
+</code></pre></li>
+<li><p>添加注解 服务A的启动类添加:@EnableDiscoveryClient</p>
+<pre><code class="language-text">@SpringBootApplication
+@EnableDiscoveryClient<br/>
+public class ConsulStart {<br/>
+public static void main(String[] args) {<br/>
+    SpringApplication.run(ConsulStart.class,args);<br/>
+}<br/>
+}
+</code></pre></li>
+<li><p>配置文件 </p>
+<pre><code class="language-text">spring:
+cloud:<br/>
+consul:<br/>
+  host: xxx<br/>
+  port: xxx<br/>
+  discovery:<br/>
+    enabled: true<br/>
+    service-name: consul-server #注册中心注册的服务名字<br/>
+   # health-check-path: /health<br/>
+    health-check-interval: 10s<br/>
+    instance-id: consul-server-id<br/>
+    tags: dev,hello
+</code></pre></li>
+<li><p>访问consul ip查看注册上的服务</p></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[consul 安装]]></title>
