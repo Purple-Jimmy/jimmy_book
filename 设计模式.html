@@ -115,7 +115,7 @@
                         
                         	<p><img src="media/15352640315767/15352640761696.png" alt=""/></p>
 
-<h3 id="toc_0">静态代理</h3>
+<h3 id="toc_0">静态代理 代理类需要自己编写代码写成</h3>
 
 <blockquote>
 <p>举例:电影院看电影,电影开始前买爆米花,广告播放</p>
@@ -125,9 +125,9 @@
 
 <p><u>代理模式可以在不修改被代理对象的基础上，通过扩展代理类，进行一些功能的附加与增强。值得注意的是，代理类和被代理类应该共同实现一个接口，或者是共同继承某个类</u></p>
 
-<h3 id="toc_1">动态代理</h3>
+<h3 id="toc_1">动态代理 代理类通过 Proxy.newInstance() 方法生成</h3>
 
-<p>静态代理中，需要手动编写代码让 Cinema 实现 Movie 接口，而在动态代理中，可以让程序在运行的时候自动在内存中创建一个实现 Movie 接口的代理，而不需要去定义 Cinema 这个类。这就是它被称为动态的原因。</p>
+<p><strong><em><u>总结：不管是静态代理还是动态代理，代理与被代理者都要实现两样接口，它们的实质是面向接口编程。</u></em></strong></p>
 
                         
                       </div>
@@ -227,6 +227,12 @@
 	      
 		      
 			      <li class="post">
+			        <a href="classLoader%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8.html">ClassLoader 类加载器</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.html">代理模式</a>
 			      </li>
 		     
@@ -250,10 +256,6 @@
 		     
 		  
 		      
-			      <li class="post">
-			        <a href="hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7.html">hystrix 服务降级</a>
-			      </li>
-		     
 		  
 		      
 		  
