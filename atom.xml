@@ -4,7 +4,7 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2018-08-25T22:54:29+08:00</updated>
+  <updated>2018-08-26T10:49:07+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -163,7 +163,7 @@ queryHystrixBook方法延迟10s返回结果,fallbackHystrix_a就会被触发</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[hystrix]]></title>
+    <title type="html"><![CDATA[hystrix 介绍]]></title>
     <link href="https://purple-jimmy.github.io/jimmy_book/hystrix%E4%BB%8B%E7%BB%8D.html"/>
     <updated>2018-08-26T10:38:42+08:00</updated>
     <id>https://purple-jimmy.github.io/jimmy_book/hystrix%E4%BB%8B%E7%BB%8D.html</id>
