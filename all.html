@@ -81,6 +81,8 @@
         
             <li><a href="java.html">java</a></li>
         
+            <li><a href="elk.html">elk</a></li>
+        
             <li><a href="idea.html">idea</a></li>
         
             <li><a href="%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">设计模式</a></li>
@@ -105,6 +107,264 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="elk%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.html">
+                
+                  <h1>elk配置文件</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">elasticsearch.yml</h2>
+
+<pre><code class="language-text"># --------------- Cluster ----------------------
+#es 集群名称
+cluster.name: es-cluster        
+
+#当前节点名称
+node.name: es-mater01           
+
+#配置角色为：主节点和数据节点
+node.master: true
+node.data: true
+
+#配置数据路径和日志路径
+path.data: /data/elastic/data
+path.logs: /data/elastic/log
+
+#开启内存锁定
+bootstrap.memory_lock: true
+bootstrap.system_call_filter: false
+# ---------------- Network ---------------------
+#节点间通讯IP，设置为0.0.0.0兼顾内网节点间通讯
+network.bind_host: 0.0.0.0
+
+#设置9200通讯IP，一般设置为外网IP
+network.publish_host: 39.104.186.15
+
+#设置HTTP通讯端口
+http.port: 9200
+
+#设置HTTP开启状态
+http.enabled: true
+
+#设置运行跨域访问
+http.cors.enabled: true
+http.cors.allow-origin: &quot;*&quot;
+http.max_content_length: 500mb
+
+# -------------- Discovery ----------------------
+#设置zen发现范围，此处可用换为主机名：[&quot;es-master01&quot;, &quot;es-master02&quot;, &quot;es-data01&quot;]
+discovery.zen.ping.unicast.hosts: [&quot;172.16.14.85&quot;, &quot;172.16.14.86&quot;, &quot;172.16.14.87&quot;]
+
+#discovery.zen.ping.multicast.enabled: false
+
+discovery.zen.no_master_block: write
+discovery.zen.fd.ping_timeout: 10s
+
+#一个节点需要看到的具有master节点资格的最小数量,然后才能在集群中做操作.默认1.一般为：(master_node_count+1)/2
+discovery.zen.minimum_master_nodes: 2
+
+# --------------- Gateway --------------------
+#设置在有2个节点后进行数据恢复
+gateway.recover_after_nodes: 2
+gateway.expected_nodes: 3
+gateway.recover_after_time: 1m
+
+#
+# --------------- Various ----------------------
+#禁止通配符模式删除索引
+action.destructive_requires_name: true
+#indices.cluster.send_refresh_mapping: false
+
+indices.recovery.max_bytes_per_sec: 200mb
+indices.memory.index_buffer_size: 20%
+
+#script.inline: true
+#script.indexed: true
+
+#关闭xpack的安全校验
+xpack.security.enabled: false
+</code></pre>
+
+<hr/>
+
+<h2 id="toc_1">kibana.yml</h2>
+
+<pre><code class="language-text">#
+server.port: 5601
+#设置可以远程访问
+server.host: &quot;0.0.0.0&quot;
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/1</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='elk.html'>elk</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="elasticsearch%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98.html">
+                
+                  <h1>elasticsearch 性能调优</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/1</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='elk.html'>elk</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="elasticsearch%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85.html">
+                
+                  <h1>elasticsearch 集群安装</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="https://juejin.im/post/5b44b585e51d45191716e63c">https://juejin.im/post/5b44b585e51d45191716e63c</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/1</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='elk.html'>elk</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="elk%E5%AE%89%E8%A3%85(rpm%E6%96%B9%E5%BC%8F).html">
+                
+                  <h1>elk 安装 (rpm方式)</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">elasticsearch 安装</h2>
+
+<h3 id="toc_1">上传rpm包到路径/usr/search</h3>
+
+<h3 id="toc_2">解压</h3>
+
+<pre><code class="language-text">rpm -ivh elasticsearch-6.4.0.rpm
+</code></pre>
+
+<ul>
+<li>安装路径 /usr/share/elasticsearch </li>
+<li>配置文件路径 /etc/elasticsearch/</li>
+</ul>
+
+<h3 id="toc_3">启动服务</h3>
+
+<pre><code class="language-text">service elasticsearch start  
+或者命令  
+sudo chkconfig --add elasticsearch  
+sudo -i service elasticsearch start  
+sudo -i service elasticsearch stop   
+sudo -i service elasticsearch status 
+</code></pre>
+
+<h3 id="toc_4">测试是否安装成功</h3>
+
+<pre><code class="language-text">curl http://localhost:9200/
+</code></pre>
+
+<hr/>
+
+<h2 id="toc_5">kibana 安装</h2>
+
+<h3 id="toc_6">上传rpm包到路径/usr/search</h3>
+
+<h3 id="toc_7">解压</h3>
+
+<pre><code class="language-text">rpm -ivh kibana-6.4.0-x86_64.rpm
+</code></pre>
+
+<ul>
+<li>安装路径 /usr/share/kibana</li>
+<li>配置文件路径 /etc/kibana/</li>
+</ul>
+
+<hr/>
+
+<h2 id="toc_8">logstash 安装</h2>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/1</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='elk.html'>elk</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="%E6%96%B9%E6%B3%95%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92.html">
                 
@@ -965,6 +1225,8 @@ bindaddress   bindport   connectaddress   connectport
         
             <a href="java.html"><strong>java</strong></a>
         
+            <a href="elk.html"><strong>elk</strong></a>
+        
             <a href="idea.html"><strong>idea</strong></a>
         
             <a href="%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html"><strong>设计模式</strong></a>
@@ -984,33 +1246,41 @@ bindaddress   bindport   connectaddress   connectport
 	      
 		      
 			      <li class="post">
+			        <a href="elk%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.html">elk配置文件</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="elasticsearch%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98.html">elasticsearch 性能调优</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="elasticsearch%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85.html">elasticsearch 集群安装</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="elk%E5%AE%89%E8%A3%85(rpm%E6%96%B9%E5%BC%8F).html">elk 安装 (rpm方式)</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="%E6%96%B9%E6%B3%95%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92.html">方法的参数传递</a>
 			      </li>
 		     
 		  
 		      
-			      <li class="post">
-			        <a href="classLoader%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8.html">ClassLoader 类加载器</a>
-			      </li>
-		     
 		  
 		      
-			      <li class="post">
-			        <a href="%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.html">代理模式</a>
-			      </li>
-		     
 		  
 		      
-			      <li class="post">
-			        <a href="annotation%E6%B3%A8%E8%A7%A3.html">annotation 注解</a>
-			      </li>
-		     
 		  
 		      
-			      <li class="post">
-			        <a href="zipkin%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA.html">zipkin 链路追踪</a>
-			      </li>
-		     
 		  
 		      
 		  

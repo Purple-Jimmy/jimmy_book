@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  hystrix 服务降级 - jimmy_codebook
+  elasticsearch 集群安装 - jimmy_codebook
   
   </title>
   
@@ -108,14 +108,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>hystrix 服务降级</h1>
+          <h1>elasticsearch 集群安装</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2018/8/26</span>
+          <span class="date">2018/9/1</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4.html'>服务容错保护</a></span>
+              <span class="posted-in"><a href='elk.html'>elk</a></span>
            
          
           <span class="comments">
@@ -128,33 +128,7 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <blockquote>
-<p>user-server 调用 book-server 的queryHystrixBook方法</p>
-</blockquote>
-
-<ul>
-<li><p>引入依赖</p>
-<pre><code class="language-text">&lt;dependency&gt;
-&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
-&lt;artifactId&gt;spring-cloud-starter-hystrix&lt;/artifactId&gt;<br/>
-&lt;/dependency&gt;
-</code></pre></li>
-<li><p>添加注解 user-server启动类添加:@EnableCircuitBreaker或者@EnableHystrix</p></li>
-<li><p>@HystrixCommand 声明user-server调用book-server服务提供的方法queryHystrixBook失败后调用的方法</p></li>
-</ul>
-
-<pre><code class="language-text">@HystrixCommand(fallbackMethod = &quot;fallbackHystrix_a&quot;)
-public String hystrix_a(){
-    return restTemplate.getForObject(&quot;http://localhost:1111/queryHystrixBook&quot;, String.class);
-}
-
-public String fallbackHystrix_a() {
-    return &quot;fallback hystrix a&quot;;
-}
-</code></pre>
-
-<p>访问user-server提供的方法queryHystrixA,会调用book-server的queryHystrixBook方法.<br/><br/>
-queryHystrixBook方法延迟10s返回结果,fallbackHystrix_a就会被触发</p>
+      <p><a href="https://juejin.im/post/5b44b585e51d45191716e63c">https://juejin.im/post/5b44b585e51d45191716e63c</a></p>
 
 
     
@@ -165,16 +139,16 @@ queryHystrixBook方法延迟10s返回结果,fallbackHystrix_a就会被触发</p>
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="gateway%E7%BD%91%E5%85%B3%E5%88%9D%E6%8E%A2.html" 
-          title="Previous Post: gateway 网关初探">&laquo; gateway 网关初探</a>
+          <a href="elasticsearch%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98.html" 
+          title="Previous Post: elasticsearch 性能调优">&laquo; elasticsearch 性能调优</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="hystrix%E4%BB%8B%E7%BB%8D.html" 
-          title="Next Post: hystrix 介绍">hystrix 介绍 &raquo;</a>
+          <a  href="elk%E5%AE%89%E8%A3%85(rpm%E6%96%B9%E5%BC%8F).html" 
+          title="Next Post: elk 安装 (rpm方式)">elk 安装 (rpm方式) &raquo;</a>
       
       </p>
         </div>
