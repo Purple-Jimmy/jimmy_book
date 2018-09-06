@@ -4,13 +4,30 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2018-08-26T23:28:48+08:00</updated>
+  <updated>2018-09-01T22:43:34+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[面向对象三大特性]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7.html"/>
+    <updated>2018-09-01T23:08:02+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7.html</id>
+    <content type="html"><![CDATA[
+<h2 id="toc_0">封装</h2>
+
+<p>属性私有化，方法公开化</p>
+
+<h2 id="toc_1">继承</h2>
+
+<h2 id="toc_2">多态</h2>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[elk配置文件]]></title>
@@ -188,7 +205,7 @@ sudo -i service elasticsearch status
     <updated>2018-08-26T22:49:25+08:00</updated>
     <id>https://purple-jimmy.github.io/jimmy_book/%E6%96%B9%E6%B3%95%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92.html</id>
     <content type="html"><![CDATA[
-<h2 id="toc_0">在java中方法的参数传递只有一种方式:<em>值传递</em>，即将实际参数值得副本传入方法内，而参数本身不受影响。</h2>
+<h2 id="toc_0">在java中方法的参数传递只有一种方式:<em>值传递</em>,即将实际参数值的副本传入方法内，而参数本身不受影响.</h2>
 
 <ul>
 <li>形参是基本数据类型:将实参的值传递给形参的基本数据类型变量</li>

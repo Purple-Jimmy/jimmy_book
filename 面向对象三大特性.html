@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  elk配置文件 - jimmy_codebook
+  面向对象三大特性 - jimmy_codebook
   
   </title>
   
@@ -108,14 +108,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>elk配置文件</h1>
+          <h1>面向对象三大特性</h1>
      
         <div class="read-more clearfix">
           <span class="date">2018/9/1</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='elk.html'>elk</a></span>
+              <span class="posted-in"><a href='java%E5%9F%BA%E7%A1%80.html'>java基础</a></span>
            
          
           <span class="comments">
@@ -128,87 +128,13 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <h2 id="toc_0">elasticsearch.yml</h2>
+      <h2 id="toc_0">封装</h2>
 
-<pre><code class="language-text"># --------------- Cluster ----------------------
-#es 集群名称
-cluster.name: es-cluster        
+<p>属性私有化，方法公开化</p>
 
-#当前节点名称
-node.name: es-mater01           
+<h2 id="toc_1">继承</h2>
 
-#配置角色为：主节点和数据节点
-node.master: true
-node.data: true
-
-#配置数据路径和日志路径
-path.data: /data/elastic/data
-path.logs: /data/elastic/log
-
-#开启内存锁定
-bootstrap.memory_lock: true
-bootstrap.system_call_filter: false
-# ---------------- Network ---------------------
-#节点间通讯IP，设置为0.0.0.0兼顾内网节点间通讯
-network.bind_host: 0.0.0.0
-
-#设置9200通讯IP，一般设置为外网IP
-network.publish_host: 39.104.186.15
-
-#设置HTTP通讯端口
-http.port: 9200
-
-#设置HTTP开启状态
-http.enabled: true
-
-#设置运行跨域访问
-http.cors.enabled: true
-http.cors.allow-origin: &quot;*&quot;
-http.max_content_length: 500mb
-
-# -------------- Discovery ----------------------
-#设置zen发现范围，此处可用换为主机名：[&quot;es-master01&quot;, &quot;es-master02&quot;, &quot;es-data01&quot;]
-discovery.zen.ping.unicast.hosts: [&quot;172.16.14.85&quot;, &quot;172.16.14.86&quot;, &quot;172.16.14.87&quot;]
-
-#discovery.zen.ping.multicast.enabled: false
-
-discovery.zen.no_master_block: write
-discovery.zen.fd.ping_timeout: 10s
-
-#一个节点需要看到的具有master节点资格的最小数量,然后才能在集群中做操作.默认1.一般为：(master_node_count+1)/2
-discovery.zen.minimum_master_nodes: 2
-
-# --------------- Gateway --------------------
-#设置在有2个节点后进行数据恢复
-gateway.recover_after_nodes: 2
-gateway.expected_nodes: 3
-gateway.recover_after_time: 1m
-
-#
-# --------------- Various ----------------------
-#禁止通配符模式删除索引
-action.destructive_requires_name: true
-#indices.cluster.send_refresh_mapping: false
-
-indices.recovery.max_bytes_per_sec: 200mb
-indices.memory.index_buffer_size: 20%
-
-#script.inline: true
-#script.indexed: true
-
-#关闭xpack的安全校验
-xpack.security.enabled: false
-</code></pre>
-
-<hr/>
-
-<h2 id="toc_1">kibana.yml</h2>
-
-<pre><code class="language-text">#
-server.port: 5601
-#设置可以远程访问
-server.host: &quot;0.0.0.0&quot;
-</code></pre>
+<h2 id="toc_2">多态</h2>
 
 
     
@@ -219,16 +145,13 @@ server.host: &quot;0.0.0.0&quot;
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7.html" 
-          title="Previous Post: 面向对象三大特性">&laquo; 面向对象三大特性</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="elasticsearch%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98.html" 
-          title="Next Post: elasticsearch 性能调优">elasticsearch 性能调优 &raquo;</a>
+          <a  href="elk%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.html" 
+          title="Next Post: elk配置文件">elk配置文件 &raquo;</a>
       
       </p>
         </div>
