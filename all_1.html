@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  服务负责均衡 - jimmy_codebook
+  jimmy_codebook
   
   </title>
   
@@ -108,55 +108,44 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="feign%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.html">
+                <a class="clearlink" href="consul%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0.html">
                 
-                  <h1>feign</h1>
+                  <h1>consul 服务发现</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>user-server 调用 book-server</p>
-</blockquote>
-
-<ul>
+                        	<ul>
 <li><p>引入依赖</p>
 <pre><code class="language-text">&lt;dependency&gt;
 &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
-&lt;artifactId&gt;spring-cloud-starter-feign&lt;/artifactId&gt;<br/>
+&lt;artifactId&gt;spring-cloud-starter-consul-discovery&lt;/artifactId&gt;<br/>
 &lt;/dependency&gt;
 </code></pre></li>
-<li><p>添加注解 user-server启动类添加:@EnableFeignClients</p>
+<li><p>添加注解 服务A的启动类添加:@EnableDiscoveryClient</p>
 <pre><code class="language-text">@SpringBootApplication
 @EnableDiscoveryClient<br/>
-@RestController<br/>
-@EnableFeignClients<br/>
-public class UserServerStart {<br/>
+public class ConsulStart {<br/>
 public static void main(String[] args) {<br/>
-    SpringApplication.run(UserServerStart.class,args);<br/>
+    SpringApplication.run(ConsulStart.class,args);<br/>
 }<br/>
 }
 </code></pre></li>
-<li><p>配置文件 user-server和book-server分别向注册中心注册</p></li>
-<li><p>user-server声明feign接口 book-server为book服务在注册中心的名字 queryBookFeign为book服务提供的调用方法</p>
-<pre><code class="language-text">@FeignClient(&quot;book-server&quot;)
-@Service<br/>
-public interface BookServerFeign {<br/>
-@GetMapping(&quot;/queryBookFeign&quot;)<br/>
-String queryBookFeign();<br/>
-}
+<li><p>配置文件 </p>
+<pre><code class="language-text">spring:
+cloud:<br/>
+consul:<br/>
+  host: xxx<br/>
+  port: xxx<br/>
+  discovery:<br/>
+    enabled: true<br/>
+    service-name: consul-server #注册中心注册的服务名字<br/>
+   # health-check-path: /health<br/>
+    health-check-interval: 10s<br/>
+    instance-id: consul-server-id<br/>
+    tags: dev,hello
 </code></pre></li>
-<li><p>user-server调用  </p>
-<pre><code class="language-text">@RestController
-public class FeignController {<br/>
-@Autowired<br/>
-BookServerFeign bookServerFeign;<br/>
-@RequestMapping(&quot;/queryBook&quot;)<br/>
-public void queryBook(){<br/>
-    String str = bookServerFeign.queryBookFeign();<br/>
-}<br/>
-}
-</code></pre></li>
+<li><p>访问consul ip查看注册上的服务</p></li>
 </ul>
 
                         
@@ -169,7 +158,151 @@ public void queryBook(){<br/>
                     <span class="date">2018/8/26</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E6%9C%8D%E5%8A%A1%E8%B4%9F%E8%B4%A3%E5%9D%87%E8%A1%A1.html'>服务负责均衡</a></span>
+          					    <span class="posted-in"><a href='%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0.html'>服务注册与发现</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="consul%E5%AE%89%E8%A3%85.html">
+                
+                  <h1>consul 安装</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ol>
+<li>下载 <a href="https://www.consul.io/">https://www.consul.io/</a></li>
+<li>上传 /usr/local/bin</li>
+<li>解压 <code>unzip consul_1.2.2_linux_amd64.zip</code></li>
+<li>验证:</li>
+</ol>
+
+<pre><code class="language-text">[root@VM-6e650661-ceb0-4308-9737-63dcd1f8a6b6 bin]# consul 
+Usage: consul [--version] [--help] &lt;command&gt; [&lt;args&gt;]
+</code></pre>
+
+<h4 id="toc_0">常用命令</h4>
+
+<ul>
+<li>查看版本 ./consul version</li>
+<li>查看成员 ./consul members -detailed</li>
+</ul>
+
+<pre><code class="language-text">[root@VM-6e650661-ceb0-4308-9737-63dcd1f8a6b6 ~]# consul members
+Node                                     Address         Status  Type    Build  Protocol  DC   Segment
+VM-6e650661-ceb0-4308-9737-63dcd1f8a6b6  127.0.0.1:8301  alive   server  1.2.2  2         dc1  &lt;all&gt;
+</code></pre>
+
+<ul>
+<li>相关信息 ./consul info</li>
+</ul>
+
+<h4 id="toc_1">启动</h4>
+
+<ul>
+<li>开发模式启动 consul agent -dev</li>
+<li>服务模式启动 consul agent -server</li>
+</ul>
+
+<h4 id="toc_2">开放防火墙</h4>
+
+<pre><code class="language-text">firewall-cmd --zone=public --add-port=8500/tcp --permanent
+firewall-cmd --reload
+firewall-cmd --query-port=8500/tcp
+</code></pre>
+
+<h4 id="toc_3">Consul web-ui 8500端口实现公网访问</h4>
+
+<ol>
+<li>linux安装rinetd</li>
+</ol>
+
+<pre><code class="language-text">yum install -y gcc g++ autoconf make telnet 
+wget http://www.boutell.com/rinetd/http/rinetd.tar.gz
+tar -xvf rinetd.tar.gz  
+cd rinetd
+sed -i &#39;s/65536/65535/g&#39; rinetd.c 
+mkdir -pv /usr/man &amp;&amp; make &amp;&amp; make install
+</code></pre>
+
+<ol>
+<li>编辑配置文件,将所有发往本机37170端口的请求转发到127.0.0.1的8500端口</li>
+</ol>
+
+<pre><code class="language-text">vi /etc/rinetd.conf
+
+0.0.0.0 37170 127.0.0.1 8500   
+logfile /var/log/rinetd.log
+
+#格式
+bindaddress   bindport   connectaddress   connectport
+绑定的地址     绑定的端口   连接的地址        连接的端口
+</code></pre>
+
+<ol>
+<li>启动:rinetd</li>
+<li>访问:http:ip:37170/ui</li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/25</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0.html'>服务注册与发现</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="idea%E6%8F%92%E4%BB%B6.html">
+                
+                  <h1>idea 插件</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">yml属性自动提示</h3>
+
+<p>下载插件 spring assistant</p>
+
+<h3 id="toc_1">ignore插件</h3>
+
+<p>下载 ignore</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/25</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='idea.html'>idea</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -188,7 +321,7 @@ public void queryBook(){<br/>
 			<div class="row">
 			  <div class="large-6 columns">
 			  <p class="text-left" style="padding-top:25px;">
-			   
+			   <a href="all.html">&laquo; Prev Page</a>  
 			  </p>
 			  </div>
 			  <div class="large-6 columns">
