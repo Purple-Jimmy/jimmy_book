@@ -108,6 +108,160 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="hystrix%E4%BB%8B%E7%BB%8D.html">
+                
+                  <h1>hystrix 介绍</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>Hystrix具备了服务降级、服务熔断、线程隔离、请求缓存、请求合并以及服务监控等强大功能</p>
+
+<ul>
+<li><p>服务降级</p>
+<pre><code class="language-text">在微服务架构中，我们将系统拆分成了一个个的服务单元，各单元应用间通过服务注册与订阅的方式互相依赖。由于每个单元都在不同的进程中运行，
+依赖通过远程调用的方式执行，这样就有可能因为网络原因或是依赖服务自身问题出现调用故障或延迟，而这些问题会直接导致调用方的对外服务也出现延迟，<br/>
+若此时调用方的请求不断增加，最后就会出现因等待出现故障的依赖方响应而形成任务积压，线程资源无法释放，最终导致自身服务的瘫痪，<br/>
+进一步甚至出现故障的蔓延最终导致整个系统的瘫痪。如果这样的架构存在如此严重的隐患，那么相较传统架构就更加的不稳定。<br/>
+为了解决这样的问题，因此产生了断路器等一系列的服务保护机制
+</code></pre></li>
+<li><p>依赖隔离</p>
+<pre><code class="language-text">“舱壁模式”对于熟悉Docker的读者一定不陌生，Docker通过“舱壁模式”实现进程的隔离，使得容器与容器之间不会互相影响。
+而Hystrix则使用该模式实现线程池的隔离，它会为每一个Hystrix命令创建一个独立的线程池，这样就算某个在Hystrix命令包装下的依赖服务出现延迟过高的情况，<br/>
+也只是对该依赖服务的调用产生影响，而不会拖慢其他的服务。
+</code></pre></li>
+</ul>
+
+<p>使用@HystrixCommand来将某个函数包装成了Hystrix命令,这里除了定义服务降级之外,Hystrix框架就会自动的为这个函数实现调用的隔离.<br/>
+所以,依赖隔离、服务降级在使用时候都是一体化实现的,这样利用Hystrix来实现服务容错保护在编程模型上就非常方便的,并且考虑更为全面.</p>
+
+<ul>
+<li>断路器</li>
+</ul>
+
+<pre><code class="language-text">在分布式架构中，断路器模式的作用也是类似的，当某个服务单元发生故障（类似用电器发生短路）之后，通过断路器的故障监控（类似熔断保险丝），
+直接切断原来的主逻辑调用。但是，在Hystrix中的断路器除了切断主逻辑的功能之外，还有更复杂的逻辑
+</code></pre>
+
+<p>在服务降级例子中,受限于Hystrix超时时间的问题,我们的调用依然很有可能产生堆积.<br/><br/>
+这个时候断路器就会发挥作用,那么断路器是在什么情况下开始起作用呢?这里涉及到断路器的三个重要参数:快照时间窗、请求总数下限、错误百分比下限</p>
+
+<ol>
+<li>快照时间窗:断路器确定是否打开需要统计一些请求和错误数据,而统计的时间范围就是快照时间窗,默认为最近的10秒</li>
+<li>请求总数下限:在快照时间窗内,必须满足请求总数下限才有资格根据熔断.默认为20,意味着在10秒内,如果该hystrix命令的调用此时不足20次,即时所有的请求都超时或其他原因失败,断路器都不会打开</li>
+<li>错误百分比下限:当请求总数在快照时间窗内超过了下限,比如发生了30次调用,如果在这30次调用中,有16次发生了超时异常,也就是超过50%的错误百分比,在默认设定50%下限情况下,这时候就会将断路器打开</li>
+</ol>
+
+<pre><code class="language-text">那么当断路器打开之后会发生什么呢？我们先来说说断路器未打开之前，对于之前那个示例的情况就是每个请求都会在当hystrix超时之后返回fallback，
+每个请求时间延迟就是近似hystrix的超时时间，如果设置为5秒，那么每个请求就都要延迟5秒才会返回。当熔断器在10秒内发现请求总数超过20，
+并且错误百分比超过50%，这个时候熔断器打开。打开之后，再有请求调用的时候，将不会调用主逻辑，而是直接调用降级逻辑，这个时候就不会等待5秒之后才返回fallback。
+通过断路器，实现了自动地发现错误并将降级逻辑切换为主逻辑，减少响应延迟的效果。
+
+在断路器打开之后，处理逻辑并没有结束，我们的降级逻辑已经被成了主逻辑，那么原来的主逻辑要如何恢复呢？
+对于这一问题，hystrix也为我们实现了自动恢复功能。当断路器打开，对主逻辑进行熔断之后，hystrix会启动一个休眠时间窗，在这个时间窗内，
+降级逻辑是临时的成为主逻辑，当休眠时间窗到期，断路器将进入半开状态，释放一次请求到原来的主逻辑上，如果此次请求正常返回，
+那么断路器将继续闭合，主逻辑恢复，如果这次请求依然有问题，断路器继续进入打开状态，休眠时间窗重新计时
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/26</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4.html'>服务容错保护</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="feign%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.html">
+                
+                  <h1>feign</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>user-server 调用 book-server</p>
+</blockquote>
+
+<ul>
+<li><p>引入依赖</p>
+<pre><code class="language-text">&lt;dependency&gt;
+&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
+&lt;artifactId&gt;spring-cloud-starter-feign&lt;/artifactId&gt;<br/>
+&lt;/dependency&gt;
+</code></pre></li>
+<li><p>添加注解 user-server启动类添加:@EnableFeignClients</p>
+<pre><code class="language-text">@SpringBootApplication
+@EnableDiscoveryClient<br/>
+@RestController<br/>
+@EnableFeignClients<br/>
+public class UserServerStart {<br/>
+public static void main(String[] args) {<br/>
+    SpringApplication.run(UserServerStart.class,args);<br/>
+}<br/>
+}
+</code></pre></li>
+<li><p>配置文件 user-server和book-server分别向注册中心注册</p></li>
+<li><p>user-server声明feign接口 book-server为book服务在注册中心的名字 queryBookFeign为book服务提供的调用方法</p>
+<pre><code class="language-text">@FeignClient(&quot;book-server&quot;)
+@Service<br/>
+public interface BookServerFeign {<br/>
+@GetMapping(&quot;/queryBookFeign&quot;)<br/>
+String queryBookFeign();<br/>
+}
+</code></pre></li>
+<li><p>user-server调用  </p>
+<pre><code class="language-text">@RestController
+public class FeignController {<br/>
+@Autowired<br/>
+BookServerFeign bookServerFeign;<br/>
+@RequestMapping(&quot;/queryBook&quot;)<br/>
+public void queryBook(){<br/>
+    String str = bookServerFeign.queryBookFeign();<br/>
+}<br/>
+}
+</code></pre></li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/26</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%9C%8D%E5%8A%A1%E8%B4%9F%E8%B4%A3%E5%9D%87%E8%A1%A1.html'>服务负责均衡</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="consul%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0.html">
                 
                   <h1>consul 服务发现</h1>
@@ -392,6 +546,18 @@ bindaddress   bindport   connectaddress   connectport
 	      
 		      
 			      <li class="post">
+			        <a href="%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3.html">抽象类与接口</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98.html">类的成员</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="%E5%85%B3%E9%94%AE%E5%AD%97.html">关键字</a>
 			      </li>
 		     
@@ -405,18 +571,6 @@ bindaddress   bindport   connectaddress   connectport
 		      
 			      <li class="post">
 			        <a href="routing%E8%B7%AF%E7%94%B1%E6%9C%BA%E5%88%B6.html">routing 路由机制</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="API%E4%B9%8B%E6%96%87%E6%A1%A3.html">API之文档</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="API%E4%B9%8B%E7%B4%A2%E5%BC%95.html">API之索引</a>
 			      </li>
 		     
 		  
