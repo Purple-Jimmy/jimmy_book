@@ -4,7 +4,7 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2018-09-10T17:03:33+08:00</updated>
+  <updated>2018-09-12T00:03:02+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -25,6 +25,38 @@
 <li>抽象方法只声明方法，没有方法体</li>
 <li>抽象方法所在的类一定是抽象类</li>
 <li>若子类继承抽象类，没有全部重写抽象方法，则子类也是抽象类</li>
+</ul>
+
+<h2 id="toc_1">接口</h2>
+
+<ul>
+<li>接口是抽象类和常量值的定义的集合</li>
+<li>本质上是一种特殊的抽象类</li>
+<li>一个类可以实现多个接口，接口也可以继承其他接口</li>
+<li>实现接口的类必须重写接口中定义的所有抽象方法，否则此类仍就是一个抽象类</li>
+</ul>
+
+<p>实现接口的匿名类对象</p>
+
+<pre><code class="language-text">public interface AA{
+ void run();
+ }
+ 
+ 
+ AA a = new AA(){
+    @Override
+    public void run(){
+       ....
+    }
+ }
+</code></pre>
+
+<hr/>
+
+<h2 id="toc_2">接口的应用</h2>
+
+<ul>
+<li>代理模式</li>
 </ul>
 
 ]]></content>
@@ -65,6 +97,13 @@
 </code></pre>
 
 <h2 id="toc_4">内部类</h2>
+
+<ol>
+<li>一个类定义于另一个类的内部，前者称为内部类，后者称为外部类</li>
+<li>内部类可以使用外部类的私有数据，因为它是外部类的成员</li>
+<li>外部类要访问内部类的成员:内部类.成员或者内部类对象.成员</li>
+<li>成员内部类:与属性同级，局部内部类:定义在方法内</li>
+</ol>
 
 ]]></content>
   </entry>
