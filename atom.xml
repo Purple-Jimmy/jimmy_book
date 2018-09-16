@@ -4,13 +4,129 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2018-09-12T00:03:02+08:00</updated>
+  <updated>2018-09-12T23:26:16+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[IO流]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/IO%E6%B5%81.html"/>
+    <updated>2018-09-16T15:06:18+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/IO%E6%B5%81.html</id>
+    <content type="html"><![CDATA[
+<p>IO处理设备之间的数据传输</p>
+
+<ul>
+<li>input:数据由外部存储设备读取内存</li>
+<li>output:数据由内存写入外部存储设备</li>
+</ul>
+
+<h1 id="toc_0">流的分类</h1>
+
+<table>
+<thead>
+<tr>
+<th>抽象基类</th>
+<th>字节流</th>
+<th>字符流</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>输入流</td>
+<td>InputStream</td>
+<td>Reader</td>
+</tr>
+<tr>
+<td>输出流</td>
+<td>outputStream</td>
+<td>Writer</td>
+</tr>
+</tbody>
+</table>
+
+<p>如上4个都为节点流:直接操作文件<br/>
+处理流:缓冲流,对象流,转换流...</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[File类]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/file%E7%B1%BB.html"/>
+    <updated>2018-09-16T14:06:05+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/file%E7%B1%BB.html</id>
+    <content type="html"><![CDATA[
+<p>File是一个类，🈶构造器创建对象，对象对应一个文件或文件目录</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[核心思想]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/%E6%B3%9B%E5%9E%8B%E4%B8%8E%E7%BB%A7%E6%89%BF%E7%9A%84%E5%85%B3%E7%B3%BB.html"/>
+    <updated>2018-09-15T22:07:05+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/%E6%B3%9B%E5%9E%8B%E4%B8%8E%E7%BB%A7%E6%89%BF%E7%9A%84%E5%85%B3%E7%B3%BB.html</id>
+    <content type="html"><![CDATA[
+<p>把一个集合中的内容限制为一个特定的数据类型</p>
+
+<h1 id="toc_0">泛型与继承的关系</h1>
+
+<ul>
+<li>若类A是类B的子类,那么<code>List&lt;A&gt;</code>就不是<code>List&lt;B&gt;</code>的子接口</li>
+</ul>
+
+<h1 id="toc_1">通配符 ?</h1>
+
+<p><code>List&lt;A&gt;</code>,<code>List&lt;B&gt;</code> 都是List&lt;?&gt;的子类</p>
+
+<ul>
+<li>? extends A :存放A及其子类</li>
+<li>? super A   :存放A及其父类</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[排序]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/%E6%8E%92%E5%BA%8F.html"/>
+    <updated>2018-09-15T15:52:08+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/%E6%8E%92%E5%BA%8F.html</id>
+    <content type="html"><![CDATA[
+<h2 id="toc_0">comparable 自然排序</h2>
+
+<h2 id="toc_1">comparator 定制排序</h2>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Exception 异常]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/exception.html"/>
+    <updated>2018-09-13T21:42:18+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/exception.html</id>
+    <content type="html"><![CDATA[
+<p>当执行程序时，如果出现异常，那么异常之后的代码就不再执行</p>
+
+<h2 id="toc_0">异常处理方式</h2>
+
+<ol>
+<li>try-catch-finally捕获异常</li>
+<li>throws抛出异常</li>
+</ol>
+
+<h2 id="toc_1">手动抛出异常</h2>
+
+<p>throw </p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[抽象类与接口]]></title>
@@ -667,265 +783,6 @@ sudo -i service elasticsearch status
     <id>https://purple-jimmy.github.io/jimmy_book/classLoader%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8.html</id>
     <content type="html"><![CDATA[
 <p><a href="https://blog.csdn.net/briblue/article/details/54973413">https://blog.csdn.net/briblue/article/details/54973413</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[代理模式]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.html"/>
-    <updated>2018-08-26T14:13:51+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.html</id>
-    <content type="html"><![CDATA[
-<p><img src="media/15352640315767/15352640761696.png" alt=""/></p>
-
-<h3 id="toc_0">静态代理 代理类需要自己编写代码写成</h3>
-
-<blockquote>
-<p>举例:电影院看电影,电影开始前买爆米花,广告播放</p>
-</blockquote>
-
-<p>这里电影院就是受电影公司委托播放电影的代理对象</p>
-
-<p><u>代理模式可以在不修改被代理对象的基础上，通过扩展代理类，进行一些功能的附加与增强。值得注意的是，代理类和被代理类应该共同实现一个接口，或者是共同继承某个类</u></p>
-
-<h3 id="toc_1">动态代理 代理类通过 Proxy.newInstance() 方法生成</h3>
-
-<p><strong><em><u>总结：不管是静态代理还是动态代理，代理与被代理者都要实现两样接口，它们的实质是面向接口编程。</u></em></strong></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[annotation 注解]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/annotation%E6%B3%A8%E8%A7%A3.html"/>
-    <updated>2018-08-26T11:20:29+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/annotation%E6%B3%A8%E8%A7%A3.html</id>
-    <content type="html"><![CDATA[
-<p>注解主要给编译器及工具类型的软件用的</p>
-
-<h3 id="toc_0">元注解 注解的注解</h3>
-
-<blockquote>
-<p>@Retention 指定注解的存活周期</p>
-</blockquote>
-
-<ul>
-<li>RetentionPolicy.SOURCE 注解只在源码阶段保留，在编译器进行编译时它将被丢弃忽视。 </li>
-<li>RetentionPolicy.CLASS 注解只被保留到编译进行的时候，它并不会被加载到 JVM 中。 </li>
-<li>RetentionPolicy.RUNTIME 注解可以保留到程序运行的时候，它会被加载进入到 JVM 中</li>
-</ul>
-
-<blockquote>
-<p>@Documented 将注解中的元素包含到 Javadoc 中去</p>
-
-<p>@Target 指定注解运用的地方</p>
-</blockquote>
-
-<ul>
-<li>ElementType.ANNOTATION_TYPE 可以给一个注解进行注解</li>
-<li>ElementType.CONSTRUCTOR 可以给构造方法进行注解</li>
-<li>ElementType.FIELD 可以给属性进行注解</li>
-<li>ElementType.LOCAL_VARIABLE 可以给局部变量进行注解</li>
-<li>ElementType.METHOD 可以给方法进行注解</li>
-<li>ElementType.PACKAGE 可以给一个包进行注解</li>
-<li>ElementType.PARAMETER 可以给一个方法内的参数进行注解</li>
-<li>ElementType.TYPE 可以给一个类型进行注解，比如类、接口、枚举</li>
-</ul>
-
-<blockquote>
-<p>@Inherited 继承</p>
-</blockquote>
-
-<pre><code class="language-text">果一个超类被 @Inherited 注解过的注解进行注解的话，那么如果它的子类没有被任何注解应用的话，那么这个子类就继承了超类的注解
-</code></pre>
-
-<blockquote>
-<p>@Repeatable 可重复</p>
-</blockquote>
-
-<h3 id="toc_1">注解的语法</h3>
-
-<p>@interface关键字定义</p>
-
-<pre><code class="language-text">public @interface TestAnnotation {
-}
-</code></pre>
-
-<h3 id="toc_2">注解的属性</h3>
-
-<ul>
-<li>释义</li>
-</ul>
-
-<pre><code class="language-text">注解的属性也叫做成员变量，注解只有成员变量，没有方法。注解的成员变量在注解的定义中以“无形参的方法”形式来声明，其方法名定义了该成员变量的名字，其返回值定义了该成员变量的类型。
-</code></pre>
-
-<ul>
-<li>可用定义类型</li>
-</ul>
-
-<pre><code class="language-text">在注解中定义属性时它的类型必须是 8 种基本数据类型外加 类、接口、注解及它们的数组。
-注解中属性可以有默认值，默认值需要用 default 关键值指定
-</code></pre>
-
-<h3 id="toc_3">注解的提取  反射</h3>
-
-<ol>
-<li>isAnnotationPresent() 是否存在指定注解</li>
-<li>getAnnotation() 获取指定注解</li>
-<li>getAnnotation() 获取所有注解</li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[zipkin 链路追踪]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/zipkin%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA.html"/>
-    <updated>2018-08-26T10:46:10+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/zipkin%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA.html</id>
-    <content type="html"><![CDATA[
-<h4 id="toc_0">术语概念</h4>
-
-<p>Span：基本工作单元，例如，在一个新建的span中发送一个RPC等同于发送一个回应请求给RPC，span通过一个64位ID唯一标识，trace以另一个64位ID表示，span还有其他数据信息，比如摘要、时间戳事件、关键值注释(tags)、span的ID、以及进度ID(通常是IP地址) <br/>
-span在不断的启动和停止，同时记录了时间信息，当你创建了一个span，你必须在未来的某个时刻停止它。<br/>
-Trace：一系列spans组成的一个树状结构，例如，如果你正在跑一个分布式大数据工程，你可能需要创建一个trace。<br/>
-Annotation：用来及时记录一个事件的存在，一些核心annotations用来定义一个请求的开始和结束 <br/>
-cs - Client Sent -客户端发起一个请求，这个annotion描述了这个span的开始<br/>
-sr - Server Received -服务端获得请求并准备开始处理它，如果将其sr减去cs时间戳便可得到网络延迟<br/>
-ss - Server Sent -注解表明请求处理的完成(当请求返回客户端)，如果ss减去sr时间戳便可得到服务端需要的处理请求时间<br/>
-cr - Client Received -表明span的结束，客户端成功接收到服务端的回复，如果cr减去cs时间戳便可得到客户端从服务端获取回复的所有所需时间 </p>
-
-<h4 id="toc_1">追踪分类</h4>
-
-<ol>
-<li><p>Http协议,如RestTemplate,Feign,Okhttp3,HttpClient</p></li>
-<li><p>Rpc远程调用,如Motan,Dubbo,GRPC</p></li>
-<li><p>分布式Event,如RabbitMq,Kafka</p></li>
-</ol>
-
-<h3 id="toc_2">安装zipkin</h3>
-
-<pre><code class="language-text">curl -sSL https://zipkin.io/quickstart.sh | bash -s
-java -jar zipkin.jar &amp;
-</code></pre>
-
-<h4 id="toc_3">http链路追踪</h4>
-
-<ul>
-<li><p>引入依赖 </p>
-<pre><code class="language-text">&lt;dependency&gt;
-&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
-&lt;artifactId&gt;spring-cloud-starter-sleuth&lt;/artifactId&gt;<br/>
-&lt;version&gt;${sleuth.version}&lt;/version&gt;<br/>
-&lt;/dependency&gt;<br/>
-&lt;!-- Sends trace data to zipkin over http (defaults to http://localhost:9411/api/v2/spans) --&gt;<br/>
-&lt;dependency&gt;<br/>
-&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
-&lt;artifactId&gt;spring-cloud-sleuth-zipkin&lt;/artifactId&gt;<br/>
-&lt;version&gt;${zipkin.version}&lt;/version&gt;<br/>
-&lt;/dependency&gt;
-</code></pre></li>
-<li><p>book-server和user-server的pom.yml添加配置</p>
-<pre><code class="language-text">spring:
-zipkin:<br/>
-base-url: http://localhost:9411<br/>
-sleuth:<br/>
-enabled: true<br/>
-sampler:<br/>
-  probability: 1 #采样率,值为[0,1]之间的任意实数 1代表100%采集报告
-</code></pre></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[gateway 网关初探]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/gateway%E7%BD%91%E5%85%B3%E5%88%9D%E6%8E%A2.html"/>
-    <updated>2018-08-26T10:44:20+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/gateway%E7%BD%91%E5%85%B3%E5%88%9D%E6%8E%A2.html</id>
-    <content type="html"><![CDATA[
-<blockquote>
-<p>访问网关服务gateway-server 8080 路由到book-server服务</p>
-</blockquote>
-
-<ul>
-<li><p>引入依赖</p>
-<pre><code class="language-text">&lt;dependency&gt;
-&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
-&lt;artifactId&gt;spring-cloud-starter-gateway&lt;/artifactId&gt;<br/>
-&lt;/dependency&gt;
-</code></pre></li>
-<li><p>配置文件 gateway-server </p>
-<pre><code class="language-text">spring:
-cloud:<br/>
- gateway:<br/>
-   routes:<br/>
-   - id: host_route<br/>
-     uri: http://localhost:1111<br/>
-     predicates:<br/>
-     - Path=/book/**<br/>
-     filters:<br/>
-     - StripPrefix=1<br/>
-   - id: host_route<br/>
-     uri: http://localhost:2222<br/>
-     predicates:<br/>
-     - Path=/user/**<br/>
-     filters:<br/>
-     - StripPrefix=1
-</code></pre></li>
-<li><p>访问 <a href="http://ip:port/book/queryBookA">http://ip:port/book/queryBookA</a></p></li>
-</ul>
-
-<blockquote>
-<p>配置详解</p>
-
-<ul>
-<li>id:固定,不同 id 对应不同的功能</li>
-<li>uri:目标服务地址</li>
-<li>predicates:路由条件</li>
-<li>filters:过滤规则</li>
-</ul>
-</blockquote>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[hystrix 服务降级]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7.html"/>
-    <updated>2018-08-26T10:41:29+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7.html</id>
-    <content type="html"><![CDATA[
-<blockquote>
-<p>user-server 调用 book-server 的queryHystrixBook方法</p>
-</blockquote>
-
-<ul>
-<li><p>引入依赖</p>
-<pre><code class="language-text">&lt;dependency&gt;
-&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
-&lt;artifactId&gt;spring-cloud-starter-hystrix&lt;/artifactId&gt;<br/>
-&lt;/dependency&gt;
-</code></pre></li>
-<li><p>添加注解 user-server启动类添加:@EnableCircuitBreaker或者@EnableHystrix</p></li>
-<li><p>@HystrixCommand 声明user-server调用book-server服务提供的方法queryHystrixBook失败后调用的方法</p></li>
-</ul>
-
-<pre><code class="language-text">@HystrixCommand(fallbackMethod = &quot;fallbackHystrix_a&quot;)
-public String hystrix_a(){
-    return restTemplate.getForObject(&quot;http://localhost:1111/queryHystrixBook&quot;, String.class);
-}
-
-public String fallbackHystrix_a() {
-    return &quot;fallback hystrix a&quot;;
-}
-</code></pre>
-
-<p>访问user-server提供的方法queryHystrixA,会调用book-server的queryHystrixBook方法.<br/><br/>
-queryHystrixBook方法延迟10s返回结果,fallbackHystrix_a就会被触发</p>
 
 ]]></content>
   </entry>

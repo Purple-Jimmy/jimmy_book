@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  routing 路由机制 - jimmy_codebook
+  IO流 - jimmy_codebook
   
   </title>
   
@@ -108,14 +108,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>routing 路由机制</h1>
+          <h1>IO流</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2018/9/8</span>
+          <span class="date">2018/9/16</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='elk.html'>elk</a></span>
+              <span class="posted-in"><a href='IO.html'>IO</a></span>
            
          
           <span class="comments">
@@ -128,7 +128,41 @@
       </div><!-- article -->
 
       <div class="article-content">
-      
+      <p>IO处理设备之间的数据传输</p>
+
+<ul>
+<li>input:数据由外部存储设备读取内存</li>
+<li>output:数据由内存写入外部存储设备</li>
+</ul>
+
+<h1 id="toc_0">流的分类</h1>
+
+<table>
+<thead>
+<tr>
+<th>抽象基类</th>
+<th>字节流</th>
+<th>字符流</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>输入流</td>
+<td>InputStream</td>
+<td>Reader</td>
+</tr>
+<tr>
+<td>输出流</td>
+<td>outputStream</td>
+<td>Writer</td>
+</tr>
+</tbody>
+</table>
+
+<p>如上4个都为节点流:直接操作文件<br/>
+处理流:缓冲流,对象流,转换流...</p>
+
 
     
 
@@ -138,16 +172,13 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15364136255027.html" 
-          title="Previous Post: API之mapping">&laquo; API之mapping</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="API%E4%B9%8B%E6%96%87%E6%A1%A3.html" 
-          title="Next Post: API之文档">API之文档 &raquo;</a>
+          <a  href="file%E7%B1%BB.html" 
+          title="Next Post: File类">File类 &raquo;</a>
       
       </p>
         </div>

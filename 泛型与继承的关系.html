@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  routing 路由机制 - jimmy_codebook
+  核心思想 - jimmy_codebook
   
   </title>
   
@@ -108,14 +108,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>routing 路由机制</h1>
+          <h1>核心思想</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2018/9/8</span>
+          <span class="date">2018/9/15</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='elk.html'>elk</a></span>
+              <span class="posted-in"><a href='%E6%B3%9B%E5%9E%8B.html'>泛型</a></span>
            
          
           <span class="comments">
@@ -128,7 +128,23 @@
       </div><!-- article -->
 
       <div class="article-content">
-      
+      <p>把一个集合中的内容限制为一个特定的数据类型</p>
+
+<h1 id="toc_0">泛型与继承的关系</h1>
+
+<ul>
+<li>若类A是类B的子类,那么<code>List&lt;A&gt;</code>就不是<code>List&lt;B&gt;</code>的子接口</li>
+</ul>
+
+<h1 id="toc_1">通配符 ?</h1>
+
+<p><code>List&lt;A&gt;</code>,<code>List&lt;B&gt;</code> 都是List&lt;?&gt;的子类</p>
+
+<ul>
+<li>? extends A :存放A及其子类</li>
+<li>? super A   :存放A及其父类</li>
+</ul>
+
 
     
 
@@ -138,16 +154,16 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15364136255027.html" 
-          title="Previous Post: API之mapping">&laquo; API之mapping</a>
+          <a href="file%E7%B1%BB.html" 
+          title="Previous Post: File类">&laquo; File类</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="API%E4%B9%8B%E6%96%87%E6%A1%A3.html" 
-          title="Next Post: API之文档">API之文档 &raquo;</a>
+          <a  href="%E6%8E%92%E5%BA%8F.html" 
+          title="Next Post: 排序">排序 &raquo;</a>
       
       </p>
         </div>
