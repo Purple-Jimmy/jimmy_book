@@ -108,21 +108,14 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="%E6%96%B9%E6%B3%95%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92.html">
+                <a class="clearlink" href="%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E6%A6%82%E5%BF%B5.html">
                 
-                  <h1>方法的参数传递</h1>
+                  <h1>全文检索</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">在java中方法的参数传递只有一种方式:<em>值传递</em>,即将实际参数值的副本传入方法内，而参数本身不受影响.</h2>
-
-<ul>
-<li>形参是基本数据类型:将实参的值传递给形参的基本数据类型变量</li>
-<li>形参是引用数据类型:将实参的引用类型变量的值(对应对象的堆空间地址值)传递给形参的引用类型变量</li>
-</ul>
-
-<h3 id="toc_1">局部变量存在于栈空间</h3>
+                        	<p>高级别全文检索通常用于在全文本字段(如电子邮件正文)上运行全文检索.他们了解如何分析被查询的字段,并在执行之前将每个字段的分析器(或search_analyzer)应用于查询字符串</p>
 
                         
                       </div>
@@ -131,7 +124,1014 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/8/26</span>
+                    <span class="date">2018/9/25</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2.html'>全文检索</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="match.html">
+                
+                  <h1>match</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">or 操作符 可以不显示的写</h2>
+
+<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
+{
+  &quot;query&quot;: {
+    &quot;match&quot;: {
+      &quot;bookName&quot;: {
+        &quot;query&quot;: &quot;java思想&quot;
+      }
+    }
+  }
+}&#39;
+-------
+java编程思想
+Java
+</code></pre>
+
+<h2 id="toc_1">and 操作符</h2>
+
+<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
+{
+  &quot;query&quot;: {
+    &quot;match&quot;: {
+      &quot;bookName&quot;: {
+        &quot;query&quot;: &quot;java思想&quot;,
+        &quot;operator&quot;: &quot;and&quot;
+      }
+    }
+  }
+}&#39;
+-------
+java编程思想
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/25</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2.html'>全文检索</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="mapping%E5%8F%82%E6%95%B0.html">
+                
+                  <h1>mapping参数</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">mapping模板</h2>
+
+<pre><code class="language-text">curl -H &#39;Content-Type: application/json&#39; -XPUT &quot;localhost:9200/tutorial&quot; -d &#39; 
+{
+  &quot;mappings&quot;:{
+     &quot;tutorial_mapping&quot;:{
+         &quot;properties&quot;:{
+            &quot;id&quot;:{
+                &quot;type&quot;:&quot;keyword&quot;
+            }
+         }
+     }
+  }
+}&#39;
+</code></pre>
+
+<h2 id="toc_1">analyzer</h2>
+
+<p>分析器,对索引和分析都有效</p>
+
+<h2 id="toc_2">boost</h2>
+
+<p>建议查询时指定boost值</p>
+
+<h2 id="toc_3">analyzer</h2>
+
+<p>解析前的标准化配置,比如所有字符转化为小写</p>
+
+<h2 id="toc_4">boost</h2>
+
+<p>建议查询时指定boost值</p>
+
+<h2 id="toc_5">coerce</h2>
+
+<p>清除脏数据,默认true</p>
+
+<h2 id="toc_6">copy-to</h2>
+
+<p>配置自定义的_all字段,多个字段合并成一个字段</p>
+
+<h2 id="toc_7">doc_values</h2>
+
+<p>加快排序、聚合操作,默认开始,确定不需要聚合或者排序的字段可以关闭false</p>
+
+<pre><code class="language-text">curl -H &#39;Content-Type: application/json&#39; -XPUT &quot;localhost:9200/tutorial&quot; -d &#39; 
+{
+  &quot;mappings&quot;:{
+     &quot;tutorial_mapping&quot;:{
+         &quot;properties&quot;:{
+            &quot;id&quot;:{
+                &quot;type&quot;:&quot;keyword&quot;
+            },
+            &quot;name&quot;:{
+                &quot;type&quot;:&quot;keyword&quot;,
+                &quot;doc_values&quot;: false
+            }
+         }
+     }
+  }
+}&#39;
+</code></pre>
+
+<h2 id="toc_8">dynamic</h2>
+
+<p>检测新发现的字段</p>
+
+<ul>
+<li>true(默认):新发现的字段添加到映射中</li>
+<li>false:新发现的字段被忽略,必须显示指定字段</li>
+<li>strict:如果检测到新字段,会引发异常并拒绝文档</li>
+</ul>
+
+<pre><code class="language-text">curl -H &#39;Content-Type: application/json&#39; -XPUT &quot;localhost:9200/tutorial&quot; -d &#39; 
+{
+  &quot;mappings&quot;:{
+     &quot;tutorial_mapping&quot;:{
+         &quot;dynamic&quot;:&quot;strict&quot;,
+         &quot;properties&quot;:{
+            &quot;id&quot;:{
+                &quot;type&quot;:&quot;keyword&quot;
+            }
+         }
+     }
+  }
+}&#39;
+
+curl -H &quot;Content-Type:application/json&quot; -X POST &#39;localhost:9200/tutorial/tutorial_mapping?pretty&#39; -d &#39; 
+{
+   &quot;id&quot;: &quot;1&quot;
+}&#39;
+
+curl -H &quot;Content-Type:application/json&quot; -X POST &#39;localhost:9200/tutorial/tutorial_mapping?pretty&#39; -d &#39; 
+{
+   &quot;id&quot;: &quot;1&quot;,
+   &quot;name&quot;:&quot;jimmy&quot;
+}&#39;
+
+{
+  &quot;error&quot; : {
+    &quot;root_cause&quot; : [
+      {
+        &quot;type&quot; : &quot;strict_dynamic_mapping_exception&quot;,
+        &quot;reason&quot; : &quot;mapping set to strict, dynamic introduction of [name] within [tutorial_mapping] is not allowed&quot;
+      }
+    ],
+    &quot;type&quot; : &quot;strict_dynamic_mapping_exception&quot;,
+    &quot;reason&quot; : &quot;mapping set to strict, dynamic introduction of [name] within [tutorial_mapping] is not allowed&quot;
+  },
+  &quot;status&quot; : 400
+}
+</code></pre>
+
+<h2 id="toc_9">enabled</h2>
+
+<p>elasticsearch默认索引所有字段,false:不索引即不可搜,但可在_source中获取</p>
+
+<pre><code class="language-text">curl -H &#39;Content-Type: application/json&#39; -XPUT &quot;localhost:9200/tutorial&quot; -d &#39; 
+{
+  &quot;mappings&quot;:{
+     &quot;tutorial_mapping&quot;:{
+         &quot;properties&quot;:{
+            &quot;name&quot;:{
+                &quot;enabled&quot;:false
+            }
+         }
+     }
+  }
+}&#39;
+
+curl -H &quot;Content-Type:application/json&quot; -X POST &#39;localhost:9200/tutorial/tutorial_mapping?pretty&#39; -d &#39; 
+{
+   &quot;id&quot;: &quot;1&quot;,
+   &quot;name&quot;:&quot;jimmy&quot;
+}&#39;
+
+curl -H &quot;Content-Type:application/json&quot; -X GET &#39;localhost:9200/tutorial/tutorial_mapping/_search?pretty&#39; -d &#39;
+{
+  &quot;query&quot;: { 
+        &quot;match&quot;: { 
+            &quot;name&quot;: &quot;jimmy&quot; 
+        } 
+   }
+}&#39;
+</code></pre>
+
+<h2 id="toc_10">format</h2>
+
+<ul>
+<li>epoch_millis:毫秒数</li>
+<li>epoch_second:秒数</li>
+</ul>
+
+<pre><code class="language-text">curl -H &#39;Content-Type: application/json&#39; -XPUT &quot;localhost:9200/tutorial&quot; -d &#39; 
+{
+  &quot;mappings&quot;:{
+     &quot;tutorial_mapping&quot;:{
+         &quot;properties&quot;:{
+            &quot;releaseDate&quot;:{
+                &quot;type&quot;:&quot;date&quot;,
+                &quot;format&quot;: &quot;yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis&quot; 
+            }
+         }
+     }
+  }
+}&#39;
+
+curl -H &quot;Content-Type:application/json&quot; -X POST &#39;localhost:9200/tutorial/tutorial_mapping?pretty&#39; -d &#39; 
+{
+   &quot;releaseDate&quot;:&quot;2018-9-21 18:56:00&quot;
+}&#39;
+</code></pre>
+
+<h2 id="toc_11">ignoreAbove</h2>
+
+<p>指定字段索引和存储的长度最大值,超过最大值的会被忽略</p>
+
+<pre><code class="language-text">curl -H &#39;Content-Type: application/json&#39; -XPUT &quot;localhost:9200/tutorial&quot; -d &#39; 
+{
+  &quot;mappings&quot;:{
+     &quot;tutorial_mapping&quot;:{
+         &quot;properties&quot;:{
+            &quot;desc&quot;:{
+                &quot;type&quot;:&quot;keyword&quot;,
+                &quot;ignore_above&quot;:20
+            }
+         }
+     }
+  }
+}&#39;
+
+curl -H &quot;Content-Type:application/json&quot; -X POST &#39;localhost:9200/tutorial/tutorial_mapping?pretty&#39; -d &#39; 
+{
+   &quot;desc&quot;:&quot;Syntax error&quot;
+}&#39;
+
+curl -H &quot;Content-Type:application/json&quot; -X POST &#39;localhost:9200/tutorial/tutorial_mapping?pretty&#39; -d &#39; 
+{
+   &quot;desc&quot;:&quot;Syntax error with some long stacktrace&quot;
+}&#39;
+
+curl -H &quot;Content-Type:application/json&quot; -X GET &#39;localhost:9200/tutorial/tutorial_mapping/_search?pretty&#39; -d &#39;
+{
+  &quot;query&quot;: { 
+        &quot;match&quot;: { 
+            &quot;desc&quot;: &quot;Syntax error&quot;
+        } 
+   }
+}&#39;
+只有一条结果,第一条索引成功,第二条不索引
+curl -H &quot;Content-Type:application/json&quot; -X GET &#39;localhost:9200/tutorial/tutorial_mapping/_search?pretty&#39; -d &#39;
+{
+  &quot;query&quot;: { 
+        &quot;match&quot;: { 
+            &quot;desc&quot;: &quot;Syntax error with&quot;
+        } 
+   }
+}&#39;
+没有结果
+curl -H &quot;Content-Type:application/json&quot; -X GET &#39;localhost:9200/tutorial/tutorial_mapping/_search?pretty&#39; -d &#39;
+{
+  &quot;query&quot;: { 
+        &quot;match_all&quot;: {
+        } 
+   }
+}&#39;
+查询到2条
+</code></pre>
+
+<h2 id="toc_12">ignore_malformed</h2>
+
+<p>忽略不规则数据.例如userId字段,有可能写整数,有可能写邮箱.</p>
+
+<ul>
+<li>如果给一个字段索引不合适的数据类型就会发生异常,导致整个文档索引失败.</li>
+<li>ignore_malformed默认false.设置true,忽略抛出的异常,出异常的字段不被索引,其他字段索引正常</li>
+</ul>
+
+<pre><code class="language-text">curl -H &#39;Content-Type: application/json&#39; -XPUT &quot;localhost:9200/tutorial&quot; -d &#39; 
+{
+  &quot;mappings&quot;:{
+     &quot;tutorial_mapping&quot;:{
+         &quot;properties&quot;:{
+            &quot;id&quot;:{
+                &quot;type&quot;:&quot;integer&quot;,
+                &quot;ignore_malformed&quot;:true
+            }
+         }
+     }
+  }
+}&#39;
+
+curl -H &quot;Content-Type:application/json&quot; -X POST &#39;localhost:9200/tutorial/tutorial_mapping?pretty&#39; -d &#39; 
+{
+   &quot;id&quot;:&quot;babsnd&quot;
+}&#39;
+可以索引成功,但是不能查询
+curl -H &quot;Content-Type:application/json&quot; -X GET &#39;localhost:9200/tutorial/tutorial_mapping/_search?pretty&#39; -d &#39;
+{
+  &quot;query&quot;: { 
+        &quot;match&quot;: {
+            &quot;id&quot;:&quot;babsnd&quot;
+        } 
+   }
+}&#39;
+{
+  &quot;error&quot; : {
+    &quot;root_cause&quot; : [
+      {
+        &quot;type&quot; : &quot;query_shard_exception&quot;,
+        &quot;reason&quot; : &quot;failed to create query: {\n  \&quot;match\&quot; : {\n    \&quot;id\&quot; : {\n      \&quot;query\&quot; : \&quot;babsnd\&quot;,\n      \&quot;operator\&quot; : \&quot;OR\&quot;,\n      \&quot;prefix_length\&quot; : 0,\n      \&quot;max_expansions\&quot; : 50,\n      \&quot;fuzzy_transpositions\&quot; : true,\n      \&quot;lenient\&quot; : false,\n      \&quot;zero_terms_query\&quot; : \&quot;NONE\&quot;,\n      \&quot;auto_generate_synonyms_phrase_query\&quot; : true,\n      \&quot;boost\&quot; : 1.0\n    }\n  }\n}&quot;,
+        &quot;index_uuid&quot; : &quot;b7AuPar2TOm2SnFlK-L8SQ&quot;,
+        &quot;index&quot; : &quot;tutorial&quot;
+      }
+    ],
+    &quot;type&quot; : &quot;search_phase_execution_exception&quot;,
+    &quot;reason&quot; : &quot;all shards failed&quot;,
+    &quot;phase&quot; : &quot;query&quot;,
+    &quot;grouped&quot; : true,
+    &quot;failed_shards&quot; : [
+      {
+        &quot;shard&quot; : 0,
+        &quot;index&quot; : &quot;tutorial&quot;,
+        &quot;node&quot; : &quot;K6rUYPngQySfifTgqJXMWQ&quot;,
+        &quot;reason&quot; : {
+          &quot;type&quot; : &quot;query_shard_exception&quot;,
+          &quot;reason&quot; : &quot;failed to create query: {\n  \&quot;match\&quot; : {\n    \&quot;id\&quot; : {\n      \&quot;query\&quot; : \&quot;babsnd\&quot;,\n      \&quot;operator\&quot; : \&quot;OR\&quot;,\n      \&quot;prefix_length\&quot; : 0,\n      \&quot;max_expansions\&quot; : 50,\n      \&quot;fuzzy_transpositions\&quot; : true,\n      \&quot;lenient\&quot; : false,\n      \&quot;zero_terms_query\&quot; : \&quot;NONE\&quot;,\n      \&quot;auto_generate_synonyms_phrase_query\&quot; : true,\n      \&quot;boost\&quot; : 1.0\n    }\n  }\n}&quot;,
+          &quot;index_uuid&quot; : &quot;b7AuPar2TOm2SnFlK-L8SQ&quot;,
+          &quot;index&quot; : &quot;tutorial&quot;,
+          &quot;caused_by&quot; : {
+            &quot;type&quot; : &quot;number_format_exception&quot;,
+            &quot;reason&quot; : &quot;For input string: \&quot;babsnd\&quot;&quot;
+          }
+        }
+      }
+    ]
+  },
+  &quot;status&quot; : 400
+}
+</code></pre>
+
+<h2 id="toc_13">index_options</h2>
+
+<p>控制哪些信息添加到倒排索引,用于搜索和突出显示目的</p>
+
+<h2 id="toc_14">index</h2>
+
+<p>指定字段是否索引,不索引也就不可搜索</p>
+
+<h2 id="toc_15">fields</h2>
+
+<p>可以让同一文本有多种不同的索引方式,比如一个String类型的字段,可以使用text类型做全文检索,使用keyword类型做聚合和排序</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/25</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='mapping-%E6%98%A0%E5%B0%84.html'>mapping-映射</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="elasticsearch%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2.html">
+                
+                  <h1>分页查询</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
+{
+  &quot;from&quot;: 0,
+  &quot;size&quot;: 3,
+  &quot;query&quot;: {
+    &quot;match_all&quot;: {}
+  }
+}&#39;
+</code></pre>
+
+<h1 id="toc_0">查询返回指定字段</h1>
+
+<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
+{
+  &quot;from&quot;: 0,
+  &quot;size&quot;: 3,
+  &quot;query&quot;: {
+    &quot;match_all&quot;: {}
+  },
+  &quot;_source&quot;: [
+    &quot;id&quot;,
+    &quot;bookName&quot;
+  ]
+}&#39;
+</code></pre>
+
+<h1 id="toc_1">显示版本号version</h1>
+
+<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
+{
+  &quot;from&quot;: 0,
+  &quot;size&quot;: 3,
+  &quot;version&quot;: true,
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;bookName&quot;: &quot;java&quot;
+    }
+  }
+}&#39;
+</code></pre>
+
+<h1 id="toc_2">评分过滤:查询&gt;=min_score值的数据</h1>
+
+<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
+{
+  &quot;min_score&quot;: 0.5,
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;bookName&quot;: &quot;java&quot;
+    }
+  }
+}&#39;
+</code></pre>
+
+<h1 id="toc_3">高亮</h1>
+
+<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
+{
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;bookName&quot;: &quot;java&quot;
+    }
+  },
+  &quot;highlight&quot;: {
+    &quot;fields&quot;: {
+      &quot;bookName&quot;: {}
+    }
+  }
+}&#39;
+</code></pre>
+
+<p>自定义高亮标签</p>
+
+<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
+{
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;bookName&quot;: &quot;java&quot;
+    }
+  },
+  &quot;highlight&quot;: {
+    &quot;fields&quot;: {
+      &quot;bookName&quot;: {
+          &quot;pre_tags&quot;:[&quot;&lt;mark&gt;&quot;],
+          &quot;post_tags&quot;:[&quot;&lt;/mark&gt;&quot;]
+      }
+    }
+  }
+}&#39;
+</code></pre>
+
+<p>多字段高亮 </p>
+
+<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
+{
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;bookName&quot;: &quot;java&quot;
+    }
+  },
+  &quot;highlight&quot;: {
+    &quot;require_field_match&quot;: false,
+    &quot;fields&quot;: {
+      &quot;bookName&quot;: {},
+      &quot;desc&quot;: {}
+    }
+  }
+}&#39;
+</code></pre>
+
+<p>高亮性能分析</p>
+
+<ol>
+<li><code>unified高亮器</code>使用Lucene统一高亮器.这个高亮器将文本分解为句子,并使用BM25算法对单个句子进行评分,就好像它们是文集中的文档一样.它还支持准确的短语和多项(模糊,前缀,正则表达式)突出显示.<strong>这是默认的高亮器</strong></li>
+<li><code>plain高亮器</code>使用标准的Lucene高亮器.它试图在短语查询中理解单词重要性和任何单词定位标准来反映查询匹配逻辑</li>
+<li><code>fvh高亮器</code>使用Lucene Fast Vector高亮器.此高亮可  用于在映射中将term_vector设置为with_positions_offsets的字段.快速向量高亮器</li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/25</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2.html'>基础查询</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="reflection%E5%8F%8D%E5%B0%84.html">
+                
+                  <h1>reflection</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%8F%8D%E5%B0%84.html'>反射</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="string.html">
+                
+                  <h1>String</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>不可变的字符序列,底层使用char[]存放</p>
+
+<h2 id="toc_0">内存分析</h2>
+
+<p><img src="media/15376840230398/15376841663855.jpg" alt="" style="width:1078px;"/></p>
+
+<p>Person p1 = new Person(&quot;Jimmy&quot;);<br/>
+Person p2 = new Person(&quot;Jimmy&quot;);<br/>
+p1.name == p2.name // true</p>
+
+<h1 id="toc_1">StringBuffer VS StringBuilder</h1>
+
+<ul>
+<li>StringBuffer线程安全</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='java.html'>java</a></span>
+          				  
+          					    <span class="posted-in"><a href='java%E5%9F%BA%E7%A1%80.html'>java基础</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E6%9C%BA%E5%88%B6.html">
+                
+                  <h1>对象的序列化机制</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>允许把内存中的java对象转换成平台无关的二进制流,从而持久的保存在磁盘上,或通过网络把这个二进制流传输到另一个网络节点.当其他程序获取了这个二进制流可以恢复成原来的java对象.</p>
+
+<p>序列化的好处在于可将任何实现了Serializable接口的对象转化为字节数据,使其在保存和传输时可被还原</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/22</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='IO.html'>IO</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="IO%E6%B5%81.html">
+                
+                  <h1>IO流</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>IO处理设备之间的数据传输</p>
+
+<ul>
+<li>input:数据由外部存储设备读取内存</li>
+<li>output:数据由内存写入外部存储设备</li>
+</ul>
+
+<h1 id="toc_0">流的分类</h1>
+
+<table>
+<thead>
+<tr>
+<th>抽象基类</th>
+<th>字节流</th>
+<th>字符流</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>输入流</td>
+<td>InputStream</td>
+<td>Reader</td>
+</tr>
+<tr>
+<td>输出流</td>
+<td>outputStream</td>
+<td>Writer</td>
+</tr>
+</tbody>
+</table>
+
+<p>如上4个都为节点流:直接操作文件<br/>
+处理流:缓冲流,对象流,转换流...</p>
+
+<h1 id="toc_1">转换流</h1>
+
+<p>提供了字节和字符之间的转换,字节流中的数据都是字符时,转成字符流操作更高效</p>
+
+<ul>
+<li>InputStreamReader</li>
+<li>OutputStreamWriter</li>
+</ul>
+
+<h1 id="toc_2">数据流</h1>
+
+<p>操作基本数据类型</p>
+
+<ul>
+<li>DataInputStream</li>
+<li>DataOutputStream</li>
+</ul>
+
+<h1 id="toc_3">对象流</h1>
+
+<p>存储和读取对象的处理流,可以把对象写入数据源中,也能从数据源中还原回来</p>
+
+<ul>
+<li>ObjectInputStream---反序列化</li>
+<li>ObjectOutputStream--序列化</li>
+</ul>
+
+<h1 id="toc_4">RandomAccessFile类</h1>
+
+<p>支持随机访问,程序可以直接跳到文件的任意地方读写文件,它包含一个记录指针,用以标示当前读写处的位置</p>
+
+<ul>
+<li>支持只访问文件的部分内容</li>
+<li>可以向已存在的文件后追加内容</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/16</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='IO.html'>IO</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="file%E7%B1%BB.html">
+                
+                  <h1>File类</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>File是一个类，🈶构造器创建对象，对象对应一个文件或文件目录</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/16</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='IO.html'>IO</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="%E6%B3%9B%E5%9E%8B%E4%B8%8E%E7%BB%A7%E6%89%BF%E7%9A%84%E5%85%B3%E7%B3%BB.html">
+                
+                  <h1>核心思想</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>把一个集合中的内容限制为一个特定的数据类型</p>
+
+<h1 id="toc_0">泛型与继承的关系</h1>
+
+<ul>
+<li>若类A是类B的子类,那么<code>List&lt;A&gt;</code>就不是<code>List&lt;B&gt;</code>的子接口</li>
+</ul>
+
+<h1 id="toc_1">通配符 ?</h1>
+
+<p><code>List&lt;A&gt;</code>,<code>List&lt;B&gt;</code> 都是List&lt;?&gt;的子类</p>
+
+<ul>
+<li>? extends A :存放A及其子类</li>
+<li>? super A   :存放A及其父类</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B3%9B%E5%9E%8B.html'>泛型</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="%E6%8E%92%E5%BA%8F.html">
+                
+                  <h1>排序</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">comparable 自然排序</h2>
+
+<h2 id="toc_1">comparator 定制排序</h2>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E9%9B%86%E5%90%88.html'>集合</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="exception.html">
+                
+                  <h1>Exception 异常</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>当执行程序时，如果出现异常，那么异常之后的代码就不再执行</p>
+
+<h2 id="toc_0">异常处理方式</h2>
+
+<ol>
+<li>try-catch-finally捕获异常</li>
+<li>throws抛出异常</li>
+</ol>
+
+<h2 id="toc_1">手动抛出异常</h2>
+
+<p>throw </p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/13</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='exception%E5%BC%82%E5%B8%B8.html'>exception异常</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3.html">
+                
+                  <h1>抽象类与接口</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">抽象类</h2>
+
+<ul>
+<li>抽象类有构造器，但是不能被实例化-凡是类都有构造器</li>
+<li>抽象方法只声明方法，没有方法体</li>
+<li>抽象方法所在的类一定是抽象类</li>
+<li>若子类继承抽象类，没有全部重写抽象方法，则子类也是抽象类</li>
+</ul>
+
+<h2 id="toc_1">接口</h2>
+
+<ul>
+<li>接口是抽象类和常量值的定义的集合</li>
+<li>本质上是一种特殊的抽象类</li>
+<li>一个类可以实现多个接口，接口也可以继承其他接口</li>
+<li>实现接口的类必须重写接口中定义的所有抽象方法，否则此类仍就是一个抽象类</li>
+</ul>
+
+<p>实现接口的匿名类对象</p>
+
+<pre><code class="language-text">public interface AA{
+ void run();
+ }
+ 
+ 
+ AA a = new AA(){
+    @Override
+    public void run(){
+       ....
+    }
+ }
+</code></pre>
+
+<hr/>
+
+<h2 id="toc_2">接口的应用</h2>
+
+<ul>
+<li>代理模式</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/11</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='java%E5%9F%BA%E7%A1%80.html'>java基础</a></span>
@@ -148,14 +1148,49 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="classLoader%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8.html">
+                <a class="clearlink" href="%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98.html">
                 
-                  <h1>ClassLoader 类加载器</h1>
+                  <h1>类的成员</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="https://blog.csdn.net/briblue/article/details/54973413">https://blog.csdn.net/briblue/article/details/54973413</a></p>
+                        	<h2 id="toc_0">属性</h2>
+
+<p>static 修饰的属性叫类成员变量</p>
+
+<h2 id="toc_1">方法</h2>
+
+<h2 id="toc_2">构造器</h2>
+
+<h2 id="toc_3">初始化块</h2>
+
+<ul>
+<li>非静态代码块<br/></li>
+</ul>
+
+<pre><code class="language-text">1. 多个代码块按照顺序执行
+2. 每创建一个对象，非静态代码块就执行一次
+3. 非静态代码块早于构造器执行
+</code></pre>
+
+<ul>
+<li>静态代码块</li>
+</ul>
+
+<pre><code class="language-text">1. 多个静态代码块按照顺序执行
+2. 只加载一次
+3. 静态代码块早于非静态代码块
+</code></pre>
+
+<h2 id="toc_4">内部类</h2>
+
+<ol>
+<li>一个类定义于另一个类的内部，前者称为内部类，后者称为外部类</li>
+<li>内部类可以使用外部类的私有数据，因为它是外部类的成员</li>
+<li>外部类要访问内部类的成员:内部类.成员或者内部类对象.成员</li>
+<li>成员内部类:与属性同级，局部内部类:定义在方法内</li>
+</ol>
 
                         
                       </div>
@@ -164,7 +1199,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/8/26</span>
+                    <span class="date">2018/9/11</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='java%E5%9F%BA%E7%A1%80.html'>java基础</a></span>
@@ -181,28 +1216,38 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.html">
+                <a class="clearlink" href="%E5%85%B3%E9%94%AE%E5%AD%97.html">
                 
-                  <h1>代理模式</h1>
+                  <h1>关键字</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><img src="media/15352640315767/15352640761696.png" alt=""/></p>
+                        	<h2 id="toc_0">this 关键字</h2>
 
-<h3 id="toc_0">静态代理 代理类需要自己编写代码写成</h3>
+<ul>
+<li>修饰属性、方法、构造器</li>
+<li>this理解为当前对象或正在创建的对象</li>
+</ul>
 
-<blockquote>
-<p>举例:电影院看电影,电影开始前买爆米花,广告播放</p>
-</blockquote>
+<h2 id="toc_1">super 关键字</h2>
 
-<p>这里电影院就是受电影公司委托播放电影的代理对象</p>
+<ul>
+<li>可以访问父类属性，调用父类方法，在子类构造方法中调用父类构造器</li>
+<li>super追溯不仅限于直接父类</li>
+</ul>
 
-<p><u>代理模式可以在不修改被代理对象的基础上，通过扩展代理类，进行一些功能的附加与增强。值得注意的是，代理类和被代理类应该共同实现一个接口，或者是共同继承某个类</u></p>
+<h2 id="toc_2">static 关键字</h2>
 
-<h3 id="toc_1">动态代理 代理类通过 Proxy.newInstance() 方法生成</h3>
+<p>当我们定义一个类的时候只是描述了其对象的属性和行为，并没有产生实质上的对象，只有通过new关键字才会产生对象，系统分配内存空间给对象，其方法才可以供外部调用。有时候希望无论是否有对象，某些特定的数据在内存空间里只有一份，比如所有的中国人都共享中国这个国家名称而不必每一个中国人的实例对象中单独分配一个用于代表国家名称的变量。</p>
 
-<p><strong><em><u>总结：不管是静态代理还是动态代理，代理与被代理者都要实现两样接口，它们的实质是面向接口编程。</u></em></strong></p>
+<h2 id="toc_3">final 关键字</h2>
+
+<ul>
+<li>final修饰的类不能被继承</li>
+<li>final修饰的方法不能被子类重写</li>
+<li>final修饰的变量称为常量</li>
+</ul>
 
                         
                       </div>
@@ -211,113 +1256,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/8/26</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html'>设计模式</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="annotation%E6%B3%A8%E8%A7%A3.html">
-                
-                  <h1>annotation 注解</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>注解主要给编译器及工具类型的软件用的</p>
-
-<h3 id="toc_0">元注解 注解的注解</h3>
-
-<blockquote>
-<p>@Retention 指定注解的存活周期</p>
-</blockquote>
-
-<ul>
-<li>RetentionPolicy.SOURCE 注解只在源码阶段保留，在编译器进行编译时它将被丢弃忽视。 </li>
-<li>RetentionPolicy.CLASS 注解只被保留到编译进行的时候，它并不会被加载到 JVM 中。 </li>
-<li>RetentionPolicy.RUNTIME 注解可以保留到程序运行的时候，它会被加载进入到 JVM 中</li>
-</ul>
-
-<blockquote>
-<p>@Documented 将注解中的元素包含到 Javadoc 中去</p>
-
-<p>@Target 指定注解运用的地方</p>
-</blockquote>
-
-<ul>
-<li>ElementType.ANNOTATION_TYPE 可以给一个注解进行注解</li>
-<li>ElementType.CONSTRUCTOR 可以给构造方法进行注解</li>
-<li>ElementType.FIELD 可以给属性进行注解</li>
-<li>ElementType.LOCAL_VARIABLE 可以给局部变量进行注解</li>
-<li>ElementType.METHOD 可以给方法进行注解</li>
-<li>ElementType.PACKAGE 可以给一个包进行注解</li>
-<li>ElementType.PARAMETER 可以给一个方法内的参数进行注解</li>
-<li>ElementType.TYPE 可以给一个类型进行注解，比如类、接口、枚举</li>
-</ul>
-
-<blockquote>
-<p>@Inherited 继承</p>
-</blockquote>
-
-<pre><code class="language-text">果一个超类被 @Inherited 注解过的注解进行注解的话，那么如果它的子类没有被任何注解应用的话，那么这个子类就继承了超类的注解
-</code></pre>
-
-<blockquote>
-<p>@Repeatable 可重复</p>
-</blockquote>
-
-<h3 id="toc_1">注解的语法</h3>
-
-<p>@interface关键字定义</p>
-
-<pre><code class="language-text">public @interface TestAnnotation {
-}
-</code></pre>
-
-<h3 id="toc_2">注解的属性</h3>
-
-<ul>
-<li>释义</li>
-</ul>
-
-<pre><code class="language-text">注解的属性也叫做成员变量，注解只有成员变量，没有方法。注解的成员变量在注解的定义中以“无形参的方法”形式来声明，其方法名定义了该成员变量的名字，其返回值定义了该成员变量的类型。
-</code></pre>
-
-<ul>
-<li>可用定义类型</li>
-</ul>
-
-<pre><code class="language-text">在注解中定义属性时它的类型必须是 8 种基本数据类型外加 类、接口、注解及它们的数组。
-注解中属性可以有默认值，默认值需要用 default 关键值指定
-</code></pre>
-
-<h3 id="toc_3">注解的提取  反射</h3>
-
-<ol>
-<li>isAnnotationPresent() 是否存在指定注解</li>
-<li>getAnnotation() 获取指定注解</li>
-<li>getAnnotation() 获取所有注解</li>
-</ol>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/8/26</span>
+                    <span class="date">2018/9/9</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='java%E5%9F%BA%E7%A1%80.html'>java基础</a></span>
@@ -334,64 +1273,16 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="zipkin%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA.html">
+                <a class="clearlink" href="15364136255027.html">
                 
-                  <h1>zipkin 链路追踪</h1>
+                  <h1>API之mapping</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h4 id="toc_0">术语概念</h4>
+                        	<h2 id="toc_0">动态映射</h2>
 
-<p>Span：基本工作单元，例如，在一个新建的span中发送一个RPC等同于发送一个回应请求给RPC，span通过一个64位ID唯一标识，trace以另一个64位ID表示，span还有其他数据信息，比如摘要、时间戳事件、关键值注释(tags)、span的ID、以及进度ID(通常是IP地址) <br/>
-span在不断的启动和停止，同时记录了时间信息，当你创建了一个span，你必须在未来的某个时刻停止它。<br/>
-Trace：一系列spans组成的一个树状结构，例如，如果你正在跑一个分布式大数据工程，你可能需要创建一个trace。<br/>
-Annotation：用来及时记录一个事件的存在，一些核心annotations用来定义一个请求的开始和结束 <br/>
-cs - Client Sent -客户端发起一个请求，这个annotion描述了这个span的开始<br/>
-sr - Server Received -服务端获得请求并准备开始处理它，如果将其sr减去cs时间戳便可得到网络延迟<br/>
-ss - Server Sent -注解表明请求处理的完成(当请求返回客户端)，如果ss减去sr时间戳便可得到服务端需要的处理请求时间<br/>
-cr - Client Received -表明span的结束，客户端成功接收到服务端的回复，如果cr减去cs时间戳便可得到客户端从服务端获取回复的所有所需时间 </p>
-
-<h4 id="toc_1">追踪分类</h4>
-
-<ol>
-<li><p>Http协议,如RestTemplate,Feign,Okhttp3,HttpClient</p></li>
-<li><p>Rpc远程调用,如Motan,Dubbo,GRPC</p></li>
-<li><p>分布式Event,如RabbitMq,Kafka</p></li>
-</ol>
-
-<h3 id="toc_2">安装zipkin</h3>
-
-<pre><code class="language-text">curl -sSL https://zipkin.io/quickstart.sh | bash -s
-java -jar zipkin.jar &amp;
-</code></pre>
-
-<h4 id="toc_3">http链路追踪</h4>
-
-<ul>
-<li><p>引入依赖 </p>
-<pre><code class="language-text">&lt;dependency&gt;
-&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
-&lt;artifactId&gt;spring-cloud-starter-sleuth&lt;/artifactId&gt;<br/>
-&lt;version&gt;${sleuth.version}&lt;/version&gt;<br/>
-&lt;/dependency&gt;<br/>
-&lt;!-- Sends trace data to zipkin over http (defaults to http://localhost:9411/api/v2/spans) --&gt;<br/>
-&lt;dependency&gt;<br/>
-&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
-&lt;artifactId&gt;spring-cloud-sleuth-zipkin&lt;/artifactId&gt;<br/>
-&lt;version&gt;${zipkin.version}&lt;/version&gt;<br/>
-&lt;/dependency&gt;
-</code></pre></li>
-<li><p>book-server和user-server的pom.yml添加配置</p>
-<pre><code class="language-text">spring:
-zipkin:<br/>
-base-url: http://localhost:9411<br/>
-sleuth:<br/>
-enabled: true<br/>
-sampler:<br/>
-  probability: 1 #采样率,值为[0,1]之间的任意实数 1代表100%采集报告
-</code></pre></li>
-</ul>
+<h2 id="toc_1">静态映射</h2>
 
                         
                       </div>
@@ -400,10 +1291,10 @@ sampler:<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/8/26</span>
+                    <span class="date">2018/9/8</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E6%9C%8D%E5%8A%A1%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA.html'>服务链路追踪</a></span>
+          					    <span class="posted-in"><a href='elk.html'>elk</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -417,268 +1308,346 @@ sampler:<br/>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="gateway%E7%BD%91%E5%85%B3%E5%88%9D%E6%8E%A2.html">
+                <a class="clearlink" href="routing%E8%B7%AF%E7%94%B1%E6%9C%BA%E5%88%B6.html">
                 
-                  <h1>gateway 网关初探</h1>
+                  <h1>routing 路由机制</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>访问网关服务gateway-server 8080 路由到book-server服务</p>
-</blockquote>
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/8</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='elk.html'>elk</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<ul>
-<li><p>引入依赖</p>
-<pre><code class="language-text">&lt;dependency&gt;
-&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
-&lt;artifactId&gt;spring-cloud-starter-gateway&lt;/artifactId&gt;<br/>
-&lt;/dependency&gt;
-</code></pre></li>
-<li><p>配置文件 gateway-server </p>
-<pre><code class="language-text">spring:
-cloud:<br/>
- gateway:<br/>
-   routes:<br/>
-   - id: host_route<br/>
-     uri: http://localhost:1111<br/>
-     predicates:<br/>
-     - Path=/book/**<br/>
-     filters:<br/>
-     - StripPrefix=1<br/>
-   - id: host_route<br/>
-     uri: http://localhost:2222<br/>
-     predicates:<br/>
-     - Path=/user/**<br/>
-     filters:<br/>
-     - StripPrefix=1
-</code></pre></li>
-<li><p>访问 <a href="http://ip:port/book/queryBookA">http://ip:port/book/queryBookA</a></p></li>
-</ul>
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="API%E4%B9%8B%E6%96%87%E6%A1%A3.html">
+                
+                  <h1>API之文档</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">查询</h2>
+
+<h2 id="toc_1">添加</h2>
+
+<h2 id="toc_2">更新</h2>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/8</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='elk.html'>elk</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="API%E4%B9%8B%E7%B4%A2%E5%BC%95.html">
+                
+                  <h1>API之索引</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">查询</h2>
+
+<h2 id="toc_1">创建</h2>
+
+<p>索引名不能包含大写字母</p>
+
+<h2 id="toc_2">更新</h2>
+
+<h2 id="toc_3">删除</h2>
+
+<h2 id="toc_4">打开</h2>
+
+<h2 id="toc_5">关闭</h2>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/8</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='elk.html'>elk</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5.html">
+                
+                  <h1>基本概念</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">index 索引</h2>
+
+<p>ElasticSearch存放具体数据的地方，是一类具有相似特征的文档的集合</p>
+
+<h2 id="toc_1">type 类型</h2>
+
+<p>一个类型是索引的一个逻辑上的分类，通常具有一组相同字段的文档组成</p>
+
+<h2 id="toc_2">document 文档</h2>
+
+<p>文档是ElasticSearch可被索引的基础逻辑单元，相当于关系数据库中数据表的一行数据。ElasticSearch的文档具有JSON格式，由多个字段组成，字段相当于关系数据库中列的概念</p>
+
+<h2 id="toc_3">shard 分片</h2>
+
+<p>当数据量较大时，索引的存储空间需求超出单个节点磁盘容量的限制，或者出现单个节点处理速度较慢。为了解决这些问题，ElasticSearch将索引中的数据进行切分成多个分片（shard），每个分片存储这个索引的一部分数据，分布在不同节点上。当需要查询索引时，ElasticSearch将查询发送到每个相关分片，之后将查询结果合并，这个过程对ElasticSearch应用来说是透明的，用户感知不到分片的存在。 <br/>
+一个索引的分片一定指定，不再修改</p>
+
+<h2 id="toc_4">replication 副本</h2>
+
+<h2 id="toc_5">其实，分片全称是主分片，简称为分片。主分片是相对于副本来说的，副本是对主分片的一个或多个复制版本（或称拷贝），这些复制版本（拷贝）可以称为复制分片，可以直接称之为副本。当主分片丢失时，集群可以将一个副本升级为新的主分片</h2>
+
+<h1 id="toc_6">与关系型数据库对比</h1>
+
+<table>
+<thead>
+<tr>
+<th>ElasticSearch</th>
+<th>RDBMS</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>索引（index）</td>
+<td>数据库（database）</td>
+</tr>
+<tr>
+<td>类型（type）</td>
+<td>表（table）</td>
+</tr>
+<tr>
+<td>文档（document</td>
+<td>行（row）</td>
+</tr>
+<tr>
+<td>字段（field）</td>
+<td>列（column）</td>
+</tr>
+<tr>
+<td>映射（mapping）</td>
+<td>表结构（schema）</td>
+</tr>
+<tr>
+<td>全文索引</td>
+<td>索引</td>
+</tr>
+<tr>
+<td>查询DSL</td>
+<td>SQL</td>
+</tr>
+</tbody>
+</table>
+
+<hr/>
+
+<h2 id="toc_7">字段类型</h2>
 
 <blockquote>
-<p>配置详解</p>
-
-<ul>
-<li>id:固定,不同 id 对应不同的功能</li>
-<li>uri:目标服务地址</li>
-<li>predicates:路由条件</li>
-<li>filters:过滤规则</li>
-</ul>
+<p>核心类型</p>
 </blockquote>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/8/26</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%9C%8D%E5%8A%A1%E7%BD%91%E5%85%B3.html'>服务网关</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<table>
+<thead>
+<tr>
+<th>类型名称</th>
+<th>类型表示</th>
+<th>类型描述</th>
+</tr>
+</thead>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7.html">
-                
-                  <h1>hystrix 服务降级</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>user-server 调用 book-server 的queryHystrixBook方法</p>
+<tbody>
+<tr>
+<td>字符串类型</td>
+<td>keyword,text</td>
+<td>keyword类型的字段只能通过精确值搜索到。text类型的字段不用于排序，很少用于聚合。</td>
+</tr>
+<tr>
+<td>整数类型</td>
+<td>integer,long,short,byte</td>
+<td></td>
+</tr>
+<tr>
+<td>浮点类型</td>
+<td>double,float,half_float,scaled_float</td>
+<td></td>
+</tr>
+<tr>
+<td>逻辑类型</td>
+<td>boolean</td>
+<td></td>
+</tr>
+<tr>
+<td>日期类型</td>
+<td>date</td>
+<td></td>
+</tr>
+<tr>
+<td>范围类型</td>
+<td>range</td>
+<td></td>
+</tr>
+<tr>
+<td>二进制类型</td>
+<td>binary</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>复合类型</p>
 </blockquote>
 
-<ul>
-<li><p>引入依赖</p>
-<pre><code class="language-text">&lt;dependency&gt;
-&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
-&lt;artifactId&gt;spring-cloud-starter-hystrix&lt;/artifactId&gt;<br/>
-&lt;/dependency&gt;
-</code></pre></li>
-<li><p>添加注解 user-server启动类添加:@EnableCircuitBreaker或者@EnableHystrix</p></li>
-<li><p>@HystrixCommand 声明user-server调用book-server服务提供的方法queryHystrixBook失败后调用的方法</p></li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>类型名称</th>
+<th>类型表示</th>
+<th>类型描述</th>
+</tr>
+</thead>
 
-<pre><code class="language-text">@HystrixCommand(fallbackMethod = &quot;fallbackHystrix_a&quot;)
-public String hystrix_a(){
-    return restTemplate.getForObject(&quot;http://localhost:1111/queryHystrixBook&quot;, String.class);
-}
+<tbody>
+<tr>
+<td>数组类型</td>
+<td>array</td>
+<td></td>
+</tr>
+<tr>
+<td>对象类型</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>嵌套类型</td>
+<td>nested</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
-public String fallbackHystrix_a() {
-    return &quot;fallback hystrix a&quot;;
-}
-</code></pre>
-
-<p>访问user-server提供的方法queryHystrixA,会调用book-server的queryHystrixBook方法.<br/><br/>
-queryHystrixBook方法延迟10s返回结果,fallbackHystrix_a就会被触发</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/8/26</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4.html'>服务容错保护</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="hystrix%E4%BB%8B%E7%BB%8D.html">
-                
-                  <h1>hystrix 介绍</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>Hystrix具备了服务降级、服务熔断、线程隔离、请求缓存、请求合并以及服务监控等强大功能</p>
-
-<ul>
-<li><p>服务降级</p>
-<pre><code class="language-text">在微服务架构中，我们将系统拆分成了一个个的服务单元，各单元应用间通过服务注册与订阅的方式互相依赖。由于每个单元都在不同的进程中运行，
-依赖通过远程调用的方式执行，这样就有可能因为网络原因或是依赖服务自身问题出现调用故障或延迟，而这些问题会直接导致调用方的对外服务也出现延迟，<br/>
-若此时调用方的请求不断增加，最后就会出现因等待出现故障的依赖方响应而形成任务积压，线程资源无法释放，最终导致自身服务的瘫痪，<br/>
-进一步甚至出现故障的蔓延最终导致整个系统的瘫痪。如果这样的架构存在如此严重的隐患，那么相较传统架构就更加的不稳定。<br/>
-为了解决这样的问题，因此产生了断路器等一系列的服务保护机制
-</code></pre></li>
-<li><p>依赖隔离</p>
-<pre><code class="language-text">“舱壁模式”对于熟悉Docker的读者一定不陌生，Docker通过“舱壁模式”实现进程的隔离，使得容器与容器之间不会互相影响。
-而Hystrix则使用该模式实现线程池的隔离，它会为每一个Hystrix命令创建一个独立的线程池，这样就算某个在Hystrix命令包装下的依赖服务出现延迟过高的情况，<br/>
-也只是对该依赖服务的调用产生影响，而不会拖慢其他的服务。
-</code></pre></li>
-</ul>
-
-<p>使用@HystrixCommand来将某个函数包装成了Hystrix命令,这里除了定义服务降级之外,Hystrix框架就会自动的为这个函数实现调用的隔离.<br/>
-所以,依赖隔离、服务降级在使用时候都是一体化实现的,这样利用Hystrix来实现服务容错保护在编程模型上就非常方便的,并且考虑更为全面.</p>
-
-<ul>
-<li>断路器</li>
-</ul>
-
-<pre><code class="language-text">在分布式架构中，断路器模式的作用也是类似的，当某个服务单元发生故障（类似用电器发生短路）之后，通过断路器的故障监控（类似熔断保险丝），
-直接切断原来的主逻辑调用。但是，在Hystrix中的断路器除了切断主逻辑的功能之外，还有更复杂的逻辑
-</code></pre>
-
-<p>在服务降级例子中,受限于Hystrix超时时间的问题,我们的调用依然很有可能产生堆积.<br/><br/>
-这个时候断路器就会发挥作用,那么断路器是在什么情况下开始起作用呢?这里涉及到断路器的三个重要参数:快照时间窗、请求总数下限、错误百分比下限</p>
-
-<ol>
-<li>快照时间窗:断路器确定是否打开需要统计一些请求和错误数据,而统计的时间范围就是快照时间窗,默认为最近的10秒</li>
-<li>请求总数下限:在快照时间窗内,必须满足请求总数下限才有资格根据熔断.默认为20,意味着在10秒内,如果该hystrix命令的调用此时不足20次,即时所有的请求都超时或其他原因失败,断路器都不会打开</li>
-<li>错误百分比下限:当请求总数在快照时间窗内超过了下限,比如发生了30次调用,如果在这30次调用中,有16次发生了超时异常,也就是超过50%的错误百分比,在默认设定50%下限情况下,这时候就会将断路器打开</li>
-</ol>
-
-<pre><code class="language-text">那么当断路器打开之后会发生什么呢？我们先来说说断路器未打开之前，对于之前那个示例的情况就是每个请求都会在当hystrix超时之后返回fallback，
-每个请求时间延迟就是近似hystrix的超时时间，如果设置为5秒，那么每个请求就都要延迟5秒才会返回。当熔断器在10秒内发现请求总数超过20，
-并且错误百分比超过50%，这个时候熔断器打开。打开之后，再有请求调用的时候，将不会调用主逻辑，而是直接调用降级逻辑，这个时候就不会等待5秒之后才返回fallback。
-通过断路器，实现了自动地发现错误并将降级逻辑切换为主逻辑，减少响应延迟的效果。
-
-在断路器打开之后，处理逻辑并没有结束，我们的降级逻辑已经被成了主逻辑，那么原来的主逻辑要如何恢复呢？
-对于这一问题，hystrix也为我们实现了自动恢复功能。当断路器打开，对主逻辑进行熔断之后，hystrix会启动一个休眠时间窗，在这个时间窗内，
-降级逻辑是临时的成为主逻辑，当休眠时间窗到期，断路器将进入半开状态，释放一次请求到原来的主逻辑上，如果此次请求正常返回，
-那么断路器将继续闭合，主逻辑恢复，如果这次请求依然有问题，断路器继续进入打开状态，休眠时间窗重新计时
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/8/26</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4.html'>服务容错保护</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="feign%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.html">
-                
-                  <h1>feign</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>user-server 调用 book-server</p>
+<blockquote>
+<p>地理类型</p>
 </blockquote>
 
-<ul>
-<li><p>引入依赖</p>
-<pre><code class="language-text">&lt;dependency&gt;
-&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
-&lt;artifactId&gt;spring-cloud-starter-feign&lt;/artifactId&gt;<br/>
-&lt;/dependency&gt;
-</code></pre></li>
-<li><p>添加注解 user-server启动类添加:@EnableFeignClients</p>
-<pre><code class="language-text">@SpringBootApplication
-@EnableDiscoveryClient<br/>
-@RestController<br/>
-@EnableFeignClients<br/>
-public class UserServerStart {<br/>
-public static void main(String[] args) {<br/>
-    SpringApplication.run(UserServerStart.class,args);<br/>
-}<br/>
-}
-</code></pre></li>
-<li><p>配置文件 user-server和book-server分别向注册中心注册</p></li>
-<li><p>user-server声明feign接口 book-server为book服务在注册中心的名字 queryBookFeign为book服务提供的调用方法</p>
-<pre><code class="language-text">@FeignClient(&quot;book-server&quot;)
-@Service<br/>
-public interface BookServerFeign {<br/>
-@GetMapping(&quot;/queryBookFeign&quot;)<br/>
-String queryBookFeign();<br/>
-}
-</code></pre></li>
-<li><p>user-server调用  </p>
-<pre><code class="language-text">@RestController
-public class FeignController {<br/>
-@Autowired<br/>
-BookServerFeign bookServerFeign;<br/>
-@RequestMapping(&quot;/queryBook&quot;)<br/>
-public void queryBook(){<br/>
-    String str = bookServerFeign.queryBookFeign();<br/>
-}<br/>
-}
-</code></pre></li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>类型名称</th>
+<th>类型表示</th>
+<th>类型描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>地理坐标类型</td>
+<td>geo_point</td>
+<td></td>
+</tr>
+<tr>
+<td>地理地图</td>
+<td>geo_shape</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>特殊类型</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+<th>类型名称</th>
+<th>类型表示</th>
+<th>类型描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>IP类型</td>
+<td>ip</td>
+<td></td>
+</tr>
+<tr>
+<td>范围类型</td>
+<td>completion</td>
+<td></td>
+</tr>
+<tr>
+<td>令牌计数类型</td>
+<td>token_count</td>
+<td></td>
+</tr>
+<tr>
+<td>附件类型</td>
+<td>attachment</td>
+<td></td>
+</tr>
+<tr>
+<td>抽取类型</td>
+<td>percolator</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
                         
                       </div>
@@ -687,218 +1656,10 @@ public void queryBook(){<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/8/26</span>
+                    <span class="date">2018/9/8</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E6%9C%8D%E5%8A%A1%E8%B4%9F%E8%B4%A3%E5%9D%87%E8%A1%A1.html'>服务负责均衡</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="consul%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0.html">
-                
-                  <h1>consul 服务发现</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ul>
-<li><p>引入依赖</p>
-<pre><code class="language-text">&lt;dependency&gt;
-&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
-&lt;artifactId&gt;spring-cloud-starter-consul-discovery&lt;/artifactId&gt;<br/>
-&lt;/dependency&gt;
-</code></pre></li>
-<li><p>添加注解 服务A的启动类添加:@EnableDiscoveryClient</p>
-<pre><code class="language-text">@SpringBootApplication
-@EnableDiscoveryClient<br/>
-public class ConsulStart {<br/>
-public static void main(String[] args) {<br/>
-    SpringApplication.run(ConsulStart.class,args);<br/>
-}<br/>
-}
-</code></pre></li>
-<li><p>配置文件 </p>
-<pre><code class="language-text">spring:
-cloud:<br/>
-consul:<br/>
-  host: xxx<br/>
-  port: xxx<br/>
-  discovery:<br/>
-    enabled: true<br/>
-    service-name: consul-server #注册中心注册的服务名字<br/>
-   # health-check-path: /health<br/>
-    health-check-interval: 10s<br/>
-    instance-id: consul-server-id<br/>
-    tags: dev,hello
-</code></pre></li>
-<li><p>访问consul ip查看注册上的服务</p></li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/8/26</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0.html'>服务注册与发现</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="consul%E5%AE%89%E8%A3%85.html">
-                
-                  <h1>consul 安装</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ol>
-<li>下载 <a href="https://www.consul.io/">https://www.consul.io/</a></li>
-<li>上传 /usr/local/bin</li>
-<li>解压 <code>unzip consul_1.2.2_linux_amd64.zip</code></li>
-<li>验证:</li>
-</ol>
-
-<pre><code class="language-text">[root@VM-6e650661-ceb0-4308-9737-63dcd1f8a6b6 bin]# consul 
-Usage: consul [--version] [--help] &lt;command&gt; [&lt;args&gt;]
-</code></pre>
-
-<h4 id="toc_0">常用命令</h4>
-
-<ul>
-<li>查看版本 ./consul version</li>
-<li>查看成员 ./consul members -detailed</li>
-</ul>
-
-<pre><code class="language-text">[root@VM-6e650661-ceb0-4308-9737-63dcd1f8a6b6 ~]# consul members
-Node                                     Address         Status  Type    Build  Protocol  DC   Segment
-VM-6e650661-ceb0-4308-9737-63dcd1f8a6b6  127.0.0.1:8301  alive   server  1.2.2  2         dc1  &lt;all&gt;
-</code></pre>
-
-<ul>
-<li>相关信息 ./consul info</li>
-</ul>
-
-<h4 id="toc_1">启动</h4>
-
-<ul>
-<li>开发模式启动 consul agent -dev</li>
-<li>服务模式启动 consul agent -server</li>
-</ul>
-
-<h4 id="toc_2">开放防火墙</h4>
-
-<pre><code class="language-text">firewall-cmd --zone=public --add-port=8500/tcp --permanent
-firewall-cmd --reload
-firewall-cmd --query-port=8500/tcp
-</code></pre>
-
-<h4 id="toc_3">Consul web-ui 8500端口实现公网访问</h4>
-
-<ol>
-<li>linux安装rinetd</li>
-</ol>
-
-<pre><code class="language-text">yum install -y gcc g++ autoconf make telnet 
-wget http://www.boutell.com/rinetd/http/rinetd.tar.gz
-tar -xvf rinetd.tar.gz  
-cd rinetd
-sed -i &#39;s/65536/65535/g&#39; rinetd.c 
-mkdir -pv /usr/man &amp;&amp; make &amp;&amp; make install
-</code></pre>
-
-<ol>
-<li>编辑配置文件,将所有发往本机37170端口的请求转发到127.0.0.1的8500端口</li>
-</ol>
-
-<pre><code class="language-text">vi /etc/rinetd.conf
-
-0.0.0.0 37170 127.0.0.1 8500   
-logfile /var/log/rinetd.log
-
-#格式
-bindaddress   bindport   connectaddress   connectport
-绑定的地址     绑定的端口   连接的地址        连接的端口
-</code></pre>
-
-<ol>
-<li>启动:rinetd</li>
-<li>访问:http:ip:37170/ui</li>
-</ol>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/8/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0.html'>服务注册与发现</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="idea%E6%8F%92%E4%BB%B6.html">
-                
-                  <h1>idea 插件</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">yml属性自动提示</h3>
-
-<p>下载插件 spring assistant</p>
-
-<h3 id="toc_1">ignore插件</h3>
-
-<p>下载 ignore</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/8/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='idea.html'>idea</a></span>
+          					    <span class="posted-in"><a href='elk.html'>elk</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -922,7 +1683,7 @@ bindaddress   bindport   connectaddress   connectport
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			
+			 <a href="all_2.html">&raquo; Next Page</a> 
 			</p>
 			  </div>
 			</div>
@@ -988,31 +1749,31 @@ bindaddress   bindport   connectaddress   connectport
 	      
 		      
 			      <li class="post">
-			        <a href="string.html">String</a>
+			        <a href="bool.html">bool</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E6%9C%BA%E5%88%B6.html">对象的序列化机制</a>
+			        <a href="constant_score.html">constant_score</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="IO%E6%B5%81.html">IO流</a>
+			        <a href="%E5%A4%8D%E5%90%88%E6%9F%A5%E8%AF%A2%E6%A6%82%E5%BF%B5.html">复合查询概念</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="file%E7%B1%BB.html">File类</a>
+			        <a href="ids.html">ids</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="%E6%B3%9B%E5%9E%8B%E4%B8%8E%E7%BB%A7%E6%89%BF%E7%9A%84%E5%85%B3%E7%B3%BB.html">核心思想</a>
+			        <a href="type.html">type</a>
 			      </li>
 		     
 		  

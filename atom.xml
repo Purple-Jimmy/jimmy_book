@@ -4,7 +4,7 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2018-09-16T21:10:31+08:00</updated>
+  <updated>2018-09-23T14:30:11+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -13,809 +13,287 @@
   <generator uri="http://www.mweb.im/">MWeb</generator>
   
   <entry>
-    <title type="html"><![CDATA[String]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/string.html"/>
-    <updated>2018-09-23T14:27:03+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/string.html</id>
+    <title type="html"><![CDATA[bool]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/bool.html"/>
+    <updated>2018-09-25T22:46:06+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/bool.html</id>
     <content type="html"><![CDATA[
-<h2 id="toc_0">内存分析</h2>
-
-<p><img src="media/15376840230398/15376841663855.jpg" alt="" style="width:1078px;"/></p>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[对象的序列化机制]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E6%9C%BA%E5%88%B6.html"/>
-    <updated>2018-09-22T10:56:26+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E6%9C%BA%E5%88%B6.html</id>
+    <title type="html"><![CDATA[constant_score]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/constant_score.html"/>
+    <updated>2018-09-25T22:45:24+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/constant_score.html</id>
     <content type="html"><![CDATA[
-<p>允许把内存中的java对象转换成平台无关的二进制流,从而持久的保存在磁盘上,或通过网络把这个二进制流传输到另一个网络节点.当其他程序获取了这个二进制流可以恢复成原来的java对象.</p>
-
-<p>序列化的好处在于可将任何实现了Serializable接口的对象转化为字节数据,使其在保存和传输时可被还原</p>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[IO流]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/IO%E6%B5%81.html"/>
-    <updated>2018-09-16T15:06:18+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/IO%E6%B5%81.html</id>
+    <title type="html"><![CDATA[复合查询概念]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/%E5%A4%8D%E5%90%88%E6%9F%A5%E8%AF%A2%E6%A6%82%E5%BF%B5.html"/>
+    <updated>2018-09-25T22:45:07+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/%E5%A4%8D%E5%90%88%E6%9F%A5%E8%AF%A2%E6%A6%82%E5%BF%B5.html</id>
     <content type="html"><![CDATA[
-<p>IO处理设备之间的数据传输</p>
-
-<ul>
-<li>input:数据由外部存储设备读取内存</li>
-<li>output:数据由内存写入外部存储设备</li>
-</ul>
-
-<h1 id="toc_0">流的分类</h1>
-
-<table>
-<thead>
-<tr>
-<th>抽象基类</th>
-<th>字节流</th>
-<th>字符流</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>输入流</td>
-<td>InputStream</td>
-<td>Reader</td>
-</tr>
-<tr>
-<td>输出流</td>
-<td>outputStream</td>
-<td>Writer</td>
-</tr>
-</tbody>
-</table>
-
-<p>如上4个都为节点流:直接操作文件<br/>
-处理流:缓冲流,对象流,转换流...</p>
-
-<h1 id="toc_1">转换流</h1>
-
-<p>提供了字节和字符之间的转换,字节流中的数据都是字符时,转成字符流操作更高效</p>
-
-<ul>
-<li>InputStreamReader</li>
-<li>OutputStreamWriter</li>
-</ul>
-
-<h1 id="toc_2">数据流</h1>
-
-<p>操作基本数据类型</p>
-
-<ul>
-<li>DataInputStream</li>
-<li>DataOutputStream</li>
-</ul>
-
-<h1 id="toc_3">对象流</h1>
-
-<p>存储和读取对象的处理流,可以把对象写入数据源中,也能从数据源中还原回来</p>
-
-<ul>
-<li>ObjectInputStream---反序列化</li>
-<li>ObjectOutputStream--序列化</li>
-</ul>
-
-<h1 id="toc_4">RandomAccessFile类</h1>
-
-<p>支持随机访问,程序可以直接跳到文件的任意地方读写文件,它包含一个记录指针,用以标示当前读写处的位置</p>
-
-<ul>
-<li>支持只访问文件的部分内容</li>
-<li>可以向已存在的文件后追加内容</li>
-</ul>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[File类]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/file%E7%B1%BB.html"/>
-    <updated>2018-09-16T14:06:05+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/file%E7%B1%BB.html</id>
+    <title type="html"><![CDATA[ids]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/ids.html"/>
+    <updated>2018-09-25T22:43:54+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/ids.html</id>
     <content type="html"><![CDATA[
-<p>File是一个类，🈶构造器创建对象，对象对应一个文件或文件目录</p>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[核心思想]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/%E6%B3%9B%E5%9E%8B%E4%B8%8E%E7%BB%A7%E6%89%BF%E7%9A%84%E5%85%B3%E7%B3%BB.html"/>
-    <updated>2018-09-15T22:07:05+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/%E6%B3%9B%E5%9E%8B%E4%B8%8E%E7%BB%A7%E6%89%BF%E7%9A%84%E5%85%B3%E7%B3%BB.html</id>
+    <title type="html"><![CDATA[type]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/type.html"/>
+    <updated>2018-09-25T22:43:39+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/type.html</id>
     <content type="html"><![CDATA[
-<p>把一个集合中的内容限制为一个特定的数据类型</p>
-
-<h1 id="toc_0">泛型与继承的关系</h1>
-
-<ul>
-<li>若类A是类B的子类,那么<code>List&lt;A&gt;</code>就不是<code>List&lt;B&gt;</code>的子接口</li>
-</ul>
-
-<h1 id="toc_1">通配符 ?</h1>
-
-<p><code>List&lt;A&gt;</code>,<code>List&lt;B&gt;</code> 都是List&lt;?&gt;的子类</p>
-
-<ul>
-<li>? extends A :存放A及其子类</li>
-<li>? super A   :存放A及其父类</li>
-</ul>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[排序]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/%E6%8E%92%E5%BA%8F.html"/>
-    <updated>2018-09-15T15:52:08+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/%E6%8E%92%E5%BA%8F.html</id>
+    <title type="html"><![CDATA[fuzzy 模糊查询]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/fuzzy.html"/>
+    <updated>2018-09-25T22:43:06+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/fuzzy.html</id>
     <content type="html"><![CDATA[
-<h2 id="toc_0">comparable 自然排序</h2>
-
-<h2 id="toc_1">comparator 定制排序</h2>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Exception 异常]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/exception.html"/>
-    <updated>2018-09-13T21:42:18+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/exception.html</id>
+    <title type="html"><![CDATA[regexp 正则查询]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/regexp.html"/>
+    <updated>2018-09-25T22:42:33+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/regexp.html</id>
     <content type="html"><![CDATA[
-<p>当执行程序时，如果出现异常，那么异常之后的代码就不再执行</p>
-
-<h2 id="toc_0">异常处理方式</h2>
-
-<ol>
-<li>try-catch-finally捕获异常</li>
-<li>throws抛出异常</li>
-</ol>
-
-<h2 id="toc_1">手动抛出异常</h2>
-
-<p>throw </p>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[抽象类与接口]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3.html"/>
-    <updated>2018-09-11T23:23:18+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3.html</id>
+    <title type="html"><![CDATA[wildcard 通配符查询]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/wildcard.html"/>
+    <updated>2018-09-25T22:41:22+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/wildcard.html</id>
     <content type="html"><![CDATA[
-<h2 id="toc_0">抽象类</h2>
 
-<ul>
-<li>抽象类有构造器，但是不能被实例化-凡是类都有构造器</li>
-<li>抽象方法只声明方法，没有方法体</li>
-<li>抽象方法所在的类一定是抽象类</li>
-<li>若子类继承抽象类，没有全部重写抽象方法，则子类也是抽象类</li>
-</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[exists]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/exists.html"/>
+    <updated>2018-09-25T22:40:38+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/exists.html</id>
+    <content type="html"><![CDATA[
 
-<h2 id="toc_1">接口</h2>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[prefix]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/prefix.html"/>
+    <updated>2018-09-25T22:40:22+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/prefix.html</id>
+    <content type="html"><![CDATA[
 
-<ul>
-<li>接口是抽象类和常量值的定义的集合</li>
-<li>本质上是一种特殊的抽象类</li>
-<li>一个类可以实现多个接口，接口也可以继承其他接口</li>
-<li>实现接口的类必须重写接口中定义的所有抽象方法，否则此类仍就是一个抽象类</li>
-</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[range]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/range.html"/>
+    <updated>2018-09-25T22:40:06+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/range.html</id>
+    <content type="html"><![CDATA[
 
-<p>实现接口的匿名类对象</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[terms]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/terms.html"/>
+    <updated>2018-09-25T22:29:52+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/terms.html</id>
+    <content type="html"><![CDATA[
+<p>查询文档中包含任一个给定多词项的文档</p>
 
-<pre><code class="language-text">public interface AA{
- void run();
- }
- 
- 
- AA a = new AA(){
-    @Override
-    public void run(){
-       ....
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[term]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/term.html"/>
+    <updated>2018-09-25T22:29:11+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/term.html</id>
+    <content type="html"><![CDATA[
+<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
+{
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;bookName&quot;: &quot;编&quot;
     }
- }
+  }
+}&#39;
+
+-------
+java编程思想
 </code></pre>
 
-<hr/>
+<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
+{
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;bookName&quot;: &quot;java&quot;
+    }
+  }
+}&#39;
 
-<h2 id="toc_2">接口的应用</h2>
+-------
+Java
+java编程思想
+</code></pre>
 
-<ul>
-<li>代理模式</li>
-</ul>
+<p>查看分词</p>
+
+<pre><code class="language-text">curl  -H &quot;Content-Type:application/json&quot; -XGET &quot;localhost:9200/_analyze?pretty&quot; -d&#39;
+{
+  &quot;analyzer&quot;: &quot;standard&quot;,
+  &quot;text&quot;:     &quot;java编程思想&quot;
+}
+
+-------
+{
+  &quot;tokens&quot;: [
+    {
+      &quot;token&quot;: &quot;java&quot;,
+      &quot;start_offset&quot;: 0,
+      &quot;end_offset&quot;: 4,
+      &quot;type&quot;: &quot;&lt;ALPHANUM&gt;&quot;,
+      &quot;position&quot;: 0
+    },
+    {
+      &quot;token&quot;: &quot;编&quot;,
+      &quot;start_offset&quot;: 4,
+      &quot;end_offset&quot;: 5,
+      &quot;type&quot;: &quot;&lt;IDEOGRAPHIC&gt;&quot;,
+      &quot;position&quot;: 1
+    },
+    {
+      &quot;token&quot;: &quot;程&quot;,
+      &quot;start_offset&quot;: 5,
+      &quot;end_offset&quot;: 6,
+      &quot;type&quot;: &quot;&lt;IDEOGRAPHIC&gt;&quot;,
+      &quot;position&quot;: 2
+    },
+    {
+      &quot;token&quot;: &quot;思&quot;,
+      &quot;start_offset&quot;: 6,
+      &quot;end_offset&quot;: 7,
+      &quot;type&quot;: &quot;&lt;IDEOGRAPHIC&gt;&quot;,
+      &quot;position&quot;: 3
+    },
+    {
+      &quot;token&quot;: &quot;想&quot;,
+      &quot;start_offset&quot;: 7,
+      &quot;end_offset&quot;: 8,
+      &quot;type&quot;: &quot;&lt;IDEOGRAPHIC&gt;&quot;,
+      &quot;position&quot;: 4
+    }
+  ]
+}
+</code></pre>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[类的成员]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98.html"/>
-    <updated>2018-09-11T21:03:20+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98.html</id>
+    <title type="html"><![CDATA[词项查询]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2%E6%A6%82%E5%BF%B5.html"/>
+    <updated>2018-09-25T22:25:45+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2%E6%A6%82%E5%BF%B5.html</id>
     <content type="html"><![CDATA[
-<h2 id="toc_0">属性</h2>
+<p>全文查询将在执行之前分析查询字符串,但词项级别查询将按照存储在倒排索引中的词项进行精确操作.<br/>
+这些查询通常用于数字,日期和枚举等结构化数据,而不是全文本字段.或者,它们允许您制作低级查询,并在分析过程之前进行.</p>
 
-<p>static 修饰的属性叫类成员变量</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[simple_query_string]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/15378854080366.html"/>
+    <updated>2018-09-25T22:23:28+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/15378854080366.html</id>
+    <content type="html"><![CDATA[
+<p>解析出错时不抛异常,丢弃查询无效的部分</p>
 
-<h2 id="toc_1">方法</h2>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[query_string]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/query_string.html"/>
+    <updated>2018-09-25T22:23:06+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/query_string.html</id>
+    <content type="html"><![CDATA[
 
-<h2 id="toc_2">构造器</h2>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[common_terms 常用词查询]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/common_terms.html"/>
+    <updated>2018-09-25T22:22:39+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/common_terms.html</id>
+    <content type="html"><![CDATA[
 
-<h2 id="toc_3">初始化块</h2>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[multi_match]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/multi_match%20.html"/>
+    <updated>2018-09-25T22:22:05+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/multi_match%20.html</id>
+    <content type="html"><![CDATA[
 
-<ul>
-<li>非静态代码块<br/></li>
-</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[match_phrase_prefix]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/match_phrase_prefix%20.html"/>
+    <updated>2018-09-25T22:21:26+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/match_phrase_prefix%20.html</id>
+    <content type="html"><![CDATA[
 
-<pre><code class="language-text">1. 多个代码块按照顺序执行
-2. 每创建一个对象，非静态代码块就执行一次
-3. 非静态代码块早于构造器执行
-</code></pre>
-
-<ul>
-<li>静态代码块</li>
-</ul>
-
-<pre><code class="language-text">1. 多个静态代码块按照顺序执行
-2. 只加载一次
-3. 静态代码块早于非静态代码块
-</code></pre>
-
-<h2 id="toc_4">内部类</h2>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[match_phrase 短语查询]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/match_phrase.html"/>
+    <updated>2018-09-25T22:17:10+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/match_phrase.html</id>
+    <content type="html"><![CDATA[
+<p>匹配精确短语,match_phrase查询会将查询内容分词,分词器可以自定义,文档中同时满足以下两个条件才会被检索到:</p>
 
 <ol>
-<li>一个类定义于另一个类的内部，前者称为内部类，后者称为外部类</li>
-<li>内部类可以使用外部类的私有数据，因为它是外部类的成员</li>
-<li>外部类要访问内部类的成员:内部类.成员或者内部类对象.成员</li>
-<li>成员内部类:与属性同级，局部内部类:定义在方法内</li>
+<li>分词后所有词项都要出现在该字段中</li>
+<li>字段中的词项顺序要一致</li>
 </ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[关键字]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/%E5%85%B3%E9%94%AE%E5%AD%97.html"/>
-    <updated>2018-09-09T21:01:30+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/%E5%85%B3%E9%94%AE%E5%AD%97.html</id>
-    <content type="html"><![CDATA[
-<h2 id="toc_0">this 关键字</h2>
-
-<ul>
-<li>修饰属性、方法、构造器</li>
-<li>this理解为当前对象或正在创建的对象</li>
-</ul>
-
-<h2 id="toc_1">super 关键字</h2>
-
-<ul>
-<li>可以访问父类属性，调用父类方法，在子类构造方法中调用父类构造器</li>
-<li>super追溯不仅限于直接父类</li>
-</ul>
-
-<h2 id="toc_2">static 关键字</h2>
-
-<p>当我们定义一个类的时候只是描述了其对象的属性和行为，并没有产生实质上的对象，只有通过new关键字才会产生对象，系统分配内存空间给对象，其方法才可以供外部调用。有时候希望无论是否有对象，某些特定的数据在内存空间里只有一份，比如所有的中国人都共享中国这个国家名称而不必每一个中国人的实例对象中单独分配一个用于代表国家名称的变量。</p>
-
-<h2 id="toc_3">final 关键字</h2>
-
-<ul>
-<li>final修饰的类不能被继承</li>
-<li>final修饰的方法不能被子类重写</li>
-<li>final修饰的变量称为常量</li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[API之mapping]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/15364136255027.html"/>
-    <updated>2018-09-08T21:33:45+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/15364136255027.html</id>
-    <content type="html"><![CDATA[
-<h2 id="toc_0">动态映射</h2>
-
-<h2 id="toc_1">静态映射</h2>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[routing 路由机制]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/routing%E8%B7%AF%E7%94%B1%E6%9C%BA%E5%88%B6.html"/>
-    <updated>2018-09-08T21:32:49+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/routing%E8%B7%AF%E7%94%B1%E6%9C%BA%E5%88%B6.html</id>
-    <content type="html"><![CDATA[
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[API之文档]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/API%E4%B9%8B%E6%96%87%E6%A1%A3.html"/>
-    <updated>2018-09-08T21:31:11+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/API%E4%B9%8B%E6%96%87%E6%A1%A3.html</id>
-    <content type="html"><![CDATA[
-<h2 id="toc_0">查询</h2>
-
-<h2 id="toc_1">添加</h2>
-
-<h2 id="toc_2">更新</h2>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[API之索引]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/API%E4%B9%8B%E7%B4%A2%E5%BC%95.html"/>
-    <updated>2018-09-08T21:28:28+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/API%E4%B9%8B%E7%B4%A2%E5%BC%95.html</id>
-    <content type="html"><![CDATA[
-<h2 id="toc_0">查询</h2>
-
-<h2 id="toc_1">创建</h2>
-
-<p>索引名不能包含大写字母</p>
-
-<h2 id="toc_2">更新</h2>
-
-<h2 id="toc_3">删除</h2>
-
-<h2 id="toc_4">打开</h2>
-
-<h2 id="toc_5">关闭</h2>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[基本概念]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5.html"/>
-    <updated>2018-09-08T21:16:15+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5.html</id>
-    <content type="html"><![CDATA[
-<h2 id="toc_0">index 索引</h2>
-
-<p>ElasticSearch存放具体数据的地方，是一类具有相似特征的文档的集合</p>
-
-<h2 id="toc_1">type 类型</h2>
-
-<p>一个类型是索引的一个逻辑上的分类，通常具有一组相同字段的文档组成</p>
-
-<h2 id="toc_2">document 文档</h2>
-
-<p>文档是ElasticSearch可被索引的基础逻辑单元，相当于关系数据库中数据表的一行数据。ElasticSearch的文档具有JSON格式，由多个字段组成，字段相当于关系数据库中列的概念</p>
-
-<h2 id="toc_3">shard 分片</h2>
-
-<p>当数据量较大时，索引的存储空间需求超出单个节点磁盘容量的限制，或者出现单个节点处理速度较慢。为了解决这些问题，ElasticSearch将索引中的数据进行切分成多个分片（shard），每个分片存储这个索引的一部分数据，分布在不同节点上。当需要查询索引时，ElasticSearch将查询发送到每个相关分片，之后将查询结果合并，这个过程对ElasticSearch应用来说是透明的，用户感知不到分片的存在。 <br/>
-一个索引的分片一定指定，不再修改</p>
-
-<h2 id="toc_4">replication 副本</h2>
-
-<h2 id="toc_5">其实，分片全称是主分片，简称为分片。主分片是相对于副本来说的，副本是对主分片的一个或多个复制版本（或称拷贝），这些复制版本（拷贝）可以称为复制分片，可以直接称之为副本。当主分片丢失时，集群可以将一个副本升级为新的主分片</h2>
-
-<h1 id="toc_6">与关系型数据库对比</h1>
-
-<table>
-<thead>
-<tr>
-<th>ElasticSearch</th>
-<th>RDBMS</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>索引（index）</td>
-<td>数据库（database）</td>
-</tr>
-<tr>
-<td>类型（type）</td>
-<td>表（table）</td>
-</tr>
-<tr>
-<td>文档（document</td>
-<td>行（row）</td>
-</tr>
-<tr>
-<td>字段（field）</td>
-<td>列（column）</td>
-</tr>
-<tr>
-<td>映射（mapping）</td>
-<td>表结构（schema）</td>
-</tr>
-<tr>
-<td>全文索引</td>
-<td>索引</td>
-</tr>
-<tr>
-<td>查询DSL</td>
-<td>SQL</td>
-</tr>
-</tbody>
-</table>
-
-<hr/>
-
-<h2 id="toc_7">字段类型</h2>
-
-<blockquote>
-<p>核心类型</p>
-</blockquote>
-
-<table>
-<thead>
-<tr>
-<th>类型名称</th>
-<th>类型表示</th>
-<th>类型描述</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>字符串类型</td>
-<td>keyword,text</td>
-<td>keyword类型的字段只能通过精确值搜索到。text类型的字段不用于排序，很少用于聚合。</td>
-</tr>
-<tr>
-<td>整数类型</td>
-<td>integer,long,short,byte</td>
-<td></td>
-</tr>
-<tr>
-<td>浮点类型</td>
-<td>double,float,half_float,scaled_float</td>
-<td></td>
-</tr>
-<tr>
-<td>逻辑类型</td>
-<td>boolean</td>
-<td></td>
-</tr>
-<tr>
-<td>日期类型</td>
-<td>date</td>
-<td></td>
-</tr>
-<tr>
-<td>范围类型</td>
-<td>range</td>
-<td></td>
-</tr>
-<tr>
-<td>二进制类型</td>
-<td>binary</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<blockquote>
-<p>复合类型</p>
-</blockquote>
-
-<table>
-<thead>
-<tr>
-<th>类型名称</th>
-<th>类型表示</th>
-<th>类型描述</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>数组类型</td>
-<td>array</td>
-<td></td>
-</tr>
-<tr>
-<td>对象类型</td>
-<td>object</td>
-<td></td>
-</tr>
-<tr>
-<td>嵌套类型</td>
-<td>nested</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<blockquote>
-<p>地理类型</p>
-</blockquote>
-
-<table>
-<thead>
-<tr>
-<th>类型名称</th>
-<th>类型表示</th>
-<th>类型描述</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>地理坐标类型</td>
-<td>geo_point</td>
-<td></td>
-</tr>
-<tr>
-<td>地理地图</td>
-<td>geo_shape</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<blockquote>
-<p>特殊类型</p>
-</blockquote>
-
-<table>
-<thead>
-<tr>
-<th>类型名称</th>
-<th>类型表示</th>
-<th>类型描述</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>IP类型</td>
-<td>ip</td>
-<td></td>
-</tr>
-<tr>
-<td>范围类型</td>
-<td>completion</td>
-<td></td>
-</tr>
-<tr>
-<td>令牌计数类型</td>
-<td>token_count</td>
-<td></td>
-</tr>
-<tr>
-<td>附件类型</td>
-<td>attachment</td>
-<td></td>
-</tr>
-<tr>
-<td>抽取类型</td>
-<td>percolator</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[面向对象三大特性]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7.html"/>
-    <updated>2018-09-01T23:08:02+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7.html</id>
-    <content type="html"><![CDATA[
-<h2 id="toc_0">封装</h2>
-
-<p>属性私有化，方法公开化</p>
-
-<h2 id="toc_1">继承</h2>
-
-<h2 id="toc_2">多态</h2>
-
-<p>可以理解为一个事物的多种表现形态，2种体现</p>
-
-<ol>
-<li>方法的重载和重写</li>
-<li>子类对象的多态性-可以直接应该在抽象类和接口上</li>
-</ol>
-
-<pre><code class="language-text">子类对象的多态性：父类的引用指向子类对象
-Animal dog = new Dog();
-//虚拟方法调用：通过父类的引用指向子类实体对象，当调用方法时执行的是子类重写父类的方法
-dog.eat();
-</code></pre>
-
-<ol>
-<li>程序运行分为编译状态和运行状态</li>
-</ol>
-
-<pre><code class="language-text">对于多态性来说，
-编译时，“看左边”，将此引用变量理解为父类的类型
-运行时，“看右边”，关注真正的实体对象
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[elk配置文件]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/elk%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.html"/>
-    <updated>2018-09-01T22:26:37+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/elk%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.html</id>
-    <content type="html"><![CDATA[
-<h2 id="toc_0">elasticsearch.yml</h2>
-
-<pre><code class="language-text"># --------------- Cluster ----------------------
-#es 集群名称
-cluster.name: es-cluster        
-
-#当前节点名称
-node.name: es-mater01           
-
-#配置角色为：主节点和数据节点
-node.master: true
-node.data: true
-
-#配置数据路径和日志路径
-path.data: /data/elastic/data
-path.logs: /data/elastic/log
-
-#开启内存锁定
-bootstrap.memory_lock: true
-bootstrap.system_call_filter: false
-# ---------------- Network ---------------------
-#节点间通讯IP，设置为0.0.0.0兼顾内网节点间通讯
-network.bind_host: 0.0.0.0
-
-#设置9200通讯IP，一般设置为外网IP
-network.publish_host: 39.104.186.15
-
-#设置HTTP通讯端口
-http.port: 9200
-
-#设置HTTP开启状态
-http.enabled: true
-
-#设置运行跨域访问
-http.cors.enabled: true
-http.cors.allow-origin: &quot;*&quot;
-http.max_content_length: 500mb
-
-# -------------- Discovery ----------------------
-#设置zen发现范围，此处可用换为主机名：[&quot;es-master01&quot;, &quot;es-master02&quot;, &quot;es-data01&quot;]
-discovery.zen.ping.unicast.hosts: [&quot;172.16.14.85&quot;, &quot;172.16.14.86&quot;, &quot;172.16.14.87&quot;]
-
-#discovery.zen.ping.multicast.enabled: false
-
-discovery.zen.no_master_block: write
-discovery.zen.fd.ping_timeout: 10s
-
-#一个节点需要看到的具有master节点资格的最小数量,然后才能在集群中做操作.默认1.一般为：(master_node_count+1)/2
-discovery.zen.minimum_master_nodes: 2
-
-# --------------- Gateway --------------------
-#设置在有2个节点后进行数据恢复
-gateway.recover_after_nodes: 2
-gateway.expected_nodes: 3
-gateway.recover_after_time: 1m
-
-#
-# --------------- Various ----------------------
-#禁止通配符模式删除索引
-action.destructive_requires_name: true
-#indices.cluster.send_refresh_mapping: false
-
-indices.recovery.max_bytes_per_sec: 200mb
-indices.memory.index_buffer_size: 20%
-
-#script.inline: true
-#script.indexed: true
-
-#关闭xpack的安全校验
-xpack.security.enabled: false
-</code></pre>
-
-<hr/>
-
-<h2 id="toc_1">kibana.yml</h2>
-
-<pre><code class="language-text">#
-server.port: 5601
-#设置可以远程访问
-server.host: &quot;0.0.0.0&quot;
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[elasticsearch 性能调优]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/elasticsearch%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98.html"/>
-    <updated>2018-09-01T22:26:02+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/elasticsearch%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98.html</id>
-    <content type="html"><![CDATA[
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[elasticsearch 集群安装]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/elasticsearch%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85.html"/>
-    <updated>2018-09-01T22:25:01+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/elasticsearch%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85.html</id>
-    <content type="html"><![CDATA[
-<p><a href="https://juejin.im/post/5b44b585e51d45191716e63c">https://juejin.im/post/5b44b585e51d45191716e63c</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[elk 安装 (rpm方式)]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/elk%E5%AE%89%E8%A3%85(rpm%E6%96%B9%E5%BC%8F).html"/>
-    <updated>2018-09-01T22:02:24+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/elk%E5%AE%89%E8%A3%85(rpm%E6%96%B9%E5%BC%8F).html</id>
-    <content type="html"><![CDATA[
-<h2 id="toc_0">elasticsearch 安装</h2>
-
-<h3 id="toc_1">上传rpm包到路径/usr/search</h3>
-
-<h3 id="toc_2">解压</h3>
-
-<pre><code class="language-text">rpm -ivh elasticsearch-6.4.0.rpm
-</code></pre>
-
-<ul>
-<li>安装路径 /usr/share/elasticsearch </li>
-<li>配置文件路径 /etc/elasticsearch/</li>
-</ul>
-
-<h3 id="toc_3">启动服务</h3>
-
-<pre><code class="language-text">service elasticsearch start  
-或者命令  
-sudo chkconfig --add elasticsearch  
-sudo -i service elasticsearch start  
-sudo -i service elasticsearch stop   
-sudo -i service elasticsearch status 
-</code></pre>
-
-<h3 id="toc_4">测试是否安装成功</h3>
-
-<pre><code class="language-text">curl http://localhost:9200/
-</code></pre>
-
-<hr/>
-
-<h2 id="toc_5">kibana 安装</h2>
-
-<h3 id="toc_6">上传rpm包到路径/usr/search</h3>
-
-<h3 id="toc_7">解压</h3>
-
-<pre><code class="language-text">rpm -ivh kibana-6.4.0-x86_64.rpm
-</code></pre>
-
-<ul>
-<li>安装路径 /usr/share/kibana</li>
-<li>配置文件路径 /etc/kibana/</li>
-</ul>
-
-<hr/>
-
-<h2 id="toc_8">logstash 安装</h2>
 
 ]]></content>
   </entry>

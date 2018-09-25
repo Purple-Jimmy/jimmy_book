@@ -2,7 +2,132 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>https://purple-jimmy.github.io/jimmy_book/</loc>
-  <lastmod>2018-09-23T14:30:11+08:00</lastmod>
+  <lastmod>2018-09-25T23:03:19+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/bool.html</loc>
+  <lastmod>2018-09-25T22:46:06+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/constant_score.html</loc>
+  <lastmod>2018-09-25T22:45:24+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/%E5%A4%8D%E5%90%88%E6%9F%A5%E8%AF%A2%E6%A6%82%E5%BF%B5.html</loc>
+  <lastmod>2018-09-25T22:45:07+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/ids.html</loc>
+  <lastmod>2018-09-25T22:43:54+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/type.html</loc>
+  <lastmod>2018-09-25T22:43:39+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/fuzzy.html</loc>
+  <lastmod>2018-09-25T22:43:06+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/regexp.html</loc>
+  <lastmod>2018-09-25T22:42:33+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/wildcard.html</loc>
+  <lastmod>2018-09-25T22:41:22+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/exists.html</loc>
+  <lastmod>2018-09-25T22:40:38+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/prefix.html</loc>
+  <lastmod>2018-09-25T22:40:22+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/range.html</loc>
+  <lastmod>2018-09-25T22:40:06+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/terms.html</loc>
+  <lastmod>2018-09-25T22:29:52+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/term.html</loc>
+  <lastmod>2018-09-25T22:29:11+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2%E6%A6%82%E5%BF%B5.html</loc>
+  <lastmod>2018-09-25T22:25:45+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/15378854080366.html</loc>
+  <lastmod>2018-09-25T22:23:28+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/query_string.html</loc>
+  <lastmod>2018-09-25T22:23:06+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/common_terms.html</loc>
+  <lastmod>2018-09-25T22:22:39+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/multi_match%20.html</loc>
+  <lastmod>2018-09-25T22:22:05+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/match_phrase_prefix%20.html</loc>
+  <lastmod>2018-09-25T22:21:26+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/match_phrase.html</loc>
+  <lastmod>2018-09-25T22:17:10+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E6%A6%82%E5%BF%B5.html</loc>
+  <lastmod>2018-09-25T22:05:54+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/match.html</loc>
+  <lastmod>2018-09-25T22:04:51+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/mapping%E5%8F%82%E6%95%B0.html</loc>
+  <lastmod>2018-09-25T21:42:10+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/elasticsearch%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2.html</loc>
+  <lastmod>2018-09-25T21:41:00+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/reflection%E5%8F%8D%E5%B0%84.html</loc>
+  <lastmod>2018-09-23T20:37:26+08:00</lastmod>
 </url>
 
 <url>
@@ -200,6 +325,10 @@
 </url>
 
 <url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/%E5%8F%8D%E5%B0%84.html</loc>
+</url>
+
+<url>
   <loc>https://purple-jimmy.github.io/jimmy_book/exception%E5%BC%82%E5%B8%B8.html</loc>
 </url>
 
@@ -217,6 +346,34 @@
 
 <url>
   <loc>https://purple-jimmy.github.io/jimmy_book/elk.html</loc>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/elasticsearch.html</loc>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/query-%E6%9F%A5%E8%AF%A2.html</loc>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2.html</loc>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2.html</loc>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2.html</loc>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/%E5%A4%8D%E5%90%88%E6%9F%A5%E8%AF%A2.html</loc>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/mapping-%E6%98%A0%E5%B0%84.html</loc>
 </url>
 
 <url>
