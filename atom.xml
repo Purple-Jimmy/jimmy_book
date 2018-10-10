@@ -4,7 +4,7 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2018-09-23T14:30:11+08:00</updated>
+  <updated>2018-09-25T23:03:20+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -134,12 +134,63 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[term]]></title>
+    <title type="html"><![CDATA[term 单个值精确搜索]]></title>
     <link href="https://purple-jimmy.github.io/jimmy_book/term.html"/>
     <updated>2018-09-25T22:29:11+08:00</updated>
     <id>https://purple-jimmy.github.io/jimmy_book/term.html</id>
     <content type="html"><![CDATA[
-<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
+<h2 id="toc_0">keyword 类型</h2>
+
+<p>查询值不会被分词,只有当查询词和检索字段的keyword完全一致时才能被检索出来</p>
+
+<pre><code class="language-text">curl -H &quot;Content-Type:application/json&quot; -X GET &#39;localhost:9200/es/blog/_search?pretty&#39; -d &#39;
+{
+  &quot;query&quot;: {
+       &quot;term&quot;:{
+           &quot;title.keyword&quot;:&quot;Elasticsearch Tutorial&quot;
+       }
+  },
+  &quot;_source&quot;:[&quot;title&quot;]
+}
+&#39;
+</code></pre>
+
+<p>结果</p>
+
+<pre><code class="language-text">&quot;hits&quot; : {
+    &quot;total&quot; : 1,
+    &quot;max_score&quot; : 0.6931472,
+    &quot;hits&quot; : [
+      {
+        &quot;_index&quot; : &quot;es&quot;,
+        &quot;_type&quot; : &quot;blog&quot;,
+        &quot;_id&quot; : &quot;7&quot;,
+        &quot;_score&quot; : 0.6931472,
+        &quot;_source&quot; : {
+          &quot;title&quot; : &quot;Elasticsearch Tutorial&quot;
+        }
+      }
+    ]
+  }
+</code></pre>
+
+<h2 id="toc_1">text 类型</h2>
+
+<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search?pretty&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
+{
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;bookName&quot;: &quot;java编程思想&quot;
+    }
+  }
+}&#39;
+</code></pre>
+
+<p>结果查询不到数据</p>
+
+<hr/>
+
+<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search?pretty&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
 {
   &quot;query&quot;: {
     &quot;term&quot;: {
@@ -147,10 +198,14 @@
     }
   }
 }&#39;
-
--------
-java编程思想
 </code></pre>
+
+<p>结果</p>
+
+<pre><code class="language-text">java编程思想
+</code></pre>
+
+<hr/>
 
 <pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
 {
@@ -160,21 +215,25 @@ java编程思想
     }
   }
 }&#39;
+</code></pre>
 
--------
-Java
+<p>结果</p>
+
+<pre><code class="language-text">Java
 java编程思想
 </code></pre>
 
-<p>查看分词</p>
+<p>原因:term查询时传入的查询值不会被分词,而text类型会被默认的标准分析器分词成如下的词.所以传入的<em><u>java编程思想</u></em>没有与之匹配的词因此检索不到数据</p>
+
+<h2 id="toc_2">查看分词</h2>
 
 <pre><code class="language-text">curl  -H &quot;Content-Type:application/json&quot; -XGET &quot;localhost:9200/_analyze?pretty&quot; -d&#39;
 {
   &quot;analyzer&quot;: &quot;standard&quot;,
   &quot;text&quot;:     &quot;java编程思想&quot;
-}
+}‘
 
--------
+----------------------
 {
   &quot;tokens&quot;: [
     {
