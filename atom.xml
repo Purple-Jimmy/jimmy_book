@@ -4,13 +4,66 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2018-09-25T23:03:20+08:00</updated>
+  <updated>2018-10-10T23:20:06+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[介绍]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/nginx%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%AE%89%E8%A3%85.html"/>
+    <updated>2018-10-14T19:55:24+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/nginx%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%AE%89%E8%A3%85.html</id>
+    <content type="html"><![CDATA[
+<ul>
+<li>高性能web服务器</li>
+<li>http和反向代理服务器,也是IMAP、POP3、SMTP代理服务器</li>
+</ul>
+
+<h1 id="toc_0">安装</h1>
+
+<pre><code class="language-text">1. mkdir jimmy
+2. cd /jimmy
+3. wget http://nginx.org/download/nginx-1.14.0.tar.gz
+4. tar -zxvf nginx-1.14.0.tar.gz
+5. yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel
+6. make &amp;&amp; make install
+</code></pre>
+
+<h1 id="toc_1">常用命令</h1>
+
+<p>启动停止</p>
+
+<pre><code class="language-text">cd cd /usr/local/nginx
+1. 测试: ./sbin/nginx -t
+2. 启动: ./sbin/nginx
+3. 停止: ./sbin/nginx -s stop 或者 nginx -s quit 
+4. 重启: ./sbin/nginx -s reload
+</code></pre>
+
+<p>平滑重启</p>
+
+<pre><code class="language-text">kill -HUP Nginx主进程号
+</code></pre>
+
+<p>查看进程</p>
+
+<pre><code class="language-text">ps -ef | grep nginx
+</code></pre>
+
+<p>配置防火墙</p>
+
+<pre><code class="language-text">1. 开启端口 firewall-cmd --zone=public --add-port=80/tcp --permanent      
+2. 重启防火墙  firewall-cmd --reload  
+3. 查看端口 firewall-cmd --query-port=80/tcp
+
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[bool]]></title>
@@ -337,22 +390,6 @@ java编程思想
     <updated>2018-09-25T22:21:26+08:00</updated>
     <id>https://purple-jimmy.github.io/jimmy_book/match_phrase_prefix%20.html</id>
     <content type="html"><![CDATA[
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[match_phrase 短语查询]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/match_phrase.html"/>
-    <updated>2018-09-25T22:17:10+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/match_phrase.html</id>
-    <content type="html"><![CDATA[
-<p>匹配精确短语,match_phrase查询会将查询内容分词,分词器可以自定义,文档中同时满足以下两个条件才会被检索到:</p>
-
-<ol>
-<li>分词后所有词项都要出现在该字段中</li>
-<li>字段中的词项顺序要一致</li>
-</ol>
 
 ]]></content>
   </entry>

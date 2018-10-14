@@ -81,6 +81,8 @@
         
             <li><a href="java.html">java</a></li>
         
+            <li><a href="nginx.html">nginx</a></li>
+        
             <li><a href="elk.html">elk</a></li>
         
             <li><a href="idea.html">idea</a></li>
@@ -107,6 +109,257 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5.html">
+                
+                  <h1>基本概念</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">index 索引</h2>
+
+<p>ElasticSearch存放具体数据的地方，是一类具有相似特征的文档的集合</p>
+
+<h2 id="toc_1">type 类型</h2>
+
+<p>一个类型是索引的一个逻辑上的分类，通常具有一组相同字段的文档组成</p>
+
+<h2 id="toc_2">document 文档</h2>
+
+<p>文档是ElasticSearch可被索引的基础逻辑单元，相当于关系数据库中数据表的一行数据。ElasticSearch的文档具有JSON格式，由多个字段组成，字段相当于关系数据库中列的概念</p>
+
+<h2 id="toc_3">shard 分片</h2>
+
+<p>当数据量较大时，索引的存储空间需求超出单个节点磁盘容量的限制，或者出现单个节点处理速度较慢。为了解决这些问题，ElasticSearch将索引中的数据进行切分成多个分片（shard），每个分片存储这个索引的一部分数据，分布在不同节点上。当需要查询索引时，ElasticSearch将查询发送到每个相关分片，之后将查询结果合并，这个过程对ElasticSearch应用来说是透明的，用户感知不到分片的存在。 <br/>
+一个索引的分片一定指定，不再修改</p>
+
+<h2 id="toc_4">replication 副本</h2>
+
+<h2 id="toc_5">其实，分片全称是主分片，简称为分片。主分片是相对于副本来说的，副本是对主分片的一个或多个复制版本（或称拷贝），这些复制版本（拷贝）可以称为复制分片，可以直接称之为副本。当主分片丢失时，集群可以将一个副本升级为新的主分片</h2>
+
+<h1 id="toc_6">与关系型数据库对比</h1>
+
+<table>
+<thead>
+<tr>
+<th>ElasticSearch</th>
+<th>RDBMS</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>索引（index）</td>
+<td>数据库（database）</td>
+</tr>
+<tr>
+<td>类型（type）</td>
+<td>表（table）</td>
+</tr>
+<tr>
+<td>文档（document</td>
+<td>行（row）</td>
+</tr>
+<tr>
+<td>字段（field）</td>
+<td>列（column）</td>
+</tr>
+<tr>
+<td>映射（mapping）</td>
+<td>表结构（schema）</td>
+</tr>
+<tr>
+<td>全文索引</td>
+<td>索引</td>
+</tr>
+<tr>
+<td>查询DSL</td>
+<td>SQL</td>
+</tr>
+</tbody>
+</table>
+
+<hr/>
+
+<h2 id="toc_7">字段类型</h2>
+
+<blockquote>
+<p>核心类型</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+<th>类型名称</th>
+<th>类型表示</th>
+<th>类型描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>字符串类型</td>
+<td>keyword,text</td>
+<td>keyword类型的字段只能通过精确值搜索到。text类型的字段不用于排序，很少用于聚合。</td>
+</tr>
+<tr>
+<td>整数类型</td>
+<td>integer,long,short,byte</td>
+<td></td>
+</tr>
+<tr>
+<td>浮点类型</td>
+<td>double,float,half_float,scaled_float</td>
+<td></td>
+</tr>
+<tr>
+<td>逻辑类型</td>
+<td>boolean</td>
+<td></td>
+</tr>
+<tr>
+<td>日期类型</td>
+<td>date</td>
+<td></td>
+</tr>
+<tr>
+<td>范围类型</td>
+<td>range</td>
+<td></td>
+</tr>
+<tr>
+<td>二进制类型</td>
+<td>binary</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>复合类型</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+<th>类型名称</th>
+<th>类型表示</th>
+<th>类型描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>数组类型</td>
+<td>array</td>
+<td></td>
+</tr>
+<tr>
+<td>对象类型</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>嵌套类型</td>
+<td>nested</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>地理类型</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+<th>类型名称</th>
+<th>类型表示</th>
+<th>类型描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>地理坐标类型</td>
+<td>geo_point</td>
+<td></td>
+</tr>
+<tr>
+<td>地理地图</td>
+<td>geo_shape</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>特殊类型</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+<th>类型名称</th>
+<th>类型表示</th>
+<th>类型描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>IP类型</td>
+<td>ip</td>
+<td></td>
+</tr>
+<tr>
+<td>范围类型</td>
+<td>completion</td>
+<td></td>
+</tr>
+<tr>
+<td>令牌计数类型</td>
+<td>token_count</td>
+<td></td>
+</tr>
+<tr>
+<td>附件类型</td>
+<td>attachment</td>
+<td></td>
+</tr>
+<tr>
+<td>抽取类型</td>
+<td>percolator</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/8</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='elk.html'>elk</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7.html">
                 
@@ -1286,6 +1539,8 @@ bindaddress   bindport   connectaddress   connectport
         
             <a href="java.html"><strong>java</strong></a>
         
+            <a href="nginx.html"><strong>nginx</strong></a>
+        
             <a href="elk.html"><strong>elk</strong></a>
         
             <a href="idea.html"><strong>idea</strong></a>
@@ -1307,6 +1562,12 @@ bindaddress   bindport   connectaddress   connectport
 	      
 		      
 			      <li class="post">
+			        <a href="nginx%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%AE%89%E8%A3%85.html">介绍</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="bool.html">bool</a>
 			      </li>
 		     
@@ -1326,12 +1587,6 @@ bindaddress   bindport   connectaddress   connectport
 		      
 			      <li class="post">
 			        <a href="ids.html">ids</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="type.html">type</a>
 			      </li>
 		     
 		  

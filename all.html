@@ -81,6 +81,8 @@
         
             <li><a href="java.html">java</a></li>
         
+            <li><a href="nginx.html">nginx</a></li>
+        
             <li><a href="elk.html">elk</a></li>
         
             <li><a href="idea.html">idea</a></li>
@@ -107,6 +109,81 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="nginx%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%AE%89%E8%A3%85.html">
+                
+                  <h1>介绍</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li>高性能web服务器</li>
+<li>http和反向代理服务器,也是IMAP、POP3、SMTP代理服务器</li>
+</ul>
+
+<h1 id="toc_0">安装</h1>
+
+<pre><code class="language-text">1. mkdir jimmy
+2. cd /jimmy
+3. wget http://nginx.org/download/nginx-1.14.0.tar.gz
+4. tar -zxvf nginx-1.14.0.tar.gz
+5. yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel
+6. make &amp;&amp; make install
+</code></pre>
+
+<h1 id="toc_1">常用命令</h1>
+
+<p>启动停止</p>
+
+<pre><code class="language-text">cd cd /usr/local/nginx
+1. 测试: ./sbin/nginx -t
+2. 启动: ./sbin/nginx
+3. 停止: ./sbin/nginx -s stop 或者 nginx -s quit 
+4. 重启: ./sbin/nginx -s reload
+</code></pre>
+
+<p>平滑重启</p>
+
+<pre><code class="language-text">kill -HUP Nginx主进程号
+</code></pre>
+
+<p>查看进程</p>
+
+<pre><code class="language-text">ps -ef | grep nginx
+</code></pre>
+
+<p>配置防火墙</p>
+
+<pre><code class="language-text">1. 开启端口 firewall-cmd --zone=public --add-port=80/tcp --permanent      
+2. 重启防火墙  firewall-cmd --reload  
+3. 查看端口 firewall-cmd --query-port=80/tcp
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/10/14</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='nginx.html'>nginx</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="bool.html">
                 
@@ -222,7 +299,7 @@
                     <span class="date">2018/9/25</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2.html'>词项查询</a></span>
+          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2(%E7%BB%93%E6%9E%84%E5%8C%96).html'>词项查询(结构化)</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -254,7 +331,7 @@
                     <span class="date">2018/9/25</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2.html'>词项查询</a></span>
+          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2(%E7%BB%93%E6%9E%84%E5%8C%96).html'>词项查询(结构化)</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -286,7 +363,7 @@
                     <span class="date">2018/9/25</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2.html'>词项查询</a></span>
+          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2(%E7%BB%93%E6%9E%84%E5%8C%96).html'>词项查询(结构化)</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -318,7 +395,7 @@
                     <span class="date">2018/9/25</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2.html'>词项查询</a></span>
+          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2(%E7%BB%93%E6%9E%84%E5%8C%96).html'>词项查询(结构化)</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -350,7 +427,7 @@
                     <span class="date">2018/9/25</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2.html'>词项查询</a></span>
+          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2(%E7%BB%93%E6%9E%84%E5%8C%96).html'>词项查询(结构化)</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -382,7 +459,7 @@
                     <span class="date">2018/9/25</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2.html'>词项查询</a></span>
+          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2(%E7%BB%93%E6%9E%84%E5%8C%96).html'>词项查询(结构化)</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -414,7 +491,7 @@
                     <span class="date">2018/9/25</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2.html'>词项查询</a></span>
+          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2(%E7%BB%93%E6%9E%84%E5%8C%96).html'>词项查询(结构化)</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -446,7 +523,7 @@
                     <span class="date">2018/9/25</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2.html'>词项查询</a></span>
+          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2(%E7%BB%93%E6%9E%84%E5%8C%96).html'>词项查询(结构化)</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -479,7 +556,7 @@
                     <span class="date">2018/9/25</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2.html'>词项查询</a></span>
+          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2(%E7%BB%93%E6%9E%84%E5%8C%96).html'>词项查询(结构化)</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -646,7 +723,7 @@ java编程思想
                     <span class="date">2018/9/25</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2.html'>词项查询</a></span>
+          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2(%E7%BB%93%E6%9E%84%E5%8C%96).html'>词项查询(结构化)</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -680,7 +757,7 @@ java编程思想
                     <span class="date">2018/9/25</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2.html'>词项查询</a></span>
+          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2(%E7%BB%93%E6%9E%84%E5%8C%96).html'>词项查询(结构化)</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -854,44 +931,6 @@ java编程思想
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="match_phrase.html">
-                
-                  <h1>match_phrase 短语查询</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>匹配精确短语,match_phrase查询会将查询内容分词,分词器可以自定义,文档中同时满足以下两个条件才会被检索到:</p>
-
-<ol>
-<li>分词后所有词项都要出现在该字段中</li>
-<li>字段中的词项顺序要一致</li>
-</ol>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/9/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2.html'>全文检索</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -948,6 +987,8 @@ java编程思想
         
             <a href="java.html"><strong>java</strong></a>
         
+            <a href="nginx.html"><strong>nginx</strong></a>
+        
             <a href="elk.html"><strong>elk</strong></a>
         
             <a href="idea.html"><strong>idea</strong></a>
@@ -969,6 +1010,12 @@ java编程思想
 	      
 		      
 			      <li class="post">
+			        <a href="nginx%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%AE%89%E8%A3%85.html">介绍</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="bool.html">bool</a>
 			      </li>
 		     
@@ -988,12 +1035,6 @@ java编程思想
 		      
 			      <li class="post">
 			        <a href="ids.html">ids</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="type.html">type</a>
 			      </li>
 		     
 		  
