@@ -4,13 +4,99 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2018-10-10T23:20:06+08:00</updated>
+  <updated>2018-10-14T21:20:10+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[日志管理]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/nginx%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86.html"/>
+    <updated>2018-10-19T22:45:48+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/nginx%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86.html</id>
+    <content type="html"><![CDATA[
+<p>nginx允许对不同的server做不同的log</p>
+
+<h2 id="toc_0">nginx的server段有如下配置</h2>
+
+<pre><code class="language-text">#access_log  logs/host.access.log  main;
+</code></pre>
+
+<p>access_log:声明日志<br/>
+logs/host.access.log:server的访问日志的文件路径<br/>
+main:使用的日志格式</p>
+
+<h2 id="toc_1">main格式日志</h2>
+
+<pre><code class="language-text">#log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;
+    #                  &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;
+    #                  &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;
+    
+$remote_addr:远程IP
+$remote_user:远程用户
+$time_local:用户触发访问时间
+$request:访问方式(get,post等)
+$status:相应状态
+$body_bytes_sent:请求体body长度
+$http_referer:来源信息
+$http_user_agent:用户代理,被转发的请求的原始IP
+$http_x_forwarded_for:在经过代理时,代理把你原始的IP放在此头信息中并传输
+</code></pre>
+
+<h2 id="toc_2">自定义日志格式</h2>
+
+<pre><code class="language-text">log_format custom_log &#39;$remote_addr&#39;;
+</code></pre>
+
+<h2 id="toc_3">日志切割</h2>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[虚拟主机配置]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/nginx%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE.html"/>
+    <updated>2018-10-17T22:55:38+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/nginx%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE.html</id>
+    <content type="html"><![CDATA[
+<p>nginx配置段</p>
+
+<pre><code class="language-text">//全局区
+worker_processes  1;//子进程数量,一般设置cpu*core数
+
+//配置nginx的连接特性
+events{
+  worker_connections  1024;//一个子进程最大允许1024个连接
+}
+
+//配置http服务器的主要段
+http{
+  server{//虚拟主机段
+    location{//定位,把特殊的路径或文件再次定位,如image目录单独处理
+    }
+  }
+}
+</code></pre>
+
+<h2 id="toc_0">基于域名的虚拟主机</h2>
+
+<h2 id="toc_1">基于端口的虚拟主机</h2>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[信号量控制]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/%E4%BF%A1%E5%8F%B7%E6%8E%A7%E5%88%B6.html"/>
+    <updated>2018-10-16T23:17:59+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/%E4%BF%A1%E5%8F%B7%E6%8E%A7%E5%88%B6.html</id>
+    <content type="html"><![CDATA[
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[介绍]]></title>
@@ -42,16 +128,22 @@
 2. 启动: ./sbin/nginx
 3. 停止: ./sbin/nginx -s stop 或者 nginx -s quit 
 4. 重启: ./sbin/nginx -s reload
+5. 日志切割: ./sbin/nginx -s reopen
 </code></pre>
 
 <p>平滑重启</p>
 
-<pre><code class="language-text">kill -HUP Nginx主进程号
+<pre><code class="language-text">kill -HUP `cat logs/nginx.pid`  
 </code></pre>
 
 <p>查看进程</p>
 
 <pre><code class="language-text">ps -ef | grep nginx
+</code></pre>
+
+<p>查看端口-服务关系</p>
+
+<pre><code class="language-text">netstat -antp
 </code></pre>
 
 <p>配置防火墙</p>
@@ -359,36 +451,6 @@ java编程思想
     <link href="https://purple-jimmy.github.io/jimmy_book/query_string.html"/>
     <updated>2018-09-25T22:23:06+08:00</updated>
     <id>https://purple-jimmy.github.io/jimmy_book/query_string.html</id>
-    <content type="html"><![CDATA[
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[common_terms 常用词查询]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/common_terms.html"/>
-    <updated>2018-09-25T22:22:39+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/common_terms.html</id>
-    <content type="html"><![CDATA[
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[multi_match]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/multi_match%20.html"/>
-    <updated>2018-09-25T22:22:05+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/multi_match%20.html</id>
-    <content type="html"><![CDATA[
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[match_phrase_prefix]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/match_phrase_prefix%20.html"/>
-    <updated>2018-09-25T22:21:26+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/match_phrase_prefix%20.html</id>
     <content type="html"><![CDATA[
 
 ]]></content>
