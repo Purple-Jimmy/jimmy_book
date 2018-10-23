@@ -4,13 +4,61 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2018-10-14T21:20:10+08:00</updated>
+  <updated>2018-10-19T23:30:39+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[查看指定目录下面个文件的大小]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F.html"/>
+    <updated>2018-10-23T22:38:36+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F.html</id>
+    <content type="html"><![CDATA[
+<pre><code class="language-text">cd /data
+du -sh *
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[centos7防火墙操作]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/linux%E9%98%B2%E7%81%AB%E5%A2%99.html"/>
+    <updated>2018-10-23T22:34:51+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/linux%E9%98%B2%E7%81%AB%E5%A2%99.html</id>
+    <content type="html"><![CDATA[
+<ol>
+<li>查看防火墙  systemctl status firewalld<br/></li>
+<li>开启防火墙  systemctl start firewalld<br/></li>
+<li>关闭防火墙  systemctl stop firewalld<br/></li>
+<li>开启端口    firewall-cmd --zone=public --add-port=9200/tcp --permanent<br/></li>
+<li>重启防火墙  firewall-cmd --reload<br/></li>
+<li>查看端口是否开放 firewall-cmd --query-port=9200/tcp</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[flink安装]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/flink%E5%AE%89%E8%A3%85.html"/>
+    <updated>2018-10-23T22:11:11+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/flink%E5%AE%89%E8%A3%85.html</id>
+    <content type="html"><![CDATA[
+<pre><code class="language-text">1. 官载:https://flink.apache.org/
+2. 解压:tar -zxvf flink-1.6.1-bin-scala_2.11.tgz
+3. 进入:cd flink-1.6.1
+4. 启动:./bin/start-cluster.sh 
+5. 开放端口:8081
+6. 访问:ip:8081
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[日志管理]]></title>
@@ -99,7 +147,7 @@ http{
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[介绍]]></title>
+    <title type="html"><![CDATA[nginx介绍]]></title>
     <link href="https://purple-jimmy.github.io/jimmy_book/nginx%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%AE%89%E8%A3%85.html"/>
     <updated>2018-10-14T19:55:24+08:00</updated>
     <id>https://purple-jimmy.github.io/jimmy_book/nginx%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%AE%89%E8%A3%85.html</id>
@@ -419,39 +467,6 @@ java编程思想
   ]
 }
 </code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[词项查询]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2%E6%A6%82%E5%BF%B5.html"/>
-    <updated>2018-09-25T22:25:45+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2%E6%A6%82%E5%BF%B5.html</id>
-    <content type="html"><![CDATA[
-<p>全文查询将在执行之前分析查询字符串,但词项级别查询将按照存储在倒排索引中的词项进行精确操作.<br/>
-这些查询通常用于数字,日期和枚举等结构化数据,而不是全文本字段.或者,它们允许您制作低级查询,并在分析过程之前进行.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[simple_query_string]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/15378854080366.html"/>
-    <updated>2018-09-25T22:23:28+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/15378854080366.html</id>
-    <content type="html"><![CDATA[
-<p>解析出错时不抛异常,丢弃查询无效的部分</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[query_string]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/query_string.html"/>
-    <updated>2018-09-25T22:23:06+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/query_string.html</id>
-    <content type="html"><![CDATA[
 
 ]]></content>
   </entry>

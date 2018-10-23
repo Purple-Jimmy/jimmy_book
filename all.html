@@ -88,6 +88,10 @@
             <li><a href="idea.html">idea</a></li>
         
             <li><a href="%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">设计模式</a></li>
+        
+            <li><a href="flink.html">flink</a></li>
+        
+            <li><a href="linux.html">linux</a></li>
          
 
       </ul>
@@ -109,6 +113,120 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F.html">
+                
+                  <h1>查看指定目录下面个文件的大小</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code class="language-text">cd /data
+du -sh *
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/10/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='linux.html'>linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="linux%E9%98%B2%E7%81%AB%E5%A2%99.html">
+                
+                  <h1>centos7防火墙操作</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ol>
+<li>查看防火墙  systemctl status firewalld<br/></li>
+<li>开启防火墙  systemctl start firewalld<br/></li>
+<li>关闭防火墙  systemctl stop firewalld<br/></li>
+<li>开启端口    firewall-cmd --zone=public --add-port=9200/tcp --permanent<br/></li>
+<li>重启防火墙  firewall-cmd --reload<br/></li>
+<li>查看端口是否开放 firewall-cmd --query-port=9200/tcp</li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/10/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='linux.html'>linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="flink%E5%AE%89%E8%A3%85.html">
+                
+                  <h1>flink安装</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code class="language-text">1. 官载:https://flink.apache.org/
+2. 解压:tar -zxvf flink-1.6.1-bin-scala_2.11.tgz
+3. 进入:cd flink-1.6.1
+4. 启动:./bin/start-cluster.sh 
+5. 开放端口:8081
+6. 访问:ip:8081
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/10/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='flink.html'>flink</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="nginx%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86.html">
                 
@@ -264,7 +382,7 @@ http{
 			<div class="article">
                 <a class="clearlink" href="nginx%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%AE%89%E8%A3%85.html">
                 
-                  <h1>介绍</h1>
+                  <h1>nginx介绍</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
@@ -894,105 +1012,6 @@ java编程思想
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2%E6%A6%82%E5%BF%B5.html">
-                
-                  <h1>词项查询</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>全文查询将在执行之前分析查询字符串,但词项级别查询将按照存储在倒排索引中的词项进行精确操作.<br/>
-这些查询通常用于数字,日期和枚举等结构化数据,而不是全文本字段.或者,它们允许您制作低级查询,并在分析过程之前进行.</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/9/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2(%E7%BB%93%E6%9E%84%E5%8C%96).html'>词项查询(结构化)</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15378854080366.html">
-                
-                  <h1>simple_query_string</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>解析出错时不抛异常,丢弃查询无效的部分</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/9/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2.html'>全文检索</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="query_string.html">
-                
-                  <h1>query_string</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/9/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2.html'>全文检索</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1056,6 +1075,10 @@ java编程思想
             <a href="idea.html"><strong>idea</strong></a>
         
             <a href="%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html"><strong>设计模式</strong></a>
+        
+            <a href="flink.html"><strong>flink</strong></a>
+        
+            <a href="linux.html"><strong>linux</strong></a>
          
         </p>
 
@@ -1072,6 +1095,24 @@ java编程思想
 	      
 		      
 			      <li class="post">
+			        <a href="%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F.html">查看指定目录下面个文件的大小</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="linux%E9%98%B2%E7%81%AB%E5%A2%99.html">centos7防火墙操作</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="flink%E5%AE%89%E8%A3%85.html">flink安装</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="nginx%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86.html">日志管理</a>
 			      </li>
 		     
@@ -1079,24 +1120,6 @@ java编程思想
 		      
 			      <li class="post">
 			        <a href="nginx%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE.html">虚拟主机配置</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="%E4%BF%A1%E5%8F%B7%E6%8E%A7%E5%88%B6.html">信号量控制</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="nginx%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%AE%89%E8%A3%85.html">介绍</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="bool.html">bool</a>
 			      </li>
 		     
 		  
