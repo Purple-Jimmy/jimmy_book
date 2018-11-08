@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  consul 服务发现 - jimmy_codebook
+  java 工具 - jimmy_codebook
   
   </title>
   
@@ -116,14 +116,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>consul 服务发现</h1>
+          <h1>java 工具</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2018/8/26</span>
+          <span class="date">2018/11/8</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0.html'>服务注册与发现</a></span>
+              <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>tools</a></span>
            
          
           <span class="comments">
@@ -137,36 +137,9 @@
 
       <div class="article-content">
       <ul>
-<li><p>引入依赖</p>
-<pre><code class="language-text">&lt;dependency&gt;
-&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
-&lt;artifactId&gt;spring-cloud-starter-consul-discovery&lt;/artifactId&gt;<br/>
-&lt;/dependency&gt;
-</code></pre></li>
-<li><p>添加注解 服务A的启动类添加:@EnableDiscoveryClient</p>
-<pre><code class="language-text">@SpringBootApplication
-@EnableDiscoveryClient<br/>
-public class ConsulStart {<br/>
-public static void main(String[] args) {<br/>
-    SpringApplication.run(ConsulStart.class,args);<br/>
-}<br/>
-}
-</code></pre></li>
-<li><p>配置文件 </p>
-<pre><code class="language-text">spring:
-cloud:<br/>
-consul:<br/>
-  host: xxx<br/>
-  port: xxx<br/>
-  discovery:<br/>
-    enabled: true<br/>
-    service-name: consul-server #注册中心注册的服务名字<br/>
-   # health-check-path: /health<br/>
-    health-check-interval: 10s<br/>
-    instance-id: consul-server-id<br/>
-    tags: dev,hello
-</code></pre></li>
-<li><p>访问consul ip查看注册上的服务</p></li>
+<li> JClarity——性能监控</li>
+<li> Bintray——社交分享平台</li>
+<li> Librato——监控&amp;可视化云服务</li>
 </ul>
 
 
@@ -178,16 +151,16 @@ consul:<br/>
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="feign%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.html" 
-          title="Previous Post: feign">&laquo; feign</a>
+          <a href="nginx%E5%8F%82%E6%95%B0.html" 
+          title="Previous Post: nginx参数">&laquo; nginx参数</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="consul%E5%AE%89%E8%A3%85.html" 
-          title="Next Post: consul 安装">consul 安装 &raquo;</a>
+          <a  href="%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F.html" 
+          title="Next Post: 查看指定目录下面个文件的大小">查看指定目录下面个文件的大小 &raquo;</a>
       
       </p>
         </div>

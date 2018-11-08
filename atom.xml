@@ -4,13 +4,130 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2018-10-19T23:30:39+08:00</updated>
+  <updated>2018-10-23T22:41:43+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[nginx参数]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/nginx%E5%8F%82%E6%95%B0.html"/>
+    <updated>2018-11-08T22:23:12+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/nginx%E5%8F%82%E6%95%B0.html</id>
+    <content type="html"><![CDATA[
+<p>--prefix= 指向安装目录<br/>
+--sbin-path 指向（执行）程序文件（nginx）<br/>
+--conf-path= 指向配置文件（nginx.conf）<br/>
+--error-log-path= 指向错误日志目录<br/>
+--pid-path= 指向pid文件（nginx.pid）<br/>
+--lock-path= 指向lock文件（nginx.lock）（安装文件锁定，防止安装文件被别人利用，或自己误操作。）<br/>
+--user= 指定程序运行时的非特权用户<br/>
+--group= 指定程序运行时的非特权用户组<br/>
+--builddir= 指向编译目录<br/>
+--with-rtsig_module 启用rtsig模块支持（实时信号）<br/>
+--with-select_module 启用select模块支持（一种轮询模式,不推荐在高载环境下使用）禁用：--without-select_module<br/>
+--with-poll_module 启用poll模块支持（功能与select相同，与select特性相同，为一种轮询模式,不推荐在高载环境下使用）<br/>
+--with-file-aio 启用file aio支持（一种APL文件传输格式）<br/>
+--with-ipv6 启用ipv6支持<br/>
+--with-http_ssl_module 启用ngx_http_ssl_module支持（使支持https请求，需已安装openssl）<br/>
+--with-http_realip_module 启用ngx_http_realip_module支持（这个模块允许从请求标头更改客户端的IP地址值，默认为关）<br/>
+--with-http_addition_module 启用ngx_http_addition_module支持（作为一个输出过滤器，支持不完全缓冲，分部分响应请求）<br/>
+--with-http_xslt_module 启用ngx_http_xslt_module支持（过滤转换XML请求）<br/>
+--with-http_image_filter_module 启用ngx_http_image_filter_module支持（传输JPEG/GIF/PNG 图片的一个过滤器）（默认为不启用。gd库要用到）<br/>
+--with-http_geoip_module 启用ngx_http_geoip_module支持（该模块创建基于与MaxMind GeoIP二进制文件相配的客户端IP地址的ngx_http_geoip_module变量）<br/>
+--with-http_sub_module 启用ngx_http_sub_module支持（允许用一些其他文本替换nginx响应中的一些文本）<br/>
+--with-http_dav_module 启用ngx_http_dav_module支持（增加PUT,DELETE,MKCOL：创建集合,COPY和MOVE方法）默认情况下为关闭，需编译开启<br/>
+--with-http_flv_module 启用ngx_http_flv_module支持（提供寻求内存使用基于时间的偏移量文件）<br/>
+--with-http_gzip_static_module 启用ngx_http_gzip_static_module支持（在线实时压缩输出数据流）<br/>
+--with-http_random_index_module 启用ngx_http_random_index_module支持（从目录中随机挑选一个目录索引）<br/>
+--with-http_secure_link_module 启用ngx_http_secure_link_module支持（计算和检查要求所需的安全链接网址）<br/>
+--with-http_degradation_module  启用ngx_http_degradation_module支持（允许在内存不足的情况下返回204或444码）<br/>
+--with-http_stub_status_module 启用ngx_http_stub_status_module支持（获取nginx自上次启动以来的工作状态）<br/>
+--without-http_charset_module 禁用ngx_http_charset_module支持（重新编码web页面，但只能是一个方向--服务器端到客户端，并且只有一个字节的编码可以被重新编码）<br/>
+--without-http_gzip_module 禁用ngx_http_gzip_module支持（该模块同-with-http_gzip_static_module功能一样）<br/>
+--without-http_ssi_module 禁用ngx_http_ssi_module支持（该模块提供了一个在输入端处理处理服务器包含文件（SSI）的过滤器，目前支持SSI命令的列表是不完整的）<br/>
+--without-http_userid_module 禁用ngx_http_userid_module支持（该模块用来处理用来确定客户端后续请求的cookies）<br/>
+--without-http_access_module 禁用ngx_http_access_module支持（该模块提供了一个简单的基于主机的访问控制。允许/拒绝基于ip地址）<br/>
+--without-http_auth_basic_module禁用ngx_http_auth_basic_module（该模块是可以使用用户名和密码基于http基本认证方法来保护你的站点或其部分内容）<br/>
+--without-http_autoindex_module 禁用disable ngx_http_autoindex_module支持（该模块用于自动生成目录列表，只在ngx_http_index_module模块未找到索引文件时发出请求。）<br/>
+--without-http_geo_module 禁用ngx_http_geo_module支持（创建一些变量，其值依赖于客户端的IP地址）<br/>
+--without-http_map_module 禁用ngx_http_map_module支持（使用任意的键/值对设置配置变量）<br/>
+--without-http_split_clients_module 禁用ngx_http_split_clients_module支持（该模块用来基于某些条件划分用户。条件如：ip地址、报头、cookies等等）<br/>
+--without-http_referer_module 禁用disable ngx_http_referer_module支持（该模块用来过滤请求，拒绝报头中Referer值不正确的请求）<br/>
+--without-http_rewrite_module 禁用ngx_http_rewrite_module支持（该模块允许使用正则表达式改变URI，并且根据变量来转向以及选择配置。如果在server级别设置该选项，那么他们将在 location之前生效。如果在location还有更进一步的重写规则，location部分的规则依然会被执行。如果这个URI重写是因为location部分的规则造成的，那么 location部分会再次被执行作为新的URI。 这个循环会执行10次，然后Nginx会返回一个500错误。）<br/>
+--without-http_proxy_module 禁用ngx_http_proxy_module支持（有关代理服务器）<br/>
+--without-http_fastcgi_module 禁用ngx_http_fastcgi_module支持（该模块允许Nginx 与FastCGI 进程交互，并通过传递参数来控制FastCGI 进程工作。 ）FastCGI一个常驻型的公共网关接口。<br/>
+--without-http_uwsgi_module 禁用ngx_http_uwsgi_module支持（该模块用来医用uwsgi协议，uWSGI服务器相关）<br/>
+--without-http_scgi_module 禁用ngx_http_scgi_module支持（该模块用来启用SCGI协议支持，SCGI协议是CGI协议的替代。它是一种应用程序与HTTP服务接口标准。它有些像FastCGI但他的设计 更容易实现。）<br/>
+--without-http_memcached_module 禁用ngx_http_memcached_module支持（该模块用来提供简单的缓存，以提高系统效率）<br/>
+-without-http_limit_zone_module 禁用ngx_http_limit_zone_module支持（该模块可以针对条件，进行会话的并发连接数控制）<br/>
+--without-http_limit_req_module 禁用ngx_http_limit_req_module支持（该模块允许你对于一个地址进行请求数量的限制用一个给定的session或一个特定的事件）<br/>
+--without-http_empty_gif_module 禁用ngx_http_empty_gif_module支持（该模块在内存中常驻了一个1*1的透明GIF图像，可以被非常快速的调用）<br/>
+--without-http_browser_module 禁用ngx_http_browser_module支持（该模块用来创建依赖于请求报头的值。如果浏览器为modern ，则\(modern_browser等于modern_browser_value指令分配的值；如 果浏览器为old，则\)ancient_browser等于 ancient_browser_value指令分配的值；如果浏览器为 MSIE中的任意版本，则 $msie等于1）<br/>
+--without-http_upstream_ip_hash_module 禁用ngx_http_upstream_ip_hash_module支持（该模块用于简单的负载均衡）<br/>
+--with-http_perl_module 启用ngx_http_perl_module支持（该模块使nginx可以直接使用perl或通过ssi调用perl）<br/>
+--with-perl_modules_path= 设定perl模块路径<br/>
+--with-perl= 设定perl库文件路径<br/>
+--http-log-path= 设定access log路径<br/>
+--http-client-body-temp-path= 设定http客户端请求临时文件路径<br/>
+--http-proxy-temp-path= 设定http代理临时文件路径<br/>
+--http-fastcgi-temp-path= 设定http fastcgi临时文件路径<br/>
+--http-uwsgi-temp-path= 设定http uwsgi临时文件路径<br/>
+--http-scgi-temp-path= 设定http scgi临时文件路径<br/>
+-without-http 禁用http server功能<br/>
+--without-http-cache 禁用http cache功能<br/>
+--with-mail 启用POP3/IMAP4/SMTP代理模块支持<br/>
+--with-mail_ssl_module 启用ngx_mail_ssl_module支持<br/>
+--without-mail_pop3_module 禁用pop3协议（POP3即邮局协议的第3个版本,它是规定个人计算机如何连接到互联网上的邮件服务器进行收发邮件的协议。是因特网电子邮件的第一个离线协议标 准,POP3协议允许用户从服务器上把邮件存储到本地主机上,同时根据客户端的操作删除或保存在邮件服务器上的邮件。POP3协议是TCP/IP协议族中的一员，主要用于 支持使用客户端远程管理在服务器上的电子邮件）<br/>
+--without-mail_imap_module 禁用imap协议（一种邮件获取协议。它的主要作用是邮件客户端可以通过这种协议从邮件服务器上获取邮件的信息，下载邮件等。IMAP协议运行在TCP/IP协议之上， 使用的端口是143。它与POP3协议的主要区别是用户可以不用把所有的邮件全部下载，可以通过客户端直接对服务器上的邮件进行操作。）<br/>
+--without-mail_smtp_module 禁用smtp协议（SMTP即简单邮件传输协议,它是一组用于由源地址到目的地址传送邮件的规则，由它来控制信件的中转方式。SMTP协议属于TCP/IP协议族，它帮助每台计算机在发送或中转信件时找到下一个目的地。）<br/>
+--with-google_perftools_module 启用ngx_google_perftools_module支持（调试用，剖析程序性能瓶颈）<br/>
+--with-cpp_test_module 启用ngx_cpp_test_module支持<br/>
+--add-module= 启用外部模块支持<br/>
+--with-cc= 指向C编译器路径<br/>
+--with-cpp= 指向C预处理路径<br/>
+--with-cc-opt= 设置C编译器参数（PCRE库，需要指定–with-cc-opt=”-I /usr/local/include”，如果使用select()函数则需要同时增加文件描述符数量，可以通过–with-cc- opt=”-D FD_SETSIZE=2048”指定。）<br/>
+--with-ld-opt= 设置连接文件参数。（PCRE库，需要指定–with-ld-opt=”-L /usr/local/lib”。）<br/>
+--with-cpu-opt= 指定编译的CPU，可用的值为: pentium, pentiumpro, pentium3, pentium4, athlon, opteron, amd64, sparc32, sparc64, ppc64<br/>
+--without-pcre 禁用pcre库<br/>
+--with-pcre 启用pcre库<br/>
+--with-pcre= 指向pcre库文件目录<br/>
+--with-pcre-opt= 在编译时为pcre库设置附加参数<br/>
+--with-md5= 指向md5库文件目录（消息摘要算法第五版，用以提供消息的完整性保护）<br/>
+--with-md5-opt= 在编译时为md5库设置附加参数<br/>
+--with-md5-asm 使用md5汇编源<br/>
+--with-sha1= 指向sha1库目录（数字签名算法，主要用于数字签名）<br/>
+--with-sha1-opt= 在编译时为sha1库设置附加参数<br/>
+--with-sha1-asm 使用sha1汇编源<br/>
+--with-zlib= 指向zlib库目录<br/>
+--with-zlib-opt= 在编译时为zlib设置附加参数<br/>
+--with-zlib-asm= 为指定的CPU使用zlib汇编源进行优化，CPU类型为pentium, pentiumpro<br/>
+--with-libatomic 为原子内存的更新操作的实现提供一个架构<br/>
+--with-libatomic= 指向libatomic_ops安装目录<br/>
+--with-openssl= 指向openssl安装目录<br/>
+--with-openssl-opt 在编译时为openssl设置附加参数<br/>
+--with-debug 启用debug日志</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[java 工具]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/java%E5%B7%A5%E5%85%B7.html"/>
+    <updated>2018-11-08T22:15:14+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/java%E5%B7%A5%E5%85%B7.html</id>
+    <content type="html"><![CDATA[
+<ul>
+<li> JClarity——性能监控</li>
+<li> Bintray——社交分享平台</li>
+<li> Librato——监控&amp;可视化云服务</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[查看指定目录下面个文件的大小]]></title>
@@ -131,7 +248,70 @@ http{
 
 <h2 id="toc_0">基于域名的虚拟主机</h2>
 
-<h2 id="toc_1">基于端口的虚拟主机</h2>
+<pre><code class="language-text"># 创建站点
+mkdir -p /data/site/a.ttlsa.com
+mkdir -p /data/site/b.ttlsa.com
+
+# 创建站点首页
+vi /data/site/a.ttlsa.com/index.html
+this is a.ttlsa.com!
+
+# 配置日志
+log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;
+                      &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;
+                      &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;
+                      
+                      
+
+# 配置server
+server{
+    listen 80;
+    server_name a.ttlsa.com;
+    root /data/site/a.ttlsa.com;
+    access_log /root/logs/nginx/a.ttlsa.com-access.log main;
+    location /{
+    }
+}
+
+server{
+    listen 80;
+    server_name b.ttlsa.com;
+    root /data/site/b.ttlsa.com;
+    access_log /root/logs/nginx/b.ttlsa.com-access.log main;
+    location /{
+    }
+}
+</code></pre>
+
+<h3 id="toc_1">配置详解:</h3>
+
+<ol>
+<li>server{}:配置虚拟主机必须有这个段</li>
+<li>server_name:虚拟主机的域名,可以写多个域名,类似于别名，比如说你可以配置成server_name b.ttlsa.com c.ttlsa.com d.ttlsa.com,这样的话访问任何一个域名内容都是一样的</li>
+<li>listen 80:监听ip和端口,这边仅仅只有端口,表示当前服务器所有ip的80端口,如果只想监听127.0.0.1的80，写法如下:listen 127.0.0.1:80</li>
+<li>root /data/site/b.ttlsa.com:站点根目录,网站文件存放的地方</li>
+<li>access_log /data/logs/nginx/b.ttlsa.com-access.log main:访问日志</li>
+<li>location /{}:默认uri</li>
+</ol>
+
+<h3 id="toc_2">访问站点</h3>
+
+<pre><code class="language-text"># 检查配置文件是否有误
+/usr/local/nginx-1.5.1/sbin/nginx -t
+
+# 绑定域名
+echo &quot;119.3.41.32 a.ttlsa.com
+119.3.41.32 b.ttlsa.com&quot; &gt;&gt; /etc/hosts
+
+# 重启nginx
+/usr/local/nginx-1.5.1/sbin/nginx -s reload
+
+# 访问
+curl http://a.ttlsa.com
+curl http://b.ttlsa.com
+</code></pre>
+
+<h2 id="toc_3">基于端口的虚拟主机</h2>
 
 ]]></content>
   </entry>
@@ -164,7 +344,9 @@ http{
 3. wget http://nginx.org/download/nginx-1.14.0.tar.gz
 4. tar -zxvf nginx-1.14.0.tar.gz
 5. yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel
-6. make &amp;&amp; make install
+6. cd nginx-1.14.0
+7. ./configurer
+8. make &amp;&amp; make install
 </code></pre>
 
 <h1 id="toc_1">常用命令</h1>
@@ -311,162 +493,6 @@ http{
     <updated>2018-09-25T22:40:06+08:00</updated>
     <id>https://purple-jimmy.github.io/jimmy_book/range.html</id>
     <content type="html"><![CDATA[
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[terms]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/terms.html"/>
-    <updated>2018-09-25T22:29:52+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/terms.html</id>
-    <content type="html"><![CDATA[
-<p>查询文档中包含任一个给定多词项的文档</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[term 单个值精确搜索]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/term.html"/>
-    <updated>2018-09-25T22:29:11+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/term.html</id>
-    <content type="html"><![CDATA[
-<h2 id="toc_0">keyword 类型</h2>
-
-<p>查询值不会被分词,只有当查询词和检索字段的keyword完全一致时才能被检索出来</p>
-
-<pre><code class="language-text">curl -H &quot;Content-Type:application/json&quot; -X GET &#39;localhost:9200/es/blog/_search?pretty&#39; -d &#39;
-{
-  &quot;query&quot;: {
-       &quot;term&quot;:{
-           &quot;title.keyword&quot;:&quot;Elasticsearch Tutorial&quot;
-       }
-  },
-  &quot;_source&quot;:[&quot;title&quot;]
-}
-&#39;
-</code></pre>
-
-<p>结果</p>
-
-<pre><code class="language-text">&quot;hits&quot; : {
-    &quot;total&quot; : 1,
-    &quot;max_score&quot; : 0.6931472,
-    &quot;hits&quot; : [
-      {
-        &quot;_index&quot; : &quot;es&quot;,
-        &quot;_type&quot; : &quot;blog&quot;,
-        &quot;_id&quot; : &quot;7&quot;,
-        &quot;_score&quot; : 0.6931472,
-        &quot;_source&quot; : {
-          &quot;title&quot; : &quot;Elasticsearch Tutorial&quot;
-        }
-      }
-    ]
-  }
-</code></pre>
-
-<h2 id="toc_1">text 类型</h2>
-
-<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search?pretty&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
-{
-  &quot;query&quot;: {
-    &quot;term&quot;: {
-      &quot;bookName&quot;: &quot;java编程思想&quot;
-    }
-  }
-}&#39;
-</code></pre>
-
-<p>结果查询不到数据</p>
-
-<hr/>
-
-<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search?pretty&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
-{
-  &quot;query&quot;: {
-    &quot;term&quot;: {
-      &quot;bookName&quot;: &quot;编&quot;
-    }
-  }
-}&#39;
-</code></pre>
-
-<p>结果</p>
-
-<pre><code class="language-text">java编程思想
-</code></pre>
-
-<hr/>
-
-<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
-{
-  &quot;query&quot;: {
-    &quot;term&quot;: {
-      &quot;bookName&quot;: &quot;java&quot;
-    }
-  }
-}&#39;
-</code></pre>
-
-<p>结果</p>
-
-<pre><code class="language-text">Java
-java编程思想
-</code></pre>
-
-<p>原因:term查询时传入的查询值不会被分词,而text类型会被默认的标准分析器分词成如下的词.所以传入的<em><u>java编程思想</u></em>没有与之匹配的词因此检索不到数据</p>
-
-<h2 id="toc_2">查看分词</h2>
-
-<pre><code class="language-text">curl  -H &quot;Content-Type:application/json&quot; -XGET &quot;localhost:9200/_analyze?pretty&quot; -d&#39;
-{
-  &quot;analyzer&quot;: &quot;standard&quot;,
-  &quot;text&quot;:     &quot;java编程思想&quot;
-}‘
-
-----------------------
-{
-  &quot;tokens&quot;: [
-    {
-      &quot;token&quot;: &quot;java&quot;,
-      &quot;start_offset&quot;: 0,
-      &quot;end_offset&quot;: 4,
-      &quot;type&quot;: &quot;&lt;ALPHANUM&gt;&quot;,
-      &quot;position&quot;: 0
-    },
-    {
-      &quot;token&quot;: &quot;编&quot;,
-      &quot;start_offset&quot;: 4,
-      &quot;end_offset&quot;: 5,
-      &quot;type&quot;: &quot;&lt;IDEOGRAPHIC&gt;&quot;,
-      &quot;position&quot;: 1
-    },
-    {
-      &quot;token&quot;: &quot;程&quot;,
-      &quot;start_offset&quot;: 5,
-      &quot;end_offset&quot;: 6,
-      &quot;type&quot;: &quot;&lt;IDEOGRAPHIC&gt;&quot;,
-      &quot;position&quot;: 2
-    },
-    {
-      &quot;token&quot;: &quot;思&quot;,
-      &quot;start_offset&quot;: 6,
-      &quot;end_offset&quot;: 7,
-      &quot;type&quot;: &quot;&lt;IDEOGRAPHIC&gt;&quot;,
-      &quot;position&quot;: 3
-    },
-    {
-      &quot;token&quot;: &quot;想&quot;,
-      &quot;start_offset&quot;: 7,
-      &quot;end_offset&quot;: 8,
-      &quot;type&quot;: &quot;&lt;IDEOGRAPHIC&gt;&quot;,
-      &quot;position&quot;: 4
-    }
-  ]
-}
-</code></pre>
 
 ]]></content>
   </entry>

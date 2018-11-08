@@ -92,6 +92,8 @@
             <li><a href="flink.html">flink</a></li>
         
             <li><a href="linux.html">linux</a></li>
+        
+            <li><a href="%E5%B7%A5%E5%85%B7.html">tools</a></li>
          
 
       </ul>
@@ -113,6 +115,206 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="terms.html">
+                
+                  <h1>terms</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>查询文档中包含任一个给定多词项的文档</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/25</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2(%E7%BB%93%E6%9E%84%E5%8C%96).html'>词项查询(结构化)</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="term.html">
+                
+                  <h1>term 单个值精确搜索</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">keyword 类型</h2>
+
+<p>查询值不会被分词,只有当查询词和检索字段的keyword完全一致时才能被检索出来</p>
+
+<pre><code class="language-text">curl -H &quot;Content-Type:application/json&quot; -X GET &#39;localhost:9200/es/blog/_search?pretty&#39; -d &#39;
+{
+  &quot;query&quot;: {
+       &quot;term&quot;:{
+           &quot;title.keyword&quot;:&quot;Elasticsearch Tutorial&quot;
+       }
+  },
+  &quot;_source&quot;:[&quot;title&quot;]
+}
+&#39;
+</code></pre>
+
+<p>结果</p>
+
+<pre><code class="language-text">&quot;hits&quot; : {
+    &quot;total&quot; : 1,
+    &quot;max_score&quot; : 0.6931472,
+    &quot;hits&quot; : [
+      {
+        &quot;_index&quot; : &quot;es&quot;,
+        &quot;_type&quot; : &quot;blog&quot;,
+        &quot;_id&quot; : &quot;7&quot;,
+        &quot;_score&quot; : 0.6931472,
+        &quot;_source&quot; : {
+          &quot;title&quot; : &quot;Elasticsearch Tutorial&quot;
+        }
+      }
+    ]
+  }
+</code></pre>
+
+<h2 id="toc_1">text 类型</h2>
+
+<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search?pretty&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
+{
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;bookName&quot;: &quot;java编程思想&quot;
+    }
+  }
+}&#39;
+</code></pre>
+
+<p>结果查询不到数据</p>
+
+<hr/>
+
+<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search?pretty&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
+{
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;bookName&quot;: &quot;编&quot;
+    }
+  }
+}&#39;
+</code></pre>
+
+<p>结果</p>
+
+<pre><code class="language-text">java编程思想
+</code></pre>
+
+<hr/>
+
+<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
+{
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;bookName&quot;: &quot;java&quot;
+    }
+  }
+}&#39;
+</code></pre>
+
+<p>结果</p>
+
+<pre><code class="language-text">Java
+java编程思想
+</code></pre>
+
+<p>原因:term查询时传入的查询值不会被分词,而text类型会被默认的标准分析器分词成如下的词.所以传入的<em><u>java编程思想</u></em>没有与之匹配的词因此检索不到数据</p>
+
+<h2 id="toc_2">查看分词</h2>
+
+<pre><code class="language-text">curl  -H &quot;Content-Type:application/json&quot; -XGET &quot;localhost:9200/_analyze?pretty&quot; -d&#39;
+{
+  &quot;analyzer&quot;: &quot;standard&quot;,
+  &quot;text&quot;:     &quot;java编程思想&quot;
+}‘
+
+----------------------
+{
+  &quot;tokens&quot;: [
+    {
+      &quot;token&quot;: &quot;java&quot;,
+      &quot;start_offset&quot;: 0,
+      &quot;end_offset&quot;: 4,
+      &quot;type&quot;: &quot;&lt;ALPHANUM&gt;&quot;,
+      &quot;position&quot;: 0
+    },
+    {
+      &quot;token&quot;: &quot;编&quot;,
+      &quot;start_offset&quot;: 4,
+      &quot;end_offset&quot;: 5,
+      &quot;type&quot;: &quot;&lt;IDEOGRAPHIC&gt;&quot;,
+      &quot;position&quot;: 1
+    },
+    {
+      &quot;token&quot;: &quot;程&quot;,
+      &quot;start_offset&quot;: 5,
+      &quot;end_offset&quot;: 6,
+      &quot;type&quot;: &quot;&lt;IDEOGRAPHIC&gt;&quot;,
+      &quot;position&quot;: 2
+    },
+    {
+      &quot;token&quot;: &quot;思&quot;,
+      &quot;start_offset&quot;: 6,
+      &quot;end_offset&quot;: 7,
+      &quot;type&quot;: &quot;&lt;IDEOGRAPHIC&gt;&quot;,
+      &quot;position&quot;: 3
+    },
+    {
+      &quot;token&quot;: &quot;想&quot;,
+      &quot;start_offset&quot;: 7,
+      &quot;end_offset&quot;: 8,
+      &quot;type&quot;: &quot;&lt;IDEOGRAPHIC&gt;&quot;,
+      &quot;position&quot;: 4
+    }
+  ]
+}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/25</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2(%E7%BB%93%E6%9E%84%E5%8C%96).html'>词项查询(结构化)</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2%E6%A6%82%E5%BF%B5.html">
                 
@@ -1270,122 +1472,6 @@ p1.name == p2.name // true</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="exception.html">
-                
-                  <h1>Exception 异常</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>当执行程序时，如果出现异常，那么异常之后的代码就不再执行</p>
-
-<h2 id="toc_0">异常处理方式</h2>
-
-<ol>
-<li>try-catch-finally捕获异常</li>
-<li>throws抛出异常</li>
-</ol>
-
-<h2 id="toc_1">手动抛出异常</h2>
-
-<p>throw </p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/9/13</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='exception%E5%BC%82%E5%B8%B8.html'>exception异常</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3.html">
-                
-                  <h1>抽象类与接口</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">抽象类</h2>
-
-<ul>
-<li>抽象类有构造器，但是不能被实例化-凡是类都有构造器</li>
-<li>抽象方法只声明方法，没有方法体</li>
-<li>抽象方法所在的类一定是抽象类</li>
-<li>若子类继承抽象类，没有全部重写抽象方法，则子类也是抽象类</li>
-</ul>
-
-<h2 id="toc_1">接口</h2>
-
-<ul>
-<li>接口是抽象类和常量值的定义的集合</li>
-<li>本质上是一种特殊的抽象类</li>
-<li>一个类可以实现多个接口，接口也可以继承其他接口</li>
-<li>实现接口的类必须重写接口中定义的所有抽象方法，否则此类仍就是一个抽象类</li>
-</ul>
-
-<p>实现接口的匿名类对象</p>
-
-<pre><code class="language-text">public interface AA{
- void run();
- }
- 
- 
- AA a = new AA(){
-    @Override
-    public void run(){
-       ....
-    }
- }
-</code></pre>
-
-<hr/>
-
-<h2 id="toc_2">接口的应用</h2>
-
-<ul>
-<li>代理模式</li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/9/11</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='java%E5%9F%BA%E7%A1%80.html'>java基础</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1453,6 +1539,8 @@ p1.name == p2.name // true</p>
             <a href="flink.html"><strong>flink</strong></a>
         
             <a href="linux.html"><strong>linux</strong></a>
+        
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>tools</strong></a>
          
         </p>
 
@@ -1469,6 +1557,18 @@ p1.name == p2.name // true</p>
 	      
 		      
 			      <li class="post">
+			        <a href="nginx%E5%8F%82%E6%95%B0.html">nginx参数</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="java%E5%B7%A5%E5%85%B7.html">java 工具</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F.html">查看指定目录下面个文件的大小</a>
 			      </li>
 		     
@@ -1482,18 +1582,6 @@ p1.name == p2.name // true</p>
 		      
 			      <li class="post">
 			        <a href="flink%E5%AE%89%E8%A3%85.html">flink安装</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="nginx%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86.html">日志管理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="nginx%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE.html">虚拟主机配置</a>
 			      </li>
 		     
 		  

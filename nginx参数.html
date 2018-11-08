@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  nginx - jimmy_codebook
+  nginx参数 - jimmy_codebook
   
   </title>
   
@@ -107,23 +107,36 @@
        
 
  <script type="text/javascript">
-	$(function(){
-		$('#menu_item_index').addClass('is_active');
-	});
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
 </script>
 <div class="row">
-	<div class="large-8 medium-8 columns">
-		<div class="markdown-body home-categories">
-		
-			<div class="article">
-                <a class="clearlink" href="nginx%E5%8F%82%E6%95%B0.html">
-                
-                  <h1>nginx参数</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>--prefix= 指向安装目录<br/>
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>nginx参数</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2018/11/8</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='nginx.html'>nginx</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>--prefix= 指向安装目录<br/>
 --sbin-path 指向（执行）程序文件（nginx）<br/>
 --conf-path= 指向配置文件（nginx.conf）<br/>
 --error-log-path= 指向错误日志目录<br/>
@@ -216,344 +229,40 @@
 --with-openssl-opt 在编译时为openssl设置附加参数<br/>
 --with-debug 启用debug日志</p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/8</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='nginx.html'>nginx</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="nginx%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86.html">
-                
-                  <h1>日志管理</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>nginx允许对不同的server做不同的log</p>
-
-<h2 id="toc_0">nginx的server段有如下配置</h2>
-
-<pre><code class="language-text">#access_log  logs/host.access.log  main;
-</code></pre>
-
-<p>access_log:声明日志<br/>
-logs/host.access.log:server的访问日志的文件路径<br/>
-main:使用的日志格式</p>
-
-<h2 id="toc_1">main格式日志</h2>
-
-<pre><code class="language-text">#log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;
-    #                  &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;
-    #                  &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;
     
-$remote_addr:远程IP
-$remote_user:远程用户
-$time_local:用户触发访问时间
-$request:访问方式(get,post等)
-$status:相应状态
-$body_bytes_sent:请求体body长度
-$http_referer:来源信息
-$http_user_agent:用户代理,被转发的请求的原始IP
-$http_x_forwarded_for:在经过代理时,代理把你原始的IP放在此头信息中并传输
-</code></pre>
 
-<h2 id="toc_2">自定义日志格式</h2>
+      </div>
 
-<pre><code class="language-text">log_format custom_log &#39;$remote_addr&#39;;
-</code></pre>
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="java%E5%B7%A5%E5%85%B7.html" 
+          title="Next Post: java 工具">java 工具 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
 
-<h2 id="toc_3">日志切割</h2>
+          
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/10/19</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='nginx.html'>nginx</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="nginx%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE.html">
-                
-                  <h1>虚拟主机配置</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>nginx配置段</p>
-
-<pre><code class="language-text">//全局区
-worker_processes  1;//子进程数量,一般设置cpu*core数
-
-//配置nginx的连接特性
-events{
-  worker_connections  1024;//一个子进程最大允许1024个连接
-}
-
-//配置http服务器的主要段
-http{
-  server{//虚拟主机段
-    location{//定位,把特殊的路径或文件再次定位,如image目录单独处理
-    }
-  }
-}
-</code></pre>
-
-<h2 id="toc_0">基于域名的虚拟主机</h2>
-
-<pre><code class="language-text"># 创建站点
-mkdir -p /data/site/a.ttlsa.com
-mkdir -p /data/site/b.ttlsa.com
-
-# 创建站点首页
-vi /data/site/a.ttlsa.com/index.html
-this is a.ttlsa.com!
-
-# 配置日志
-log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;
-                      &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;
-                      &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;
-                      
-                      
-
-# 配置server
-server{
-    listen 80;
-    server_name a.ttlsa.com;
-    root /data/site/a.ttlsa.com;
-    access_log /root/logs/nginx/a.ttlsa.com-access.log main;
-    location /{
-    }
-}
-
-server{
-    listen 80;
-    server_name b.ttlsa.com;
-    root /data/site/b.ttlsa.com;
-    access_log /root/logs/nginx/b.ttlsa.com-access.log main;
-    location /{
-    }
-}
-</code></pre>
-
-<h3 id="toc_1">配置详解:</h3>
-
-<ol>
-<li>server{}:配置虚拟主机必须有这个段</li>
-<li>server_name:虚拟主机的域名,可以写多个域名,类似于别名，比如说你可以配置成server_name b.ttlsa.com c.ttlsa.com d.ttlsa.com,这样的话访问任何一个域名内容都是一样的</li>
-<li>listen 80:监听ip和端口,这边仅仅只有端口,表示当前服务器所有ip的80端口,如果只想监听127.0.0.1的80，写法如下:listen 127.0.0.1:80</li>
-<li>root /data/site/b.ttlsa.com:站点根目录,网站文件存放的地方</li>
-<li>access_log /data/logs/nginx/b.ttlsa.com-access.log main:访问日志</li>
-<li>location /{}:默认uri</li>
-</ol>
-
-<h3 id="toc_2">访问站点</h3>
-
-<pre><code class="language-text"># 检查配置文件是否有误
-/usr/local/nginx-1.5.1/sbin/nginx -t
-
-# 绑定域名
-echo &quot;119.3.41.32 a.ttlsa.com
-119.3.41.32 b.ttlsa.com&quot; &gt;&gt; /etc/hosts
-
-# 重启nginx
-/usr/local/nginx-1.5.1/sbin/nginx -s reload
-
-# 访问
-curl http://a.ttlsa.com
-curl http://b.ttlsa.com
-</code></pre>
-
-<h2 id="toc_3">基于端口的虚拟主机</h2>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/10/17</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='nginx.html'>nginx</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="%E4%BF%A1%E5%8F%B7%E6%8E%A7%E5%88%B6.html">
-                
-                  <h1>信号量控制</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/10/16</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='nginx.html'>nginx</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="nginx%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%AE%89%E8%A3%85.html">
-                
-                  <h1>nginx介绍</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ul>
-<li>高性能web服务器</li>
-<li>http和反向代理服务器,也是IMAP、POP3、SMTP代理服务器</li>
-</ul>
-
-<h1 id="toc_0">安装</h1>
-
-<pre><code class="language-text">1. mkdir jimmy
-2. cd /jimmy
-3. wget http://nginx.org/download/nginx-1.14.0.tar.gz
-4. tar -zxvf nginx-1.14.0.tar.gz
-5. yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel
-6. cd nginx-1.14.0
-7. ./configurer
-8. make &amp;&amp; make install
-</code></pre>
-
-<h1 id="toc_1">常用命令</h1>
-
-<p>启动停止</p>
-
-<pre><code class="language-text">cd cd /usr/local/nginx
-1. 测试: ./sbin/nginx -t
-2. 启动: ./sbin/nginx
-3. 停止: ./sbin/nginx -s stop 或者 nginx -s quit 
-4. 重启: ./sbin/nginx -s reload
-5. 日志切割: ./sbin/nginx -s reopen
-</code></pre>
-
-<p>平滑重启</p>
-
-<pre><code class="language-text">kill -HUP `cat logs/nginx.pid`  
-</code></pre>
-
-<p>查看进程</p>
-
-<pre><code class="language-text">ps -ef | grep nginx
-</code></pre>
-
-<p>查看端口-服务关系</p>
-
-<pre><code class="language-text">netstat -antp
-</code></pre>
-
-<p>配置防火墙</p>
-
-<pre><code class="language-text">1. 开启端口 firewall-cmd --zone=public --add-port=80/tcp --permanent      
-2. 重启防火墙  firewall-cmd --reload  
-3. 查看端口 firewall-cmd --query-port=80/tcp
-
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/10/14</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='nginx.html'>nginx</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-              
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
 
 
-			<div class="row">
-			  <div class="large-6 columns">
-			  <p class="text-left" style="padding-top:25px;">
-			   
-			  </p>
-			  </div>
-			  <div class="large-6 columns">
-			<p class="text-right" style="padding-top:25px;">
-			
-			</p>
-			  </div>
-			</div>
-		</div>
-	</div><!-- large 8 -->
+
 
  <div class="large-4 medium-4 columns">
   <div class="hide-for-small">

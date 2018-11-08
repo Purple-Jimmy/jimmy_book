@@ -92,6 +92,8 @@
             <li><a href="flink.html">flink</a></li>
         
             <li><a href="linux.html">linux</a></li>
+        
+            <li><a href="%E5%B7%A5%E5%85%B7.html">tools</a></li>
          
 
       </ul>
@@ -155,7 +157,70 @@ http{
 
 <h2 id="toc_0">基于域名的虚拟主机</h2>
 
-<h2 id="toc_1">基于端口的虚拟主机</h2>
+<pre><code class="language-text"># 创建站点
+mkdir -p /data/site/a.ttlsa.com
+mkdir -p /data/site/b.ttlsa.com
+
+# 创建站点首页
+vi /data/site/a.ttlsa.com/index.html
+this is a.ttlsa.com!
+
+# 配置日志
+log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;
+                      &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;
+                      &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;
+                      
+                      
+
+# 配置server
+server{
+    listen 80;
+    server_name a.ttlsa.com;
+    root /data/site/a.ttlsa.com;
+    access_log /root/logs/nginx/a.ttlsa.com-access.log main;
+    location /{
+    }
+}
+
+server{
+    listen 80;
+    server_name b.ttlsa.com;
+    root /data/site/b.ttlsa.com;
+    access_log /root/logs/nginx/b.ttlsa.com-access.log main;
+    location /{
+    }
+}
+</code></pre>
+
+<h3 id="toc_1">配置详解:</h3>
+
+<ol>
+<li>server{}:配置虚拟主机必须有这个段</li>
+<li>server_name:虚拟主机的域名,可以写多个域名,类似于别名，比如说你可以配置成server_name b.ttlsa.com c.ttlsa.com d.ttlsa.com,这样的话访问任何一个域名内容都是一样的</li>
+<li>listen 80:监听ip和端口,这边仅仅只有端口,表示当前服务器所有ip的80端口,如果只想监听127.0.0.1的80，写法如下:listen 127.0.0.1:80</li>
+<li>root /data/site/b.ttlsa.com:站点根目录,网站文件存放的地方</li>
+<li>access_log /data/logs/nginx/b.ttlsa.com-access.log main:访问日志</li>
+<li>location /{}:默认uri</li>
+</ol>
+
+<h3 id="toc_2">访问站点</h3>
+
+<pre><code class="language-text"># 检查配置文件是否有误
+/usr/local/nginx-1.5.1/sbin/nginx -t
+
+# 绑定域名
+echo &quot;119.3.41.32 a.ttlsa.com
+119.3.41.32 b.ttlsa.com&quot; &gt;&gt; /etc/hosts
+
+# 重启nginx
+/usr/local/nginx-1.5.1/sbin/nginx -s reload
+
+# 访问
+curl http://a.ttlsa.com
+curl http://b.ttlsa.com
+</code></pre>
+
+<h2 id="toc_3">基于端口的虚拟主机</h2>
 
 
     
@@ -244,6 +309,8 @@ http{
             <a href="flink.html"><strong>flink</strong></a>
         
             <a href="linux.html"><strong>linux</strong></a>
+        
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>tools</strong></a>
          
         </p>
 
@@ -260,6 +327,18 @@ http{
 	      
 		      
 			      <li class="post">
+			        <a href="nginx%E5%8F%82%E6%95%B0.html">nginx参数</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="java%E5%B7%A5%E5%85%B7.html">java 工具</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F.html">查看指定目录下面个文件的大小</a>
 			      </li>
 		     
@@ -273,18 +352,6 @@ http{
 		      
 			      <li class="post">
 			        <a href="flink%E5%AE%89%E8%A3%85.html">flink安装</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="nginx%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86.html">日志管理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="nginx%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE.html">虚拟主机配置</a>
 			      </li>
 		     
 		  

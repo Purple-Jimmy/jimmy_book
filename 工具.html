@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  consul 服务发现 - jimmy_codebook
+  tools - jimmy_codebook
   
   </title>
   
@@ -107,105 +107,68 @@
        
 
  <script type="text/javascript">
-  $(function(){
-    $('#menu_item_index').addClass('is_active');
-  });
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
 </script>
 <div class="row">
-  <div class="large-8 medium-8 columns">
-      <div class="markdown-body article-wrap">
-       <div class="article">
-          
-          <h1>consul 服务发现</h1>
-     
-        <div class="read-more clearfix">
-          <span class="date">2018/8/26</span>
-
-          <span>posted in&nbsp;</span> 
-          
-              <span class="posted-in"><a href='%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0.html'>服务注册与发现</a></span>
-           
-         
-          <span class="comments">
-            
-
-            
-          </span>
-
-        </div>
-      </div><!-- article -->
-
-      <div class="article-content">
-      <ul>
-<li><p>引入依赖</p>
-<pre><code class="language-text">&lt;dependency&gt;
-&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
-&lt;artifactId&gt;spring-cloud-starter-consul-discovery&lt;/artifactId&gt;<br/>
-&lt;/dependency&gt;
-</code></pre></li>
-<li><p>添加注解 服务A的启动类添加:@EnableDiscoveryClient</p>
-<pre><code class="language-text">@SpringBootApplication
-@EnableDiscoveryClient<br/>
-public class ConsulStart {<br/>
-public static void main(String[] args) {<br/>
-    SpringApplication.run(ConsulStart.class,args);<br/>
-}<br/>
-}
-</code></pre></li>
-<li><p>配置文件 </p>
-<pre><code class="language-text">spring:
-cloud:<br/>
-consul:<br/>
-  host: xxx<br/>
-  port: xxx<br/>
-  discovery:<br/>
-    enabled: true<br/>
-    service-name: consul-server #注册中心注册的服务名字<br/>
-   # health-check-path: /health<br/>
-    health-check-interval: 10s<br/>
-    instance-id: consul-server-id<br/>
-    tags: dev,hello
-</code></pre></li>
-<li><p>访问consul ip查看注册上的服务</p></li>
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="java%E5%B7%A5%E5%85%B7.html">
+                
+                  <h1>java 工具</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li> JClarity——性能监控</li>
+<li> Bintray——社交分享平台</li>
+<li> Librato——监控&amp;可视化云服务</li>
 </ul>
 
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/8</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-    
-
-      </div>
-
-      <div class="row">
-        <div class="large-6 columns">
-        <p class="text-left" style="padding:15px 0px;">
-      
-          <a href="feign%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.html" 
-          title="Previous Post: feign">&laquo; feign</a>
-      
-        </p>
-        </div>
-        <div class="large-6 columns">
-      <p class="text-right" style="padding:15px 0px;">
-      
-          <a  href="consul%E5%AE%89%E8%A3%85.html" 
-          title="Next Post: consul 安装">consul 安装 &raquo;</a>
-      
-      </p>
-        </div>
-      </div>
-      <div class="comments-wrap">
-        <div class="share-comments">
-          
-
-          
-
-          
-        </div>
-      </div>
-    </div><!-- article-wrap -->
-  </div><!-- large 8 -->
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
 
 
-
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
 
  <div class="large-4 medium-4 columns">
   <div class="hide-for-small">
