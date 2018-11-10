@@ -4,13 +4,23 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2018-10-23T22:41:43+08:00</updated>
+  <updated>2018-11-08T23:28:16+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[docker安装]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/docker%E5%AE%89%E8%A3%85.html"/>
+    <updated>2018-11-10T10:01:09+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/docker%E5%AE%89%E8%A3%85.html</id>
+    <content type="html"><![CDATA[
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[nginx参数]]></title>
@@ -257,7 +267,7 @@ vi /data/site/a.ttlsa.com/index.html
 this is a.ttlsa.com!
 
 # 配置日志
-log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;
+log_format  main &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot;&#39;
                       &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;
                       &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;
                       
@@ -265,11 +275,16 @@ log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&
 
 # 配置server
 server{
+    # 监听端口
     listen 80;
+    # 监听域名
     server_name a.ttlsa.com;
-    root /data/site/a.ttlsa.com;
     access_log /root/logs/nginx/a.ttlsa.com-access.log main;
     location /{
+        # 相对nginx根目录的相对路径,也可写成绝对路径
+        root /data/site/a.ttlsa.com;
+        # 默认跳转到index.html页面  
+        index index.html;        
     }
 }
 
@@ -312,6 +327,50 @@ curl http://b.ttlsa.com
 </code></pre>
 
 <h2 id="toc_3">基于端口的虚拟主机</h2>
+
+<pre><code class="language-text">server{
+    # 监听端口
+    listen 7100;
+    # 监听域名
+    server_name b.ttlsa.com;
+    access_log /root/logs/nginx/b.ttlsa.com-access.log main;
+    location /{
+        # 相对nginx根目录的相对路径,也可写成绝对路径
+        root /data/site/b.ttlsa.com;
+        # 默认跳转到index.html页面  
+        index index.html;        
+    }
+}
+</code></pre>
+
+<p>访问</p>
+
+<pre><code class="language-text">[root@perfect-jimmy nginx]# curl http://b.ttlsa.com:7100
+this is b site
+</code></pre>
+
+<h2 id="toc_4">基于IP的虚拟主机</h2>
+
+<pre><code class="language-text">server{
+    # 监听端口
+    listen 7200;
+    # 监听IP
+    server_name 172.16.0.115;
+    access_log /root/logs/nginx/c.ttlsa.com-access.log main;
+    location /{
+        # 相对nginx根目录的相对路径,也可写成绝对路径
+        root /data/site/c.ttlsa.com;
+        # 默认跳转到index.html页面  
+        index index.html;        
+    }
+}
+</code></pre>
+
+<p>访问</p>
+
+<pre><code class="language-text">[root@perfect-jimmy nginx]# curl http://172.16.0.115:7200
+this is c site
+</code></pre>
 
 ]]></content>
   </entry>
@@ -482,16 +541,6 @@ curl http://b.ttlsa.com
     <link href="https://purple-jimmy.github.io/jimmy_book/prefix.html"/>
     <updated>2018-09-25T22:40:22+08:00</updated>
     <id>https://purple-jimmy.github.io/jimmy_book/prefix.html</id>
-    <content type="html"><![CDATA[
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[range]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/range.html"/>
-    <updated>2018-09-25T22:40:06+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/range.html</id>
     <content type="html"><![CDATA[
 
 ]]></content>

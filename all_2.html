@@ -94,6 +94,8 @@
             <li><a href="linux.html">linux</a></li>
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">tools</a></li>
+        
+            <li><a href="docker.html">docker</a></li>
          
 
       </ul>
@@ -115,6 +117,41 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="%E6%8E%92%E5%BA%8F.html">
+                
+                  <h1>排序</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">comparable 自然排序</h2>
+
+<h2 id="toc_1">comparator 定制排序</h2>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E9%9B%86%E5%90%88.html'>集合</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="exception.html">
                 
@@ -1384,80 +1421,6 @@ sampler:<br/>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="gateway%E7%BD%91%E5%85%B3%E5%88%9D%E6%8E%A2.html">
-                
-                  <h1>gateway 网关初探</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>访问网关服务gateway-server 8080 路由到book-server服务</p>
-</blockquote>
-
-<ul>
-<li><p>引入依赖</p>
-<pre><code class="language-text">&lt;dependency&gt;
-&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br/>
-&lt;artifactId&gt;spring-cloud-starter-gateway&lt;/artifactId&gt;<br/>
-&lt;/dependency&gt;
-</code></pre></li>
-<li><p>配置文件 gateway-server </p>
-<pre><code class="language-text">spring:
-cloud:<br/>
- gateway:<br/>
-   routes:<br/>
-   - id: host_route<br/>
-     uri: http://localhost:1111<br/>
-     predicates:<br/>
-     - Path=/book/**<br/>
-     filters:<br/>
-     - StripPrefix=1<br/>
-   - id: host_route<br/>
-     uri: http://localhost:2222<br/>
-     predicates:<br/>
-     - Path=/user/**<br/>
-     filters:<br/>
-     - StripPrefix=1
-</code></pre></li>
-<li><p>访问 <a href="http://ip:port/book/queryBookA">http://ip:port/book/queryBookA</a></p></li>
-</ul>
-
-<blockquote>
-<p>配置详解</p>
-
-<ul>
-<li>id:固定,不同 id 对应不同的功能</li>
-<li>uri:目标服务地址</li>
-<li>predicates:路由条件</li>
-<li>filters:过滤规则</li>
-</ul>
-</blockquote>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/8/26</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%9C%8D%E5%8A%A1%E7%BD%91%E5%85%B3.html'>服务网关</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1527,6 +1490,8 @@ cloud:<br/>
             <a href="linux.html"><strong>linux</strong></a>
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>tools</strong></a>
+        
+            <a href="docker.html"><strong>docker</strong></a>
          
         </p>
 
@@ -1541,6 +1506,12 @@ cloud:<br/>
                 <div class="side-content">
                 <ul class="posts-list">
 	      
+		      
+			      <li class="post">
+			        <a href="docker%E5%AE%89%E8%A3%85.html">docker安装</a>
+			      </li>
+		     
+		  
 		      
 			      <li class="post">
 			        <a href="nginx%E5%8F%82%E6%95%B0.html">nginx参数</a>
@@ -1562,12 +1533,6 @@ cloud:<br/>
 		      
 			      <li class="post">
 			        <a href="linux%E9%98%B2%E7%81%AB%E5%A2%99.html">centos7防火墙操作</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="flink%E5%AE%89%E8%A3%85.html">flink安装</a>
 			      </li>
 		     
 		  

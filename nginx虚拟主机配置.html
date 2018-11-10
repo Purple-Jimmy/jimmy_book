@@ -94,6 +94,8 @@
             <li><a href="linux.html">linux</a></li>
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">tools</a></li>
+        
+            <li><a href="docker.html">docker</a></li>
          
 
       </ul>
@@ -166,7 +168,7 @@ vi /data/site/a.ttlsa.com/index.html
 this is a.ttlsa.com!
 
 # 配置日志
-log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;
+log_format  main &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot;&#39;
                       &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;
                       &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;
                       
@@ -174,11 +176,16 @@ log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&
 
 # 配置server
 server{
+    # 监听端口
     listen 80;
+    # 监听域名
     server_name a.ttlsa.com;
-    root /data/site/a.ttlsa.com;
     access_log /root/logs/nginx/a.ttlsa.com-access.log main;
     location /{
+        # 相对nginx根目录的相对路径,也可写成绝对路径
+        root /data/site/a.ttlsa.com;
+        # 默认跳转到index.html页面  
+        index index.html;        
     }
 }
 
@@ -221,6 +228,50 @@ curl http://b.ttlsa.com
 </code></pre>
 
 <h2 id="toc_3">基于端口的虚拟主机</h2>
+
+<pre><code class="language-text">server{
+    # 监听端口
+    listen 7100;
+    # 监听域名
+    server_name b.ttlsa.com;
+    access_log /root/logs/nginx/b.ttlsa.com-access.log main;
+    location /{
+        # 相对nginx根目录的相对路径,也可写成绝对路径
+        root /data/site/b.ttlsa.com;
+        # 默认跳转到index.html页面  
+        index index.html;        
+    }
+}
+</code></pre>
+
+<p>访问</p>
+
+<pre><code class="language-text">[root@perfect-jimmy nginx]# curl http://b.ttlsa.com:7100
+this is b site
+</code></pre>
+
+<h2 id="toc_4">基于IP的虚拟主机</h2>
+
+<pre><code class="language-text">server{
+    # 监听端口
+    listen 7200;
+    # 监听IP
+    server_name 172.16.0.115;
+    access_log /root/logs/nginx/c.ttlsa.com-access.log main;
+    location /{
+        # 相对nginx根目录的相对路径,也可写成绝对路径
+        root /data/site/c.ttlsa.com;
+        # 默认跳转到index.html页面  
+        index index.html;        
+    }
+}
+</code></pre>
+
+<p>访问</p>
+
+<pre><code class="language-text">[root@perfect-jimmy nginx]# curl http://172.16.0.115:7200
+this is c site
+</code></pre>
 
 
     
@@ -311,6 +362,8 @@ curl http://b.ttlsa.com
             <a href="linux.html"><strong>linux</strong></a>
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>tools</strong></a>
+        
+            <a href="docker.html"><strong>docker</strong></a>
          
         </p>
 
@@ -325,6 +378,12 @@ curl http://b.ttlsa.com
                 <div class="side-content">
                 <ul class="posts-list">
 	      
+		      
+			      <li class="post">
+			        <a href="docker%E5%AE%89%E8%A3%85.html">docker安装</a>
+			      </li>
+		     
+		  
 		      
 			      <li class="post">
 			        <a href="nginx%E5%8F%82%E6%95%B0.html">nginx参数</a>
@@ -346,12 +405,6 @@ curl http://b.ttlsa.com
 		      
 			      <li class="post">
 			        <a href="linux%E9%98%B2%E7%81%AB%E5%A2%99.html">centos7防火墙操作</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="flink%E5%AE%89%E8%A3%85.html">flink安装</a>
 			      </li>
 		     
 		  
