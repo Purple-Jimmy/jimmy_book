@@ -138,7 +138,7 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p>nginx允许对不同的server做不同的log</p>
+      <p>nginx允许对不同的server做不同的log.日志格式通过log_format命令来定义.ngx_http_log_module是用来定义请求日志格式的</p>
 
 <h2 id="toc_0">nginx的server段有如下配置</h2>
 
@@ -164,6 +164,24 @@ $body_bytes_sent:请求体body长度
 $http_referer:来源信息
 $http_user_agent:用户代理,被转发的请求的原始IP
 $http_x_forwarded_for:在经过代理时,代理把你原始的IP放在此头信息中并传输
+
+
+$remote_addr, $http_x_forwarded_for 记录客户端IP地址
+$remote_user 记录客户端用户名称
+$request 记录请求的URL和HTTP协议
+$status 记录请求状态
+$body_bytes_sent 发送给客户端的字节数，不包括响应头的大小； 该变量与Apache模块mod_log_config里的“%B”参数兼容。
+$bytes_sent 发送给客户端的总字节数。
+$connection 连接的序列号。
+$connection_requests 当前通过一个连接获得的请求数量。
+$msec 日志写入时间。单位为秒，精度是毫秒。
+$pipe 如果请求是通过HTTP流水线(pipelined)发送，pipe值为“p”，否则为“.”。
+$http_referer 记录从哪个页面链接访问过来的
+$http_user_agent 记录客户端浏览器相关信息
+$request_length 请求的长度（包括请求行，请求头和请求正文）。
+$request_time 请求处理时间，单位为秒，精度毫秒； 从读入客户端的第一个字节开始，直到把最后一个字符发送给客户端后进行日志写入为止。
+$time_iso8601 ISO8601标准格式下的本地时间。
+$time_local 通用日志格式下的本地时间。
 </code></pre>
 
 <h2 id="toc_2">自定义日志格式</h2>
@@ -172,6 +190,31 @@ $http_x_forwarded_for:在经过代理时,代理把你原始的IP放在此头信�
 </code></pre>
 
 <h2 id="toc_3">日志切割</h2>
+
+<p>定义脚本</p>
+
+<pre><code class="language-text">vi /usr/local/nginx/nginx_log.sh
+#!/bin/bash
+#设置日志文件存放目录
+LOG_HOME=&quot;/root/logs/nginx/&quot;
+
+#备分文件名称 
+LOG_PATH_BAK=&quot;$(date -d yesterday +%Y%m%d)&quot;.a.ttlsa.com-access.log
+
+#重命名日志文件
+mv ${LOG_HOME}/a.ttlsa.com-access.log ${LOG_HOME}/${LOG_PATH_BAK}
+
+#向nginx主进程发信号重新打开日志 
+kill -USR1 `cat /usr/local/nginx/logs/nginx.pid
+</code></pre>
+
+<p>创建定时任务</p>
+
+<pre><code class="language-text">crontab  -e
+*/1 * * * *  /bin/sh /usr/local/nginx/nginx_log.sh
+
+59 23 * * * /bin/sh /usr/local/nginx/nginx_log.sh
+</code></pre>
 
 
     
@@ -280,6 +323,24 @@ $http_x_forwarded_for:在经过代理时,代理把你原始的IP放在此头信�
 	      
 		      
 			      <li class="post">
+			        <a href="15418603478652.html">crontab 定时任务</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="ngx_http_core_module%E6%A8%A1%E5%9D%97%E6%8F%90%E4%BE%9B%E7%9A%84%E5%8F%98%E9%87%8F.html">ngx_http_core_module模块提供的变量</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="location%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">location 匹配规则</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="docker%E5%AE%89%E8%A3%85.html">docker安装</a>
 			      </li>
 		     
@@ -287,24 +348,6 @@ $http_x_forwarded_for:在经过代理时,代理把你原始的IP放在此头信�
 		      
 			      <li class="post">
 			        <a href="nginx%E5%8F%82%E6%95%B0.html">nginx参数</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="java%E5%B7%A5%E5%85%B7.html">java 工具</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F.html">查看指定目录下面个文件的大小</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="linux%E9%98%B2%E7%81%AB%E5%A2%99.html">centos7防火墙操作</a>
 			      </li>
 		     
 		  

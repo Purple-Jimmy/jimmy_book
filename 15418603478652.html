@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  File类 - jimmy_codebook
+  crontab 定时任务 - jimmy_codebook
   
   </title>
   
@@ -118,14 +118,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>File类</h1>
+          <h1>crontab 定时任务</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2018/9/16</span>
+          <span class="date">2018/11/10</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='IO.html'>IO</a></span>
+              <span class="posted-in"><a href='linux.html'>linux</a></span>
            
          
           <span class="comments">
@@ -138,7 +138,31 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p>File是一个类，🈶构造器创建对象，对象对应一个文件或文件目录</p>
+      <pre><code class="language-text"># 创建定时任务
+crontab  -e
+*/1 * * * *  /bin/sh /usr/local/nginx/nginx_log.sh
+
+# 查看创建的定时任务
+crontab  -l
+
+# 查看服务进程
+ps -ax | grep cron 
+
+# 启动服务
+/sbin/service crond start  
+
+# 关闭服务  
+/sbin/service crond stop 
+
+# 重启服务   
+/sbin/service crond restart  
+
+#重新载入配置
+/sbin/service crond reload   
+
+#查看服务状态
+/sbin/service crond status    
+</code></pre>
 
 
     
@@ -149,16 +173,13 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="IO%E6%B5%81.html" 
-          title="Previous Post: IO流">&laquo; IO流</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="%E6%B3%9B%E5%9E%8B%E4%B8%8E%E7%BB%A7%E6%89%BF%E7%9A%84%E5%85%B3%E7%B3%BB.html" 
-          title="Next Post: 核心思想">核心思想 &raquo;</a>
+          <a  href="ngx_http_core_module%E6%A8%A1%E5%9D%97%E6%8F%90%E4%BE%9B%E7%9A%84%E5%8F%98%E9%87%8F.html" 
+          title="Next Post: ngx_http_core_module模块提供的变量">ngx_http_core_module模块提供的变量 &raquo;</a>
       
       </p>
         </div>
