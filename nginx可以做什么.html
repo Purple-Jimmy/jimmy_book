@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  抽象类与接口 - jimmy_codebook
+  nginx可以做什么 - jimmy_codebook
   
   </title>
   
@@ -122,14 +122,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>抽象类与接口</h1>
+          <h1>nginx可以做什么</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2018/9/11</span>
+          <span class="date">2018/11/15</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='java%E5%9F%BA%E7%A1%80.html'>java基础</a></span>
+              <span class="posted-in"><a href='nginx.html'>nginx</a></span>
            
          
           <span class="comments">
@@ -142,46 +142,30 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <h2 id="toc_0">抽象类</h2>
+      <h2 id="toc_0">不加载第三方模块的情况下</h2>
 
 <ul>
-<li>抽象类有构造器，但是不能被实例化-凡是类都有构造器</li>
-<li>抽象方法只声明方法，没有方法体</li>
-<li>抽象方法所在的类一定是抽象类</li>
-<li>若子类继承抽象类，没有全部重写抽象方法，则子类也是抽象类</li>
+<li>反向代理</li>
 </ul>
 
-<h2 id="toc_1">接口</h2>
-
-<ul>
-<li>接口是抽象类和常量值的定义的集合</li>
-<li>本质上是一种特殊的抽象类</li>
-<li>一个类可以实现多个接口，接口也可以继承其他接口</li>
-<li>实现接口的类必须重写接口中定义的所有抽象方法，否则此类仍就是一个抽象类</li>
-</ul>
-
-<p>实现接口的匿名类对象</p>
-
-<pre><code class="language-text">public interface AA{
- void run();
- }
- 
- 
- AA a = new AA(){
-    @Override
-    public void run(){
-       ....
-    }
- }
+<pre><code class="language-text">反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。简单来说就是真实的服务器不能直接被外部网络访问，所以需要一台代理服务器，而代理服务器能被外部网络访问的同时又跟真实服务器在同一个网络环境，当然也可能是同一台服务器，端口不同而已
 </code></pre>
 
-<hr/>
+<ul>
+<li>负载均衡</li>
+<li>HTTP服务器（动静分离）</li>
+</ul>
 
-<h2 id="toc_2">接口的应用</h2>
+<pre><code class="language-text">Nginx本身也是一个静态资源的服务器，当只有静态资源的时候，就可以使用Nginx来做服务器。
+动静分离是让动态网站里的动态网页根据一定规则把不变的资源和经常变的资源区分开来，动静资源做好了拆分以后，我们就可以根据静态资源的特点将其做缓存操作，这就是网站静态化处理的核心思路
+</code></pre>
 
 <ul>
-<li>代理模式</li>
+<li>正向代理</li>
 </ul>
+
+<pre><code class="language-text">正向代理，意思是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。
+</code></pre>
 
 
     
@@ -192,16 +176,16 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="exception.html" 
-          title="Previous Post: Exception 异常">&laquo; Exception 异常</a>
+          <a href="dns%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B.html" 
+          title="Previous Post: dns解析过程">&laquo; dns解析过程</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98.html" 
-          title="Next Post: 类的成员">类的成员 &raquo;</a>
+          <a  href="15418603478652.html" 
+          title="Next Post: crontab 定时任务">crontab 定时任务 &raquo;</a>
       
       </p>
         </div>

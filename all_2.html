@@ -96,6 +96,10 @@
             <li><a href="%E5%B7%A5%E5%85%B7.html">tools</a></li>
         
             <li><a href="docker.html">docker</a></li>
+        
+            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
+        
+            <li><a href="%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.html">读书笔记</a></li>
          
 
       </ul>
@@ -117,6 +121,122 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="reflection%E5%8F%8D%E5%B0%84.html">
+                
+                  <h1>reflection</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%8F%8D%E5%B0%84.html'>反射</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="string.html">
+                
+                  <h1>String</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>不可变的字符序列,底层使用char[]存放</p>
+
+<h2 id="toc_0">内存分析</h2>
+
+<p><img src="media/15376840230398/15376841663855.jpg" alt="" style="width:1078px;"/></p>
+
+<p>Person p1 = new Person(&quot;Jimmy&quot;);<br/>
+Person p2 = new Person(&quot;Jimmy&quot;);<br/>
+p1.name == p2.name // true</p>
+
+<h1 id="toc_1">StringBuffer VS StringBuilder</h1>
+
+<ul>
+<li>StringBuffer线程安全</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='java.html'>java</a></span>
+          				  
+          					    <span class="posted-in"><a href='java%E5%9F%BA%E7%A1%80.html'>java基础</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E6%9C%BA%E5%88%B6.html">
+                
+                  <h1>对象的序列化机制</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>允许把内存中的java对象转换成平台无关的二进制流,从而持久的保存在磁盘上,或通过网络把这个二进制流传输到另一个网络节点.当其他程序获取了这个二进制流可以恢复成原来的java对象.</p>
+
+<p>序列化的好处在于可将任何实现了Serializable接口的对象转化为字节数据,使其在保存和传输时可被还原</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/22</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='IO.html'>IO</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="IO%E6%B5%81.html">
                 
@@ -1215,159 +1335,6 @@ server.host: &quot;0.0.0.0&quot;
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="elk%E5%AE%89%E8%A3%85(rpm%E6%96%B9%E5%BC%8F).html">
-                
-                  <h1>elk 安装 (rpm方式)</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">elasticsearch 安装</h2>
-
-<h3 id="toc_1">上传rpm包到路径/usr/search</h3>
-
-<h3 id="toc_2">解压</h3>
-
-<pre><code class="language-text">rpm -ivh elasticsearch-6.4.0.rpm
-</code></pre>
-
-<ul>
-<li>安装路径 /usr/share/elasticsearch </li>
-<li>配置文件路径 /etc/elasticsearch/</li>
-</ul>
-
-<h3 id="toc_3">启动服务</h3>
-
-<pre><code class="language-text">service elasticsearch start  
-或者命令  
-sudo chkconfig --add elasticsearch  
-sudo -i service elasticsearch start  
-sudo -i service elasticsearch stop   
-sudo -i service elasticsearch status 
-</code></pre>
-
-<h3 id="toc_4">测试是否安装成功</h3>
-
-<pre><code class="language-text">curl http://localhost:9200/
-</code></pre>
-
-<hr/>
-
-<h2 id="toc_5">kibana 安装</h2>
-
-<h3 id="toc_6">上传rpm包到路径/usr/search</h3>
-
-<h3 id="toc_7">解压</h3>
-
-<pre><code class="language-text">rpm -ivh kibana-6.4.0-x86_64.rpm
-</code></pre>
-
-<ul>
-<li>安装路径 /usr/share/kibana</li>
-<li>配置文件路径 /etc/kibana/</li>
-</ul>
-
-<hr/>
-
-<h2 id="toc_8">logstash 安装</h2>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/9/1</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='elk.html'>elk</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="%E6%96%B9%E6%B3%95%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92.html">
-                
-                  <h1>方法的参数传递</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">在java中方法的参数传递只有一种方式:<em>值传递</em>,即将实际参数值的副本传入方法内，而参数本身不受影响.</h2>
-
-<ul>
-<li>形参是基本数据类型:将实参的值传递给形参的基本数据类型变量</li>
-<li>形参是引用数据类型:将实参的引用类型变量的值(对应对象的堆空间地址值)传递给形参的引用类型变量</li>
-</ul>
-
-<h3 id="toc_1">局部变量存在于栈空间</h3>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/8/26</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='java%E5%9F%BA%E7%A1%80.html'>java基础</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="classLoader%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8.html">
-                
-                  <h1>ClassLoader 类加载器</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="https://blog.csdn.net/briblue/article/details/54973413">https://blog.csdn.net/briblue/article/details/54973413</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/8/26</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='java%E5%9F%BA%E7%A1%80.html'>java基础</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1439,6 +1406,10 @@ sudo -i service elasticsearch status
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>tools</strong></a>
         
             <a href="docker.html"><strong>docker</strong></a>
+        
+            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
+        
+            <a href="%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.html"><strong>读书笔记</strong></a>
          
         </p>
 
@@ -1455,6 +1426,24 @@ sudo -i service elasticsearch status
 	      
 		      
 			      <li class="post">
+			        <a href="15464407015687.html">计算机程序</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="dns%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B.html">dns解析过程</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="nginx%E5%8F%AF%E4%BB%A5%E5%81%9A%E4%BB%80%E4%B9%88.html">nginx可以做什么</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15418603478652.html">crontab 定时任务</a>
 			      </li>
 		     
@@ -1462,24 +1451,6 @@ sudo -i service elasticsearch status
 		      
 			      <li class="post">
 			        <a href="ngx_http_core_module%E6%A8%A1%E5%9D%97%E6%8F%90%E4%BE%9B%E7%9A%84%E5%8F%98%E9%87%8F.html">ngx_http_core_module模块提供的变量</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="location%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">location 匹配规则</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="docker%E5%AE%89%E8%A3%85.html">docker安装</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="nginx%E5%8F%82%E6%95%B0.html">nginx参数</a>
 			      </li>
 		     
 		  

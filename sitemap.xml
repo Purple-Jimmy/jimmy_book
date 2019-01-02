@@ -2,7 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>https://purple-jimmy.github.io/jimmy_book/</loc>
-  <lastmod>2018-11-10T22:40:19+08:00</lastmod>
+  <lastmod>2019-01-02T23:20:58+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/15464407015687.html</loc>
+  <lastmod>2019-01-02T22:51:41+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/dns%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B.html</loc>
+  <lastmod>2018-11-15T21:47:23+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/nginx%E5%8F%AF%E4%BB%A5%E5%81%9A%E4%BB%80%E4%B9%88.html</loc>
+  <lastmod>2018-11-15T21:17:27+08:00</lastmod>
 </url>
 
 <url>
@@ -467,6 +482,18 @@
 
 <url>
   <loc>https://purple-jimmy.github.io/jimmy_book/docker.html</loc>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/%E7%BD%91%E7%BB%9C.html</loc>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.html</loc>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/java%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91.html</loc>
 </url>
 
 

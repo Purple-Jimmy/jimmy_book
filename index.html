@@ -96,6 +96,10 @@
             <li><a href="%E5%B7%A5%E5%85%B7.html">tools</a></li>
         
             <li><a href="docker.html">docker</a></li>
+        
+            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
+        
+            <li><a href="%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.html">读书笔记</a></li>
          
 
       </ul>
@@ -117,6 +121,151 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15464407015687.html">
+                
+                  <h1>计算机程序</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>本质上，计算机只会执行预先写好的指令而已，这些指令也只是操作数据或者设备。所谓程序，基本上就是告诉计算机要操作的数据和执行的指令序列， 即对什么数据做什么操作<br/>
+基本上，所有数据都需要放到内存进行处理，程序的很大一部分工作就是操作在内存中的数据</p>
+
+<h2 id="toc_0">数据</h2>
+
+<p>数据在计算机内部都是二进制，为方便操作，引入数据类型进行归类。<br/>
+对Java语言而言，有8种基本数据类型<br/>
+基本数据类型都有对应的数组类型，数组表示固定长度的同种数据类型的多条记录，这些数据在内存中挨在一起存放</p>
+
+<h2 id="toc_1">变量</h2>
+
+<p>为了操作数据，需要把数据存放到内存中，所谓内存在程序看来就是一块有地址编号的连续的空间，放到内存中的某个位置后，为了方便地找到和操作这个数据，需要给这个位置起一个名字。<br/>
+之所以叫变量，是因为它表示的是内存中的位置，这个位置存放的值是可以变化的<br/>
+变量就是给数据起名字，方便找不同的数据，它的值可以变，但含义不应变</p>
+
+<h2 id="toc_2">赋值</h2>
+
+<p>声明变量之后，就在内存分配了一块位置，但这个位置的内容是未知的，赋值就是把这块位置的内容设为一个确定的值<br/>
+数字常量默认为是int类型<br/>
+小数常量默认为是double类型</p>
+
+<h2 id="toc_3">数组和基本类型的区别</h2>
+
+<p>一个基本类型变量，内存中只会有一块对应的内存空间。但数组有两块，一块用于存储数组内容本身，另一块用于存储内容的位置</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/2</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='java%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91.html'>java编程的逻辑</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="dns%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B.html">
+                
+                  <h1>dns解析过程</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><img src="media/15422896439914/15422898393335.jpg" alt="" style="width:1130px;"/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%BD%91%E7%BB%9C.html'>网络</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="nginx%E5%8F%AF%E4%BB%A5%E5%81%9A%E4%BB%80%E4%B9%88.html">
+                
+                  <h1>nginx可以做什么</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">不加载第三方模块的情况下</h2>
+
+<ul>
+<li>反向代理</li>
+</ul>
+
+<pre><code class="language-text">反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。简单来说就是真实的服务器不能直接被外部网络访问，所以需要一台代理服务器，而代理服务器能被外部网络访问的同时又跟真实服务器在同一个网络环境，当然也可能是同一台服务器，端口不同而已
+</code></pre>
+
+<ul>
+<li>负载均衡</li>
+<li>HTTP服务器（动静分离）</li>
+</ul>
+
+<pre><code class="language-text">Nginx本身也是一个静态资源的服务器，当只有静态资源的时候，就可以使用Nginx来做服务器。
+动静分离是让动态网站里的动态网页根据一定规则把不变的资源和经常变的资源区分开来，动静资源做好了拆分以后，我们就可以根据静态资源的特点将其做缓存操作，这就是网站静态化处理的核心思路
+</code></pre>
+
+<ul>
+<li>正向代理</li>
+</ul>
+
+<pre><code class="language-text">正向代理，意思是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='nginx.html'>nginx</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15418603478652.html">
                 
@@ -1106,102 +1255,6 @@ this is c site
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="type.html">
-                
-                  <h1>type</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/9/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2(%E7%BB%93%E6%9E%84%E5%8C%96).html'>词项查询(结构化)</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="fuzzy.html">
-                
-                  <h1>fuzzy 模糊查询</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/9/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2(%E7%BB%93%E6%9E%84%E5%8C%96).html'>词项查询(结构化)</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="regexp.html">
-                
-                  <h1>regexp 正则查询</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/9/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2(%E7%BB%93%E6%9E%84%E5%8C%96).html'>词项查询(结构化)</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1273,6 +1326,10 @@ this is c site
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>tools</strong></a>
         
             <a href="docker.html"><strong>docker</strong></a>
+        
+            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
+        
+            <a href="%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.html"><strong>读书笔记</strong></a>
          
         </p>
 
@@ -1289,6 +1346,24 @@ this is c site
 	      
 		      
 			      <li class="post">
+			        <a href="15464407015687.html">计算机程序</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="dns%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B.html">dns解析过程</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="nginx%E5%8F%AF%E4%BB%A5%E5%81%9A%E4%BB%80%E4%B9%88.html">nginx可以做什么</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15418603478652.html">crontab 定时任务</a>
 			      </li>
 		     
@@ -1296,24 +1371,6 @@ this is c site
 		      
 			      <li class="post">
 			        <a href="ngx_http_core_module%E6%A8%A1%E5%9D%97%E6%8F%90%E4%BE%9B%E7%9A%84%E5%8F%98%E9%87%8F.html">ngx_http_core_module模块提供的变量</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="location%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">location 匹配规则</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="docker%E5%AE%89%E8%A3%85.html">docker安装</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="nginx%E5%8F%82%E6%95%B0.html">nginx参数</a>
 			      </li>
 		     
 		  

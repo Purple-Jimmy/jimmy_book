@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  抽象类与接口 - jimmy_codebook
+  计算机程序 - jimmy_codebook
   
   </title>
   
@@ -122,14 +122,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>抽象类与接口</h1>
+          <h1>计算机程序</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2018/9/11</span>
+          <span class="date">2019/1/2</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='java%E5%9F%BA%E7%A1%80.html'>java基础</a></span>
+              <span class="posted-in"><a href='java%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91.html'>java编程的逻辑</a></span>
            
          
           <span class="comments">
@@ -142,46 +142,30 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <h2 id="toc_0">抽象类</h2>
+      <p>本质上，计算机只会执行预先写好的指令而已，这些指令也只是操作数据或者设备。所谓程序，基本上就是告诉计算机要操作的数据和执行的指令序列， 即对什么数据做什么操作<br/>
+基本上，所有数据都需要放到内存进行处理，程序的很大一部分工作就是操作在内存中的数据</p>
 
-<ul>
-<li>抽象类有构造器，但是不能被实例化-凡是类都有构造器</li>
-<li>抽象方法只声明方法，没有方法体</li>
-<li>抽象方法所在的类一定是抽象类</li>
-<li>若子类继承抽象类，没有全部重写抽象方法，则子类也是抽象类</li>
-</ul>
+<h2 id="toc_0">数据</h2>
 
-<h2 id="toc_1">接口</h2>
+<p>数据在计算机内部都是二进制，为方便操作，引入数据类型进行归类。<br/>
+对Java语言而言，有8种基本数据类型<br/>
+基本数据类型都有对应的数组类型，数组表示固定长度的同种数据类型的多条记录，这些数据在内存中挨在一起存放</p>
 
-<ul>
-<li>接口是抽象类和常量值的定义的集合</li>
-<li>本质上是一种特殊的抽象类</li>
-<li>一个类可以实现多个接口，接口也可以继承其他接口</li>
-<li>实现接口的类必须重写接口中定义的所有抽象方法，否则此类仍就是一个抽象类</li>
-</ul>
+<h2 id="toc_1">变量</h2>
 
-<p>实现接口的匿名类对象</p>
+<p>为了操作数据，需要把数据存放到内存中，所谓内存在程序看来就是一块有地址编号的连续的空间，放到内存中的某个位置后，为了方便地找到和操作这个数据，需要给这个位置起一个名字。<br/>
+之所以叫变量，是因为它表示的是内存中的位置，这个位置存放的值是可以变化的<br/>
+变量就是给数据起名字，方便找不同的数据，它的值可以变，但含义不应变</p>
 
-<pre><code class="language-text">public interface AA{
- void run();
- }
- 
- 
- AA a = new AA(){
-    @Override
-    public void run(){
-       ....
-    }
- }
-</code></pre>
+<h2 id="toc_2">赋值</h2>
 
-<hr/>
+<p>声明变量之后，就在内存分配了一块位置，但这个位置的内容是未知的，赋值就是把这块位置的内容设为一个确定的值<br/>
+数字常量默认为是int类型<br/>
+小数常量默认为是double类型</p>
 
-<h2 id="toc_2">接口的应用</h2>
+<h2 id="toc_3">数组和基本类型的区别</h2>
 
-<ul>
-<li>代理模式</li>
-</ul>
+<p>一个基本类型变量，内存中只会有一块对应的内存空间。但数组有两块，一块用于存储数组内容本身，另一块用于存储内容的位置</p>
 
 
     
@@ -192,16 +176,13 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="exception.html" 
-          title="Previous Post: Exception 异常">&laquo; Exception 异常</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98.html" 
-          title="Next Post: 类的成员">类的成员 &raquo;</a>
+          <a  href="dns%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B.html" 
+          title="Next Post: dns解析过程">dns解析过程 &raquo;</a>
       
       </p>
         </div>
