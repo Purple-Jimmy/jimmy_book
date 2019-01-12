@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  constant_score - jimmy_codebook
+  计算机程序 - jimmy_codebook
   
   </title>
   
@@ -122,14 +122,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>constant_score</h1>
+          <h1>计算机程序</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2018/9/25</span>
+          <span class="date">2019/1/2</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='%E5%A4%8D%E5%90%88%E6%9F%A5%E8%AF%A2.html'>复合查询</a></span>
+              <span class="posted-in"><a href='java%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91.html'>java编程的逻辑</a></span>
            
          
           <span class="comments">
@@ -142,7 +142,53 @@
       </div><!-- article -->
 
       <div class="article-content">
-      
+      <p>本质上，计算机只会执行预先写好的指令而已，这些指令也只是操作数据或者设备。所谓程序，基本上就是告诉计算机要操作的数据和执行的指令序列， 即对什么数据做什么操作<br/>
+基本上，所有数据都需要放到内存进行处理，程序的很大一部分工作就是操作在内存中的数据</p>
+
+<h2 id="toc_0">数据</h2>
+
+<p>数据在计算机内部都是二进制，为方便操作，引入数据类型进行归类。<br/>
+对Java语言而言，有8种基本数据类型<br/>
+基本数据类型都有对应的数组类型，数组表示固定长度的同种数据类型的多条记录，这些数据在内存中挨在一起存放</p>
+
+<h2 id="toc_1">变量</h2>
+
+<p>为了操作数据，需要把数据存放到内存中，所谓内存在程序看来就是一块有地址编号的连续的空间，放到内存中的某个位置后，为了方便地找到和操作这个数据，需要给这个位置起一个名字。<br/>
+之所以叫变量，是因为它表示的是内存中的位置，这个位置存放的值是可以变化的<br/>
+变量就是给数据起名字，方便找不同的数据，它的值可以变，但含义不应变</p>
+
+<h2 id="toc_2">赋值</h2>
+
+<p>声明变量之后，就在内存分配了一块位置，但这个位置的内容是未知的，赋值就是把这块位置的内容设为一个确定的值<br/>
+数字常量默认为是int类型<br/>
+小数常量默认为是double类型</p>
+
+<h2 id="toc_3">数组和基本类型的区别</h2>
+
+<p>一个基本类型变量，内存中只会有一块对应的内存空间。但数组有两块，一块用于存储数组内容本身，另一块用于存储内容的位置</p>
+
+<h2 id="toc_4">基本运算</h2>
+
+<ul>
+<li><p>正整数相乘出现负数<br/>
+二进制计算,超出表示范围的时候,最高位往往是1,1代表负数</p></li>
+<li><p>非常基本的小数运算结果不精确<br/>
+计算算用二进制格式存储小数,二进制格式不能精确表示0.1</p></li>
+<li><p>字符类型也可以进行算术运算比较<br/>
+java中处理字符时采用Unicode编码且编码格式是UTF-16BE,char本质是一个固定占用2个字节无符号正整数,对应unicode编码,表示unicode编号对应的字符.因此char只能表示65536以内占2个字节的字符,超出范围的无法表示</p></li>
+</ul>
+
+<h2 id="toc_5">栈</h2>
+
+<p>􏰑􏰫􏲈􏲑􏰬􏱤􏱳􏰉􏱿􏳖􏱠􏲪􏱩􏳤􏱁􏱲􏱿􏰱􏱵􏱂􏱋􏱳􏰗􏱁􏲘􏳘􏰵􏳛􏰥􏱁􏳦􏳳􏰓􏰏􏲆􏳘􏲉􏱝􏳤􏱁􏲗􏰗􏲾􏰄􏲽􏲂栈存放函数调用过程中的数据,包括参数、返回地址、函数内定义的局部变量<br/>
+基本数据类型内存分配:函数中的参数和函数内定义的变量,都分配在栈中,这些变量只有在函数被调用的时候才分配内存,结束后释放<br/>
+数组和对象内存分配:有两块内存,一块存放实际内容,一块存放实际内容地址,实际内容的内存空间一般分配在堆上,存放内容地址的内容空间一般在栈上</p>
+
+<h2 id="toc_6">字符的编码与乱码</h2>
+
+<p>非Unicode编码:ASCII ISO8859-1 GBK GB2312<br/>
+Unicode编码:世界上所有的字符都被统一分配唯一数字编号</p>
+
 
     
 
@@ -152,16 +198,16 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="bool.html" 
-          title="Previous Post: bool">&laquo; bool</a>
+          <a href="java%E7%B1%BB.html" 
+          title="Previous Post: 类">&laquo; 类</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="%E5%A4%8D%E5%90%88%E6%9F%A5%E8%AF%A2%E6%A6%82%E5%BF%B5.html" 
-          title="Next Post: 复合查询概念">复合查询概念 &raquo;</a>
+          <a  href="dns%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B.html" 
+          title="Next Post: dns解析过程">dns解析过程 &raquo;</a>
       
       </p>
         </div>

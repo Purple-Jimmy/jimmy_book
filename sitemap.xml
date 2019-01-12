@@ -2,11 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>https://purple-jimmy.github.io/jimmy_book/</loc>
-  <lastmod>2019-01-02T23:20:58+08:00</lastmod>
+  <lastmod>2019-01-12T17:17:30+08:00</lastmod>
 </url>
 
 <url>
-  <loc>https://purple-jimmy.github.io/jimmy_book/15464407015687.html</loc>
+  <loc>https://purple-jimmy.github.io/jimmy_book/java%E7%B1%BB.html</loc>
+  <lastmod>2019-01-10T21:29:32+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5.html</loc>
   <lastmod>2019-01-02T22:51:41+08:00</lastmod>
 </url>
 

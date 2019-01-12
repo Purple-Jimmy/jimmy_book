@@ -4,7 +4,7 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2019-01-02T23:19:58+08:00</updated>
+  <updated>2019-01-02T23:20:59+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -13,10 +13,31 @@
   <generator uri="http://www.mweb.im/">MWeb</generator>
   
   <entry>
+    <title type="html"><![CDATA[类]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/java%E7%B1%BB.html"/>
+    <updated>2019-01-10T21:29:32+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/java%E7%B1%BB.html</id>
+    <content type="html"><![CDATA[
+<pre><code class="language-text">Point p = new Point();
+分为两部分:
+Point p;//声明变量p
+
+变量p有两块内存地址:一个存放实际内容,一个存放实际内容的位置.声明变量本身只会分配存放位置的内存空间,这块空间还没有指向任何实际内容.
+
+p = new Point();//为变量p赋值
+1. 分配内存,存储新对象的数据
+2. 调用构造方法
+3. 为实例变量设置默认值
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[计算机程序]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/15464407015687.html"/>
+    <link href="https://purple-jimmy.github.io/jimmy_book/java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5.html"/>
     <updated>2019-01-02T22:51:41+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/15464407015687.html</id>
+    <id>https://purple-jimmy.github.io/jimmy_book/java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5.html</id>
     <content type="html"><![CDATA[
 <p>本质上，计算机只会执行预先写好的指令而已，这些指令也只是操作数据或者设备。所谓程序，基本上就是告诉计算机要操作的数据和执行的指令序列， 即对什么数据做什么操作<br/>
 基本上，所有数据都需要放到内存进行处理，程序的很大一部分工作就是操作在内存中的数据</p>
@@ -42,6 +63,28 @@
 <h2 id="toc_3">数组和基本类型的区别</h2>
 
 <p>一个基本类型变量，内存中只会有一块对应的内存空间。但数组有两块，一块用于存储数组内容本身，另一块用于存储内容的位置</p>
+
+<h2 id="toc_4">基本运算</h2>
+
+<ul>
+<li><p>正整数相乘出现负数<br/>
+二进制计算,超出表示范围的时候,最高位往往是1,1代表负数</p></li>
+<li><p>非常基本的小数运算结果不精确<br/>
+计算算用二进制格式存储小数,二进制格式不能精确表示0.1</p></li>
+<li><p>字符类型也可以进行算术运算比较<br/>
+java中处理字符时采用Unicode编码且编码格式是UTF-16BE,char本质是一个固定占用2个字节无符号正整数,对应unicode编码,表示unicode编号对应的字符.因此char只能表示65536以内占2个字节的字符,超出范围的无法表示</p></li>
+</ul>
+
+<h2 id="toc_5">栈</h2>
+
+<p>􏰑􏰫􏲈􏲑􏰬􏱤􏱳􏰉􏱿􏳖􏱠􏲪􏱩􏳤􏱁􏱲􏱿􏰱􏱵􏱂􏱋􏱳􏰗􏱁􏲘􏳘􏰵􏳛􏰥􏱁􏳦􏳳􏰓􏰏􏲆􏳘􏲉􏱝􏳤􏱁􏲗􏰗􏲾􏰄􏲽􏲂栈存放函数调用过程中的数据,包括参数、返回地址、函数内定义的局部变量<br/>
+基本数据类型内存分配:函数中的参数和函数内定义的变量,都分配在栈中,这些变量只有在函数被调用的时候才分配内存,结束后释放<br/>
+数组和对象内存分配:有两块内存,一块存放实际内容,一块存放实际内容地址,实际内容的内存空间一般分配在堆上,存放内容地址的内容空间一般在栈上</p>
+
+<h2 id="toc_6">字符的编码与乱码</h2>
+
+<p>非Unicode编码:ASCII ISO8859-1 GBK GB2312<br/>
+Unicode编码:世界上所有的字符都被统一分配唯一数字编号</p>
 
 ]]></content>
   </entry>
@@ -691,16 +734,6 @@ this is c site
     <link href="https://purple-jimmy.github.io/jimmy_book/%E5%A4%8D%E5%90%88%E6%9F%A5%E8%AF%A2%E6%A6%82%E5%BF%B5.html"/>
     <updated>2018-09-25T22:45:07+08:00</updated>
     <id>https://purple-jimmy.github.io/jimmy_book/%E5%A4%8D%E5%90%88%E6%9F%A5%E8%AF%A2%E6%A6%82%E5%BF%B5.html</id>
-    <content type="html"><![CDATA[
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[ids]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/ids.html"/>
-    <updated>2018-09-25T22:43:54+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/ids.html</id>
     <content type="html"><![CDATA[
 
 ]]></content>

@@ -122,6 +122,38 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="ids.html">
+                
+                  <h1>ids</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/25</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E8%AF%8D%E9%A1%B9%E6%9F%A5%E8%AF%A2(%E7%BB%93%E6%9E%84%E5%8C%96).html'>词项查询(结构化)</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="type.html">
                 
                   <h1>type</h1>
@@ -1219,155 +1251,6 @@ curl -H &quot;Content-Type:application/json&quot; -X GET &#39;localhost:9200/tut
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="elasticsearch%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2.html">
-                
-                  <h1>分页查询</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
-{
-  &quot;from&quot;: 0,
-  &quot;size&quot;: 3,
-  &quot;query&quot;: {
-    &quot;match_all&quot;: {}
-  }
-}&#39;
-</code></pre>
-
-<h1 id="toc_0">查询返回指定字段</h1>
-
-<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
-{
-  &quot;from&quot;: 0,
-  &quot;size&quot;: 3,
-  &quot;query&quot;: {
-    &quot;match_all&quot;: {}
-  },
-  &quot;_source&quot;: [
-    &quot;id&quot;,
-    &quot;bookName&quot;
-  ]
-}&#39;
-</code></pre>
-
-<h1 id="toc_1">显示版本号version</h1>
-
-<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
-{
-  &quot;from&quot;: 0,
-  &quot;size&quot;: 3,
-  &quot;version&quot;: true,
-  &quot;query&quot;: {
-    &quot;term&quot;: {
-      &quot;bookName&quot;: &quot;java&quot;
-    }
-  }
-}&#39;
-</code></pre>
-
-<h1 id="toc_2">评分过滤:查询&gt;=min_score值的数据</h1>
-
-<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
-{
-  &quot;min_score&quot;: 0.5,
-  &quot;query&quot;: {
-    &quot;term&quot;: {
-      &quot;bookName&quot;: &quot;java&quot;
-    }
-  }
-}&#39;
-</code></pre>
-
-<h1 id="toc_3">高亮</h1>
-
-<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
-{
-  &quot;query&quot;: {
-    &quot;term&quot;: {
-      &quot;bookName&quot;: &quot;java&quot;
-    }
-  },
-  &quot;highlight&quot;: {
-    &quot;fields&quot;: {
-      &quot;bookName&quot;: {}
-    }
-  }
-}&#39;
-</code></pre>
-
-<p>自定义高亮标签</p>
-
-<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/tutorial_book/book/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
-{
-  &quot;query&quot;: {
-    &quot;term&quot;: {
-      &quot;bookName&quot;: &quot;java&quot;
-    }
-  },
-  &quot;highlight&quot;: {
-    &quot;fields&quot;: {
-      &quot;bookName&quot;: {
-          &quot;pre_tags&quot;:[&quot;&lt;mark&gt;&quot;],
-          &quot;post_tags&quot;:[&quot;&lt;/mark&gt;&quot;]
-      }
-    }
-  }
-}&#39;
-</code></pre>
-
-<p>多字段高亮 </p>
-
-<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
-{
-  &quot;query&quot;: {
-    &quot;term&quot;: {
-      &quot;bookName&quot;: &quot;java&quot;
-    }
-  },
-  &quot;highlight&quot;: {
-    &quot;require_field_match&quot;: false,
-    &quot;fields&quot;: {
-      &quot;bookName&quot;: {},
-      &quot;desc&quot;: {}
-    }
-  }
-}&#39;
-</code></pre>
-
-<p>高亮性能分析</p>
-
-<ol>
-<li><code>unified高亮器</code>使用Lucene统一高亮器.这个高亮器将文本分解为句子,并使用BM25算法对单个句子进行评分,就好像它们是文集中的文档一样.它还支持准确的短语和多项(模糊,前缀,正则表达式)突出显示.<strong>这是默认的高亮器</strong></li>
-<li><code>plain高亮器</code>使用标准的Lucene高亮器.它试图在短语查询中理解单词重要性和任何单词定位标准来反映查询匹配逻辑</li>
-<li><code>fvh高亮器</code>使用Lucene Fast Vector高亮器.此高亮可  用于在映射中将term_vector设置为with_positions_offsets的字段.快速向量高亮器</li>
-</ol>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/9/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2.html'>基础查询</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1459,7 +1342,13 @@ curl -H &quot;Content-Type:application/json&quot; -X GET &#39;localhost:9200/tut
 	      
 		      
 			      <li class="post">
-			        <a href="15464407015687.html">计算机程序</a>
+			        <a href="java%E7%B1%BB.html">类</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5.html">计算机程序</a>
 			      </li>
 		     
 		  
@@ -1478,12 +1367,6 @@ curl -H &quot;Content-Type:application/json&quot; -X GET &#39;localhost:9200/tut
 		      
 			      <li class="post">
 			        <a href="15418603478652.html">crontab 定时任务</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="ngx_http_core_module%E6%A8%A1%E5%9D%97%E6%8F%90%E4%BE%9B%E7%9A%84%E5%8F%98%E9%87%8F.html">ngx_http_core_module模块提供的变量</a>
 			      </li>
 		     
 		  
