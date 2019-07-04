@@ -4,13 +4,28 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2019-01-12T17:17:31+08:00</updated>
+  <updated>2019-03-10T20:46:32+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[docker安装--macbook]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/docker%E5%AE%89%E8%A3%85--macbook.html"/>
+    <updated>2019-07-04T22:45:16+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/docker%E5%AE%89%E8%A3%85--macbook.html</id>
+    <content type="html"><![CDATA[
+<ol>
+<li>下载<a href="https://hub.docker.com/">https://hub.docker.com/</a></li>
+<li>配置加速器
+<img src="media/15622515166890/15622522095312.jpg" alt="" style="width:482px;"/></li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[类]]></title>
@@ -724,16 +739,6 @@ this is c site
     <link href="https://purple-jimmy.github.io/jimmy_book/constant_score.html"/>
     <updated>2018-09-25T22:45:24+08:00</updated>
     <id>https://purple-jimmy.github.io/jimmy_book/constant_score.html</id>
-    <content type="html"><![CDATA[
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[复合查询概念]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/%E5%A4%8D%E5%90%88%E6%9F%A5%E8%AF%A2%E6%A6%82%E5%BF%B5.html"/>
-    <updated>2018-09-25T22:45:07+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/%E5%A4%8D%E5%90%88%E6%9F%A5%E8%AF%A2%E6%A6%82%E5%BF%B5.html</id>
     <content type="html"><![CDATA[
 
 ]]></content>
