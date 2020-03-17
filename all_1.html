@@ -122,6 +122,38 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="constant_score.html">
+                
+                  <h1>constant_score</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/25</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%A4%8D%E5%90%88%E6%9F%A5%E8%AF%A2.html'>复合查询</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="%E5%A4%8D%E5%90%88%E6%9F%A5%E8%AF%A2%E6%A6%82%E5%BF%B5.html">
                 
                   <h1>复合查询概念</h1>
@@ -877,71 +909,6 @@ java编程思想
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="match.html">
-                
-                  <h1>match</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">or 操作符 可以不显示的写</h2>
-
-<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
-{
-  &quot;query&quot;: {
-    &quot;match&quot;: {
-      &quot;bookName&quot;: {
-        &quot;query&quot;: &quot;java思想&quot;
-      }
-    }
-  }
-}&#39;
--------
-java编程思想
-Java
-</code></pre>
-
-<h2 id="toc_1">and 操作符</h2>
-
-<pre><code class="language-text">curl -XGET &quot;http://localhost:9200/_search&quot; -H &#39;Content-Type: application/json&#39; -d&#39;
-{
-  &quot;query&quot;: {
-    &quot;match&quot;: {
-      &quot;bookName&quot;: {
-        &quot;query&quot;: &quot;java思想&quot;,
-        &quot;operator&quot;: &quot;and&quot;
-      }
-    }
-  }
-}&#39;
--------
-java编程思想
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/9/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2.html'>全文检索</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1033,6 +1000,12 @@ java编程思想
 	      
 		      
 			      <li class="post">
+			        <a href="mysql%E5%AE%89%E8%A3%85.html">mysql安装</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="docker%E5%AE%89%E8%A3%85--macbook.html">docker安装--macbook</a>
 			      </li>
 		     
@@ -1052,12 +1025,6 @@ java编程思想
 		      
 			      <li class="post">
 			        <a href="dns%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B.html">dns解析过程</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="nginx%E5%8F%AF%E4%BB%A5%E5%81%9A%E4%BB%80%E4%B9%88.html">nginx可以做什么</a>
 			      </li>
 		     
 		  

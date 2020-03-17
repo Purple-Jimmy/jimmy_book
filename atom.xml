@@ -4,7 +4,7 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2019-03-10T20:46:32+08:00</updated>
+  <updated>2019-07-04T23:05:28+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -13,16 +13,37 @@
   <generator uri="http://www.mweb.im/">MWeb</generator>
   
   <entry>
+    <title type="html"><![CDATA[mysql安装]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/mysql%E5%AE%89%E8%A3%85.html"/>
+    <updated>2020-03-17T06:33:46+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/mysql%E5%AE%89%E8%A3%85.html</id>
+    <content type="html"><![CDATA[
+<p>mysql -h localhost -u root -p</p>
+
+<p>show databases;<br/>
+use xxx;<br/>
+show tables;</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[docker安装--macbook]]></title>
     <link href="https://purple-jimmy.github.io/jimmy_book/docker%E5%AE%89%E8%A3%85--macbook.html"/>
     <updated>2019-07-04T22:45:16+08:00</updated>
     <id>https://purple-jimmy.github.io/jimmy_book/docker%E5%AE%89%E8%A3%85--macbook.html</id>
     <content type="html"><![CDATA[
 <ol>
-<li>下载<a href="https://hub.docker.com/">https://hub.docker.com/</a></li>
+<li>下载<a href="https://hub.docker.com/editions/community/docker-ce-desktop-mac">https://hub.docker.com/editions/community/docker-ce-desktop-mac</a></li>
 <li>配置加速器
 <img src="media/15622515166890/15622522095312.jpg" alt="" style="width:482px;"/></li>
 </ol>
+
+<p>docker inspect mysql</p>
+
+<p>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;password&#39;</p>
+
+<p><img src="media/15622515166890/15840317361793.jpg" alt="" style="width:420px;"/></p>
 
 ]]></content>
   </entry>
@@ -729,16 +750,6 @@ this is c site
     <link href="https://purple-jimmy.github.io/jimmy_book/bool.html"/>
     <updated>2018-09-25T22:46:06+08:00</updated>
     <id>https://purple-jimmy.github.io/jimmy_book/bool.html</id>
-    <content type="html"><![CDATA[
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[constant_score]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/constant_score.html"/>
-    <updated>2018-09-25T22:45:24+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/constant_score.html</id>
     <content type="html"><![CDATA[
 
 ]]></content>
