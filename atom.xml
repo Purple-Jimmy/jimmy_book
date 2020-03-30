@@ -4,7 +4,7 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2019-07-04T23:05:28+08:00</updated>
+  <updated>2020-03-17T07:59:44+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -18,7 +18,16 @@
     <updated>2020-03-17T06:33:46+08:00</updated>
     <id>https://purple-jimmy.github.io/jimmy_book/mysql%E5%AE%89%E8%A3%85.html</id>
     <content type="html"><![CDATA[
+<p><img src="media/15843980268450/15855461219566.jpg" alt="" style="width:721px;"/></p>
+
+<p>添加参数<br/>
+<img src="media/15843980268450/15855462069599.jpg" alt="" style="width:907px;"/></p>
+
 <p>mysql -h localhost -u root -p</p>
+
+<p>赋予权限远程连接<br/>
+grant all privileges on <em>.</em> to root@&#39;%&#39; identified by &quot;password&quot;;<br/>
+flush privileges;</p>
 
 <p>show databases;<br/>
 use xxx;<br/>
