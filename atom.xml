@@ -4,13 +4,28 @@
   <title><![CDATA[jimmy_codebook]]></title>
   <link href="https://purple-jimmy.github.io/jimmy_book/atom.xml" rel="self"/>
   <link href="https://purple-jimmy.github.io/jimmy_book/"/>
-  <updated>2020-03-17T07:59:44+08:00</updated>
+  <updated>2020-03-30T13:41:42+08:00</updated>
   <id>https://purple-jimmy.github.io/jimmy_book/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[maven错误]]></title>
+    <link href="https://purple-jimmy.github.io/jimmy_book/maven%E9%94%99%E8%AF%AF.html"/>
+    <updated>2020-03-31T09:59:32+08:00</updated>
+    <id>https://purple-jimmy.github.io/jimmy_book/maven%E9%94%99%E8%AF%AF.html</id>
+    <content type="html"><![CDATA[
+<p><img src="media/15856199726461/15856200534851.jpg" alt="" style="width:1633px;"/></p>
+
+<p>[ERROR] Failed to execute goal on project hr-core-webapi: Could not resolve dependencies for project com.worktrans.hr:hr-core-webapi:jar:2.0.0-SNAPSHOT: Could not find artifact com.worktrans.framework:message-spring-boot-starter:jar:2.0.0-SNAPSHOT in worktrans-snapshots (<a href="http://maven.worktrans.cn:3030/nexus/content/repositories/snapshots/">http://maven.worktrans.cn:3030/nexus/content/repositories/snapshots/</a>) -&gt; [Help 1]</p>
+
+<p>解决：</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[mysql安装]]></title>
@@ -750,16 +765,6 @@ this is c site
 3. 查看端口 firewall-cmd --query-port=80/tcp
 
 </code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[bool]]></title>
-    <link href="https://purple-jimmy.github.io/jimmy_book/bool.html"/>
-    <updated>2018-09-25T22:46:06+08:00</updated>
-    <id>https://purple-jimmy.github.io/jimmy_book/bool.html</id>
-    <content type="html"><![CDATA[
 
 ]]></content>
   </entry>

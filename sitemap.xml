@@ -2,7 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>https://purple-jimmy.github.io/jimmy_book/</loc>
-  <lastmod>2020-03-30T13:41:41+08:00</lastmod>
+  <lastmod>2020-03-31T18:46:07+08:00</lastmod>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/maven%E9%94%99%E8%AF%AF.html</loc>
+  <lastmod>2020-03-31T09:59:32+08:00</lastmod>
 </url>
 
 <url>
@@ -509,6 +514,10 @@
 
 <url>
   <loc>https://purple-jimmy.github.io/jimmy_book/java%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91.html</loc>
+</url>
+
+<url>
+  <loc>https://purple-jimmy.github.io/jimmy_book/maven.html</loc>
 </url>
 
 
